@@ -2,7 +2,7 @@
 @import './mixin.scss';
 @import './transition.scss';
 @import './element-ui.scss';
-@import './sidebar.scss';
+// @import './sidebar.scss';
 
 body {
   -moz-osx-font-smoothing: grayscale;
@@ -14,7 +14,32 @@ body {
 html {
   box-sizing: border-box;
 }
-
+/*
+  --------------------->
+  底部footer永远在底部
+  main-container无内容时
+  footer不会脱离底部
+*/
+html,body{
+  height: 100%;
+}
+#app,.app-wrapper{
+  height: 100%;
+}
+.main-container{
+  min-height: 100%;
+  position: relative;
+}
+.main-container{
+  position: relative;
+  margin-top: -100px;
+}
+.page-footer {
+  width: 100%;
+  height: 100px;
+  background-color: #f7f7f7;
+}
+/*<---------------------*/
 *,
 *:before,
 *:after {
