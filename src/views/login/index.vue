@@ -1,7 +1,6 @@
 <template>
   <div class="login-container">
-    <el-form autoComplete="on" :model="loginForm" :rules="loginRules" ref="loginForm" label-position="left" label-width="0px"
-      class="card-box login-form">
+    <el-form autoComplete="on" :model="loginForm" :rules="loginRules" ref="loginForm" label-position="left" label-width="0px" class="card-box login-form">
       <h3 class="title">唐小僧理财新产品管理后台</h3>
       <el-form-item prop="username">
         <span class="svg-container svg-container_login">
@@ -13,9 +12,10 @@
         <span class="svg-container">
           <svg-icon icon-class="password"></svg-icon>
         </span>
-        <el-input name="password" :type="pwdType" @keyup.enter.native="handleLogin" v-model="loginForm.password" autoComplete="on"
-          placeholder="password"></el-input>
-          <span class="show-pwd" @click="showPwd"><svg-icon icon-class="eye" /></span>
+        <el-input name="password" :type="pwdType" @keyup.enter.native="handleLogin" v-model="loginForm.password" autoComplete="on" placeholder="password"></el-input>
+        <span class="show-pwd" @click="showPwd">
+          <svg-icon icon-class="eye" />
+        </span>
       </el-form-item>
       <el-form-item prop="captcha">
         <el-input name="captcha" type="text" v-model="loginForm.captcha" @keyup.enter.native="handleLogin" autoComplete="on" placeholder="请输入图形验证码" />
@@ -31,187 +31,198 @@
 </template>
 
 <script>
-import { captcha } from '@/api/login'
+import { captcha } from "@/api/login";
 export default {
-  name: 'login',
+  name: "login",
   data() {
     const validateUsername = (rule, value, callback) => {
       if (value.length < 1) {
-        callback(new Error('用户名不能为空'))
+        callback(new Error("用户名不能为空"));
       } else {
-        callback()
+        callback();
       }
-    }
+    };
     const validatePass = (rule, value, callback) => {
       if (value.length < 1) {
-        callback(new Error('密码不能为空'))
+        callback(new Error("密码不能为空"));
       } else {
-        callback()
+        callback();
       }
-    }
+    };
     const validateCaptcha = (rule, value, callback) => {
-      if (this.captCode === '') {
-        callback(new Error('请重新获取图形验证码'))
+      if (this.captCode === "") {
+        callback(new Error("请重新获取图形验证码"));
       } else if (value.length < 1) {
-        callback(new Error('图形验证码不能为空'))
+        callback(new Error("图形验证码不能为空"));
       } else {
-        callback()
+        callback();
       }
-    }
+    };
     return {
-      captchaUrl: '',
+      captchaUrl: "",
       loginForm: {
-        username: '',
-        password: '',
-        captCode: '',
-        captcha: ''
+        username: "",
+        password: "",
+        captCode: "",
+        captcha: ""
       },
       loginRules: {
-        username: [{ required: true, trigger: 'blur', validator: validateUsername }],
-        password: [{ required: true, trigger: 'blur', validator: validatePass }],
-        captcha: [{ required: true, trigger: 'blur', validator: validateCaptcha }]
+        username: [
+          { required: true, trigger: "blur", validator: validateUsername }
+        ],
+        password: [
+          { required: true, trigger: "blur", validator: validatePass }
+        ],
+        captcha: [
+          { required: true, trigger: "blur", validator: validateCaptcha }
+        ]
       },
       loading: false,
-      pwdType: 'password'
-    }
+      pwdType: "password"
+    };
   },
   created() {
-    this.getCaptcha()
+    this.getCaptcha();
   },
   methods: {
     getCaptcha() {
-      captcha().then(({ data }) => {
-        this.captchaUrl = data.captcha
-        this.loginForm.captCode = data.captCode
-      }).catch((message) => {
-        console.log('get captcha error', message)
-      })
+      captcha()
+        .then(({ data }) => {
+          this.captchaUrl = data.captcha;
+          this.loginForm.captCode = data.captCode;
+        })
+        .catch(message => {
+          console.log("get captcha error", message);
+        });
     },
     showPwd() {
-      if (this.pwdType === 'password') {
-        this.pwdType = ''
+      if (this.pwdType === "password") {
+        this.pwdType = "";
       } else {
-        this.pwdType = 'password'
+        this.pwdType = "password";
       }
     },
     handleLogin() {
       this.$refs.loginForm.validate(valid => {
         if (valid) {
-          this.loading = true
+          this.loading = true;
           const loginReq = {
             captcha: this.loginForm.captcha,
             captchaCode: this.loginForm.captCode,
             loginPass: this.loginForm.password,
             userAccount: this.loginForm.username.trim()
-          }
-          this.$store.dispatch('Login', loginReq).then(() => {
-            this.loading = false
-            this.$router.push({ path: '/' })
-          }).catch(() => {
-            this.getCaptcha()
-            this.loading = false
-          })
+          };
+          this.$store
+            .dispatch("Login", loginReq)
+            .then(() => {
+              this.loading = false;
+              this.$router.push({ path: "/" });
+            })
+            .catch(() => {
+              this.getCaptcha();
+              this.loading = false;
+            });
         } else {
-          console.log('error submit!!')
-          return false
+          console.log("error submit!!");
+          return false;
         }
-      })
+      });
     }
   }
-}
+};
 </script>
 
 <style rel="stylesheet/scss" lang="scss">
-  $bg:#2d3a4b;
-  $dark_gray:#889aa4;
-  $light_gray:#eee;
+$bg: #2d3a4b;
+$dark_gray: #889aa4;
+$light_gray: #eee;
 
-  .login-container {
-    position: fixed;
-    height: 100%;
-    width:100%;
-    background-color: $bg;
-    input:-webkit-autofill {
-      -webkit-box-shadow: 0 0 0px 1000px #293444 inset !important;
-      -webkit-text-fill-color: #fff !important;
-    }
-    input {
-      background: transparent;
-      border: 0px;
-      -webkit-appearance: none;
-      border-radius: 0px;
-      padding: 12px 5px 12px 15px;
-      color: $light_gray;
-      height: 47px;
-    }
-    input[name="captcha"]{
-      padding-right:50px;
-    }
-    .captcha{
-      position: absolute;
-      top: 10%;
-      right: 10px;
-      min-width: 100px;
-      min-height:80%;
-      height: 80%;
-      background-color: #fff;
-      cursor: pointer;
-    }
-    .el-input {
-      display: inline-block;
-      height: 47px;
-      width: 85%;
-    }
-    .tips {
-      font-size: 14px;
-      color: #fff;
-      margin-bottom: 10px;
-    }
-    .svg-container {
-      padding: 6px 5px 6px 15px;
-      color: $dark_gray;
-      vertical-align: middle;
-      width: 30px;
-      display: inline-block;
-      &_login {
-        font-size: 20px;
-      }
-    }
-    .title {
-      font-size: 26px;
-      font-weight: 400;
-      color: $light_gray;
-      margin: 0px auto 40px auto;
-      text-align: center;
-      font-weight: bold;
-    }
-    .login-form {
-      position: absolute;
-      left: 0;
-      right: 0;
-      width: 400px;
-      padding: 35px 35px 15px 35px;
-      margin: 120px auto;
-    }
-    .el-form-item {
-      border: 1px solid rgba(255, 255, 255, 0.1);
-      background: rgba(0, 0, 0, 0.1);
-      border-radius: 5px;
-      color: #454545;
-    }
-    .show-pwd {
-      position: absolute;
-      right: 10px;
-      top: 7px;
-      font-size: 16px;
-      color: $dark_gray;
-      cursor: pointer;
-      user-select:none;
-    }
-    .thirdparty-button{
-      position: absolute;
-      right: 35px;
-      bottom: 28px;
+.login-container {
+  position: fixed;
+  height: 100%;
+  width: 100%;
+  background-color: $bg;
+  input:-webkit-autofill {
+    -webkit-box-shadow: 0 0 0px 1000px #293444 inset !important;
+    -webkit-text-fill-color: #fff !important;
+  }
+  input {
+    background: transparent;
+    border: 0px;
+    -webkit-appearance: none;
+    border-radius: 0px;
+    padding: 12px 5px 12px 15px;
+    color: $light_gray;
+    height: 47px;
+  }
+  input[name="captcha"] {
+    padding-right: 50px;
+  }
+  .captcha {
+    position: absolute;
+    top: 10%;
+    right: 10px;
+    min-width: 100px;
+    min-height: 80%;
+    height: 80%;
+    background-color: #fff;
+    cursor: pointer;
+  }
+  .el-input {
+    display: inline-block;
+    height: 47px;
+    width: 85%;
+  }
+  .tips {
+    font-size: 14px;
+    color: #fff;
+    margin-bottom: 10px;
+  }
+  .svg-container {
+    padding: 6px 5px 6px 15px;
+    color: $dark_gray;
+    vertical-align: middle;
+    width: 30px;
+    display: inline-block;
+    &_login {
+      font-size: 20px;
     }
   }
+  .title {
+    font-size: 26px;
+    font-weight: 400;
+    color: $light_gray;
+    margin: 0px auto 40px auto;
+    text-align: center;
+    font-weight: bold;
+  }
+  .login-form {
+    position: absolute;
+    left: 0;
+    right: 0;
+    width: 400px;
+    padding: 35px 35px 15px 35px;
+    margin: 120px auto;
+  }
+  .el-form-item {
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    background: rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+    color: #454545;
+  }
+  .show-pwd {
+    position: absolute;
+    right: 10px;
+    top: 7px;
+    font-size: 16px;
+    color: $dark_gray;
+    cursor: pointer;
+    user-select: none;
+  }
+  .thirdparty-button {
+    position: absolute;
+    right: 35px;
+    bottom: 28px;
+  }
+}
 </style>
