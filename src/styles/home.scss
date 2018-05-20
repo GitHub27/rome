@@ -1,33 +1,33 @@
-
 @import './index.scss';
-.login-form{
-    padding: 38px 13px 75px;
-        .el-input__inner{
-        width: 100%;
-        height: 52px;
-        font-size: 16px;
+.login-form {
+  padding: 38px 13px 75px;
+  .el-input__inner {
+    width: 100%;
+    height: 52px;
+    font-size: 16px;
+  }
+  .captcha-input {
+    width: 177px;
+    .el-input__inner {
+      width: 177px;
     }
-    .captcha-input{
-        width: 177px;
-        .el-input__inner{
-            width: 177px;
-        }
-    }
-    .captcha{
-        float: right;
-        height: 50px;
-        width: 120px;
-    }
-    .el-form-item{
-        margin-bottom: 17px;
-    }
-    .el-button--primary{
-        height: 52px;
-        background-color: #F07026;
-        border-color: #F07026;
-        font-size: 18px;
-    }
+  }
+  .captcha {
+    float: right;
+    height: 50px;
+    width: 120px;
+  }
+  .el-form-item {
+    margin-bottom: 17px;
+  }
+  .el-button--primary {
+    height: 52px;
+    background-color: #F07026;
+    border-color: #F07026;
+    font-size: 18px;
+  }
 }
+
 //----统计----begin
 .statistic {
   width: 495px;
@@ -35,20 +35,23 @@
   padding: 53px 20px 42px;
   display: block;
   float: left;
-  & > div {
+  &>div {
     float: left;
     width: 50%;
     text-align: center;
     span {
       color: #f07026;
       font-size: 32px;
+      font-weight: 600;
     }
     p {
       color: #333;
       font-size: 16px;
+      margin-top: 10px;
     }
   }
 }
+
 //----统计----end
 //----登录框
 .login-container {
@@ -113,13 +116,14 @@
     }
   }
 }
+
 //----首页搜索框---begin
 .search-containter {
   display: block;
   float: left;
   overflow: hidden;
   width: 704px;
-    margin-top: 27px;
+  margin-top: 27px;
   .search-type {
     overflow: hidden;
     text-align: left;
@@ -168,6 +172,329 @@
       font-size: 18;
     }
   }
+  .hot-search {
+    font-size: 14px;
+    margin-top: 7px;
+    line-height: 1.5;
+    color: #999;
+    span {
+      margin-right: 8px;
+    }
+  }
 }
-//----首页搜索框---end
 
+//----首页搜索框---end
+//----简历列表----begin
+.resume-list-warp {
+  width: 100%;
+  background-color: #f5f5f5;
+  .resume-list-header {
+    width: 1201px;
+    margin: 0 auto;
+    overflow: hidden;
+    padding: 23px 0 16px;
+    span {
+      color: #333;
+      font-size: 16px;
+      display: block;
+      padding-top: 4px;
+    }
+    h2 {
+      font-weight: normal;
+      font-size: 20px;
+      color: $maincolor;
+    }
+  }
+  .resume-list {
+    width: 1201px;
+    margin: 0 auto;
+    overflow: hidden; // background-color: rgb(128, 76, 76);
+    .el-carousel__container {
+      width: 1201px;
+      overflow: hidden;
+      height: 500px;
+    }
+  }
+}
+
+.resume-item {
+  background-color: #fff;
+  border-radius: 6px;
+  float: left;
+  width: 388px;
+  margin-right: 18px;
+  margin-bottom: 18px; // padding: 20px 18px 28px;
+  position: relative;
+  cursor: pointer;
+  .visit {
+    display: none;
+    color: #fff
+  }
+  &:hover {
+    .visit {
+      display: block;
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background-color: #333;
+      filter: Alpha(opacity=70);
+      -moz-opacity: 0.7;
+      opacity: 0.7;
+      min-height: 142px;
+      z-index: 10;
+    }
+  }
+  &:nth-of-type(3n) {
+    float: right;
+    margin-right: 0px;
+  }
+  .resume-main {
+    overflow: hidden;
+    padding: 20px 18px 0px;
+    .phone {
+      height: 103px;
+      width: 103px;
+    }
+    .resume-info {
+      margin-left: 115px;
+      margin-top: 22px;
+      &>div {
+        margin-top: 9px;
+      }
+      .info-base {
+        span {
+          font-size: 12px;
+          color: #999;
+        }
+      }
+    }
+    h3 {
+      color: #333;
+      font-size: 16px;
+      display: inline;
+      margin-right: 5px;
+    }
+  }
+  span {
+    line-height: 100%;
+    font-size: 14px; // margin-right: 10px;
+  }
+  .education {
+    padding: 0 18px;
+    margin-top: 1px;
+    p {
+      margin-top: 7px;
+    }
+  }
+  .br3 {
+    padding-right: 8px;
+    border-right: 1px solid #333;
+  }
+  .br9 {
+    padding-right: 5px;
+    border-right: 1px solid #999;
+  } // span {
+  //   position: relative;
+  //   &::after {
+  //     content: ' ';
+  //     display: block;
+  //     height: 100%;
+  //     width: 1px;
+  //     background-color: #333;
+  //     position: absolute;
+  //     right: -9px;
+  //     top: 0;
+  //     bottom: 0;
+  //   }
+  // }
+  .resume-introduce {
+    position: relative;
+    font-size: 14px;
+    color: #333;
+    line-height: 1.6;
+    padding: 36px 20px 0;
+    margin-bottom: 28px;
+    height: 123px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 4;
+    -webkit-box-orient: vertical;
+    h3 {
+      font-size: 15px;
+      color: #333;
+      display: inline;
+    }
+    &:after {
+      position: absolute;
+      content: ' ';
+      z-index: 9;
+      top: 20px;
+      left: 0;
+      right: 0;
+      width: 388px;
+      height: 1px;
+      background-color: #eeeeee;
+    }
+  }
+}
+
+//----简历列表----end
+//----排行版----begin
+.ranking-list {
+  width: 100%;
+  background-color: #ffffff;
+  .ranking-warp {
+    overflow: hidden;
+    margin: 0 auto;
+    padding-bottom: 20px;
+    width: 1201px;
+  }
+  .ranking-item {
+    width: 50%;
+    box-sizing: border-box;
+    &.fl {
+      padding-right: 51px;
+    }
+    &.fr {
+      padding-left: 51px;
+    }
+    .ranking-header {
+      overflow: hidden;
+      padding: 19px 0;
+      h2 {
+        font-weight: 700;
+        font-size: 20px;
+        color: $maincolor;
+      }
+      span {
+        padding-top: 6px;
+        color: #666;
+        font-size: 14px;
+      }
+    }
+    &.fl z {
+      color: #e83902;
+      font-size: 16px;
+    }
+  }
+  .brpos {
+    position: relative;
+    &::after {
+      position: absolute;
+      content: '';
+      display: inline-block;
+      right: -51px;
+      top: -14px;
+      bottom: 0;
+      height: 220px;
+      width: 1px;
+      background-color: #eee;
+    }
+  }
+  .ranking-item-warp {
+    margin-bottom: 7px;
+  }
+  .ranking-man {
+    display: inline-block;
+    font-size: 14px;
+    color: #333;
+    margin: 0 17px 0 15px;
+  }
+  .ranking-icon {
+    margin-right: 7px;
+  }
+  .total-profit {
+    float: right;
+    font-size: 14px;
+    color: #333;
+  }
+}
+
+.icon-num-ranking {
+  display: inline-block;
+  height: 30px;
+  line-height: 30px;
+  width: 29px;
+  font-size: 18px;
+  color: #ffffff;
+  border-radius: 3px;
+  background-color: #e83902;
+  text-align: center;
+}
+
+.icon-num-ranking-bg2 {
+  background-color: $maincolor;
+}
+
+.icon-evaluate {
+  display: inline-block;
+  width: 44px;
+  height: 22px;
+  line-height: 22px;
+  background-color: #e73802;
+  color: #fff;
+  font-size: 12px;
+  text-align: center;
+  border-radius: 12px;
+}
+
+.ranking-icon {
+  display: inline-block;
+  width: 28px;
+  height: 25px;
+  background-image: url('../../assets/index/ranking.png');
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  vertical-align: middle;
+}
+
+//----排行榜----end
+//----底部菜单----begin
+.footer-menu {
+  width: 100%;
+  background-color: #f5f5f5;
+  margin: 0 auto;
+  padding: 50px 0 115px;
+  text-align: center;
+  overflow: hidden;
+  .footer-menu-item {
+    display: inline-block;
+    margin-right: 176px;
+    width: 224px;
+    height: 224px;
+    background-color: #fff;
+    border: 2px solid #FC964F;
+    border-radius: 100%;
+    cursor: pointer;
+    transition: background-color 0.5s;
+    &:hover {
+      background-color: #FBA366;
+      border: 2px solid #FF6C06;
+      h1 {
+        color: #fff;
+      }
+      p {
+        color: #fff;
+      }
+    }
+    h1 {
+      transition: color 0.5s;
+      color: #FF6C06;
+      font-size: 42px;
+      font-weight: normal;
+      margin: 74px 0px 21px;
+    }
+    p {
+      transition: color 0.5s;
+      font-size: 16px;
+      color: #333;
+    }
+  }
+  .footer-menu-item:last-child {
+    margin-right: 0px;
+  }
+}
+
+//----底部菜单----end

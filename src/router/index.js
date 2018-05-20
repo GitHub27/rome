@@ -21,23 +21,44 @@ import Layout from '../views/layout/Layout'
     icon: 'svg-name'             the icon show in the sidebar,
   }
  **/
-export const constantRouterMap = [
-  { path: '/login', component: () => import('@/views/login/index'), hidden: true },
-  { path: '/404', component: () => import('@/views/404'), hidden: true },
+export const constantRouterMap = [{
+    path: '/login',
+    component: () =>
+      import ('@/views/login/index'),
+    hidden: true
+  },
+  {
+    path: '/404',
+    component: () =>
+      import ('@/views/404'),
+    hidden: true
+  },
   {
     path: '/index',
     component: Layout,
-    children: [
-      {
-        path: '',
-        name: '首页',
-        hidden: true,
-        component: () => import('@/views/index/index'),
-        // meta: { title: '首页', icon: 'table', channel: 'QJS' }
+    children: [{
+      path: '',
+      name: '首页',
+      hidden: true,
+      component: () =>
+        import ('@/views/index/index'),
+      // meta: { title: '首页', icon: 'table', channel: 'QJS' }
 
-      }
-    ]
+    }]
   },
+  {
+    path: '/myvisit',
+    component: Layout,
+    children: [{
+      path: '',
+      name: '我的访问',
+      hidden: true,
+      component: () =>
+        import ('@/views/myVisit/index'),
+
+    }]
+  },
+
   {
     path: '/',
     component: Layout,
@@ -50,19 +71,31 @@ export const constantRouterMap = [
     component: Layout,
     redirect: '/product/QJS',
     name: 'product',
-    meta: { title: '产品货架', icon: 'tree' },
-    children: [
-      {
+    meta: {
+      title: '产品货架',
+      icon: 'tree'
+    },
+    children: [{
         path: 'QJS',
         name: 'QJS',
-        component: () => import('@/views/product/index'),
-        meta: { title: '侨金所', icon: 'table', channel: 'QJS' }
+        component: () =>
+          import ('@/views/product/index'),
+        meta: {
+          title: '侨金所',
+          icon: 'table',
+          channel: 'QJS'
+        }
       },
       {
         path: 'GAN',
         name: 'GAN',
-        component: () => import('@/views/product/index'),
-        meta: { title: '赣金中心', icon: 'table', channel: 'GAN' }
+        component: () =>
+          import ('@/views/product/index'),
+        meta: {
+          title: '赣金中心',
+          icon: 'table',
+          channel: 'GAN'
+        }
       }
     ]
   }
@@ -70,32 +103,49 @@ export const constantRouterMap = [
 
 export default new Router({
   // mode: 'history', //后端支持可开
-  scrollBehavior: () => ({ y: 0 }),
+  scrollBehavior: () => ({
+    y: 0
+  }),
   routes: constantRouterMap
 })
 
 // 异步挂载的路由
 // 动态需要根据权限加载的路由表
-export const asyncRouterMap = [
-  {
+export const asyncRouterMap = [{
     path: '/account',
     component: Layout,
     redirect: '/account/newaccount',
     name: 'manageraccount',
-    meta: { title: '账号管理', icon: 'example', role: [1] }, // 页面需要的权限
-    children: [
-      {
+    meta: {
+      title: '账号管理',
+      icon: 'example',
+      role: [1]
+    }, // 页面需要的权限
+    children: [{
         path: 'newaccount',
         name: 'newaccount',
-        component: () => import('@/views/account/newAccount'),
-        meta: { title: '创建账号', icon: 'table' }
+        component: () =>
+          import ('@/views/account/newAccount'),
+        meta: {
+          title: '创建账号',
+          icon: 'table'
+        }
       },
       {
         path: 'editAccount',
         name: 'editaccount',
-        component: () => import('@/views/account/editAccount'),
-        meta: { title: '编辑账号', icon: 'tree' }
-      }]
+        component: () =>
+          import ('@/views/account/editAccount'),
+        meta: {
+          title: '编辑账号',
+          icon: 'tree'
+        }
+      }
+    ]
   },
-  { path: '*', redirect: '/404', hidden: true }
+  {
+    path: '*',
+    redirect: '/404',
+    hidden: true
+  }
 ]

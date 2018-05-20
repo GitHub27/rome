@@ -1,5 +1,5 @@
 <template>
-  <el-carousel :interval="5000" arrow="always">
+  <el-carousel :interval="10000" arrow="always">
     <el-carousel-item v-for="(item,index) in listFilter" :key="index">
       <a :href='item.link'>
         <img :src="item.img" alt="">
@@ -59,13 +59,6 @@ export default {
   text-align: center;
 }
 
-.el-carousel__item:nth-child(2n) {
-  background-color: #99a9bf;
-}
-
-.el-carousel__item:nth-child(2n + 1) {
-  background-color: #d3dce6;
-}
 .el-carousel__button {
   width: 10px;
   height: 10px;

@@ -1,7 +1,49 @@
 <template>
-    <div>
-
+  <div class="resume-item">
+    <div class="resume-main">
+      <img class="phone fl" src="../assets/index/phone.png" alt="">
+      <div class="resume-info">
+        <div class="info-base">
+          <h3>张先生</h3>
+          <span class="br9">男</span>
+          <span class="br9">32岁</span>
+          <span>博士</span>
+        </div>
+        <div>
+          <span class="br3">研发经理</span>
+          <span>华为技术有限公司</span>
+        </div>
+        <div>
+          <span class="br3">上海</span>
+          <span class="br3">互联网</span>
+          <span>工作11年</span>
+        </div>
+      </div>
     </div>
+    <div class="education">
+      <p>
+        <span class="fl">2007~2010</span>
+        <span class="br3">湖南科技大学</span>
+        <span class="br3">广告设计</span>
+        <span>硕士</span>
+        <span class="br3">湖南科技大学</span>
+        <span class="br3">广告设计</span>
+        <span>硕士</span>
+      </p>
+      <p>
+        <span>2007~2010</span>
+        <span class="br3">湖南科技大学</span>
+        <span class="br3">广告设计</span>
+        <span>硕士</span>
+      </p>
+    </div>
+    <div class="resume-introduce">
+      <h3>推荐共享理由：</h3> 3年市场营销及媒体公关传播经验，1年海外工作经历，熟悉互联网通信行业 熟悉公关媒体品牌推广运作，具有出色的品牌策略能力及整合传播技巧 品牌意识强，具有出色提案能力和沟通技巧有大型相关策划实务操作经\ 验及成功品牌策划案例 对市场有灵敏的触觉和较强的资讯搜集能力能独力操作品牌营销工 具有传媒，广告，营销，音乐艺术类专业知识背景 告，营销，音乐艺术类专业知识背景工 作 经 验： 华为终...
+    </div>
+    <div class="visit">
+      123
+    </div>
+  </div>
 </template>
 
 <script>

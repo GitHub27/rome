@@ -1,12 +1,28 @@
 <template>
-    <div>
-
+  <div class="resume-list-warp">
+    <div class="resume-list-header">
+      <h2 class="fl">AI推荐</h2>
+      <span class="fr">更多人才信息 > ></span>
     </div>
+    <div class="resume-list">
+      <el-carousel :interval="5000" arrow="always" :autoplay='false' trigger="click" height="784px">
+        <el-carousel-item v-for="(item,index) in 4" :key="index">
+          <resume-item></resume-item>
+          <resume-item></resume-item>
+          <resume-item></resume-item>
+          <resume-item></resume-item>
+        </el-carousel-item>
+      </el-carousel>
+    </div>
+  </div>
 </template>
 
 <script>
+import resumeItem from "@/components/resumeItem";
 export default {
-  components: {},
+  components: {
+    resumeItem
+  },
   data() {
     return {};
   },
@@ -19,5 +35,5 @@ export default {
 };
 </script>
 
-<style rel="stylesheet/scss" lang="scss" scoped>
+<style rel="stylesheet/scss" lang="scss">
 </style>
