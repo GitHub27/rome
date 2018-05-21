@@ -34,22 +34,50 @@
             <input class="search-btn btn" type="button" value='搜索'>
           </div>
         </div>
+        <resume-item2></resume-item2>
+        <resume-item2></resume-item2>
+        <resume-item2></resume-item2>
+        <resume-item2></resume-item2>
 
+        <el-pagination background @current-change="handleCurrentChange" :current-page="currentPage4" :page-size="100" layout=" prev, pager, next,total, jumper" :total="400">
+        </el-pagination>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
         <br>
       </div>
     </div>
   </div>
 </template>
 <script>
+import resumeItem2 from "@/components/resumeItem2";
+
 export default {
-  components: {},
+  components: {
+    resumeItem2
+  },
   data() {
-    return {};
+    return {
+      currentPage2: 5,
+      currentPage4: 4
+    };
+  },
+  methods: {
+    handleSizeChange(val) {
+      console.log(`每页 ${val} 条`);
+    },
+    handleCurrentChange(val) {
+      console.log(`当前页: ${val}`);
+    }
   }
 };
 </script>
 
 <style rel="stylesheet/scss" lang="scss">
+@import "../../styles/home.scss";
+
 @import "../../styles/user.scss";
 
 .rome-warp {
@@ -168,5 +196,11 @@ export default {
       width: 547px;
     }
   }
+}
+.resume-main-warp {
+  float: left;
+}
+.resume-introduce {
+  float: right;
 }
 </style>

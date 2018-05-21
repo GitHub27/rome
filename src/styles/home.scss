@@ -149,9 +149,10 @@
     .svg-container-search {
       position: absolute;
       left: 0;
+      bottom: 0;
       width: 19px;
-      height: 19px;
-      margin: 17px 11px;
+      height: 100%;
+      margin-left: 12px;
     }
     input {
       height: 100%;
@@ -221,6 +222,7 @@
   background-color: #fff;
   border-radius: 6px;
   float: left;
+  overflow: hidden;
   width: 388px;
   margin-right: 18px;
   margin-bottom: 18px; // padding: 20px 18px 28px;
@@ -249,42 +251,52 @@
     float: right;
     margin-right: 0px;
   }
-  .resume-main {
-    overflow: hidden;
-    padding: 20px 18px 0px;
-    .phone {
-      height: 103px;
-      width: 103px;
-    }
-    .resume-info {
-      margin-left: 115px;
-      margin-top: 22px;
-      &>div {
-        margin-top: 9px;
+  .visit-date {
+    position: absolute;
+    top: 11px;
+    right: 9px;
+    font-size: 12px;
+    color: #999;
+  }
+  .resume-main-warp {
+    margin-bottom: 20px;
+    .resume-main {
+      overflow: hidden;
+      padding: 20px 18px 0px;
+      .phone {
+        height: 103px;
+        width: 103px;
       }
-      .info-base {
-        span {
-          font-size: 12px;
-          color: #999;
+      .resume-info {
+        margin-left: 115px;
+        margin-top: 22px;
+        &>div {
+          margin-top: 9px;
+        }
+        .info-base {
+          span {
+            font-size: 12px;
+            color: #999;
+          }
         }
       }
+      h3 {
+        color: #333;
+        font-size: 16px;
+        display: inline;
+        margin-right: 5px;
+      }
     }
-    h3 {
-      color: #333;
-      font-size: 16px;
-      display: inline;
-      margin-right: 5px;
+    span {
+      line-height: 100%;
+      font-size: 14px; // margin-right: 10px;
     }
-  }
-  span {
-    line-height: 100%;
-    font-size: 14px; // margin-right: 10px;
-  }
-  .education {
-    padding: 0 18px;
-    margin-top: 1px;
-    p {
-      margin-top: 7px;
+    .education {
+      padding: 0 18px;
+      margin-top: 1px;
+      p {
+        margin-top: 7px;
+      }
     }
   }
   .br3 {
@@ -294,26 +306,13 @@
   .br9 {
     padding-right: 5px;
     border-right: 1px solid #999;
-  } // span {
-  //   position: relative;
-  //   &::after {
-  //     content: ' ';
-  //     display: block;
-  //     height: 100%;
-  //     width: 1px;
-  //     background-color: #333;
-  //     position: absolute;
-  //     right: -9px;
-  //     top: 0;
-  //     bottom: 0;
-  //   }
-  // }
+  }
   .resume-introduce {
     position: relative;
     font-size: 14px;
     color: #333;
     line-height: 1.6;
-    padding: 36px 20px 0;
+    padding: 16px 20px 0;
     margin-bottom: 28px;
     height: 123px;
     overflow: hidden;
@@ -330,12 +329,27 @@
       position: absolute;
       content: ' ';
       z-index: 9;
-      top: 20px;
+      top: 0px;
       left: 0;
       right: 0;
       width: 388px;
       height: 1px;
       background-color: #eeeeee;
+    }
+  }
+  .resume-item-footer {
+    float: left;
+    height: 50px;
+    width: 100px;
+    width: 100%;
+    line-height: 50px;
+    padding-left: 18px;
+    color: #333;
+    font-size: 14px;
+    border-top: 1px solid #eee;
+    a {
+      margin-right: 40px;
+      cursor: pointer;
     }
   }
 }
