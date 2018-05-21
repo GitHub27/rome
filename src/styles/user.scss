@@ -1,0 +1,37 @@
+$maincolor:#f07026;
+
+.blpl{
+    border-left: 3px solid $maincolor;
+    padding-left: 8px;
+}
+.search-main {
+    background-color: #fff;
+    height: 46px;
+    position: relative;
+    width: 100%;
+    .svg-container-search {
+        position: absolute;
+        left: 0;
+        width: 19px;
+        height: 19px;
+        margin: 17px 11px;
+    }
+    input {
+        height: 100%;
+    }
+    .search-word {
+        width: 100%;
+        padding: 0 125px 0 40px;
+        border: 1px solid $maincolor;
+    }
+    .search-btn {
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: 83px;
+        background-color: $maincolor;
+        border: none;
+        color: #fff;
+        font-size: 18;
+    }
+}

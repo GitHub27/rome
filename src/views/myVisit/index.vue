@@ -1,34 +1,44 @@
 <template>
-    <div class="rome-warp">
-        <div class="rome">
-            <div class="sidebar">
-                <ul>
-                    <li class="user-info">
-                        <img class="user-phone" src="../../assets/user/user-phone.png" alt="">
-                        <h1>红色猎人</h1>
-                        <div class="user-tag">
-                            <i class="ranking-icon"></i>
-                            ROME诚信
-                            <span class="score">93.6</span>
-                            <span class="icon-evaluate">极好</span>
-                        </div>
-                    </li>
-                    <li class="user-menu bb active">我的账户</li>
-                    <li class="user-menu">我的访问</li>
-                    <li class="user-menu bb">我的共享</li>
-                    <li class="user-menu">我的收益</li>
-                    <li class="user-menu">提现记录</li>
-                    <li class="user-menu bb">现金管理账户</li>
-                    <li class="user-menu">我的认证</li>
-                    <li class="user-menu">个人认证</li>
-                </ul>
+  <div class="rome-warp">
+    <div class="rome">
+      <div class="sidebar">
+        <ul>
+          <li class="user-info">
+            <img class="user-phone" src="../../assets/user/user-phone.png" alt="">
+            <h1>红色猎人</h1>
+            <div class="user-tag">
+              <i class="ranking-icon"></i>
+              ROME诚信
+              <span class="score">93.6</span>
+              <span class="icon-evaluate">极好</span>
             </div>
-            <div class="rome-main">
-                <h2>我的访问记录</h2>
-                <br>
-            </div>
+          </li>
+          <li class="user-menu bb active">我的账户</li>
+          <li class="user-menu">我的访问</li>
+          <li class="user-menu bb">我的共享</li>
+          <li class="user-menu">我的收益</li>
+          <li class="user-menu">提现记录</li>
+          <li class="user-menu bb">现金管理账户</li>
+          <li class="user-menu">我的认证</li>
+          <li class="user-menu">个人认证</li>
+        </ul>
+      </div>
+      <div class="rome-main">
+        <h2 class="page-header blpl">我的访问记录</h2>
+        <div class="search-warp">
+          <div class="search-main">
+            <span class="svg-container ">
+              <svg-icon icon-class="search" class="svg-container-search" />
+            </span>
+            <input class="search-word" type="text" placeholder='输入职位、公司等搜索'>
+            <input class="search-btn btn" type="button" value='搜索'>
+          </div>
         </div>
+
+        <br>
+      </div>
     </div>
+  </div>
 </template>
 <script>
 export default {
@@ -40,6 +50,8 @@ export default {
 </script>
 
 <style rel="stylesheet/scss" lang="scss">
+@import "../../styles/user.scss";
+
 .rome-warp {
   width: 100%;
   background-color: #f5f5f5;
@@ -141,5 +153,20 @@ export default {
   background-size: 100% 100%;
   background-repeat: no-repeat;
   vertical-align: middle;
+}
+.rome-main {
+  .page-header {
+    color: #333;
+    font-size: 18px;
+  }
+  .search-warp {
+    width: 100%;
+    background-color: #fff;
+    padding: 20px 41px 22px;
+    margin-top: 18px;
+    .search-main {
+      width: 547px;
+    }
+  }
 }
 </style>
