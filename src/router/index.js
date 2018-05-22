@@ -22,83 +22,95 @@ import Layout from '../views/layout/Layout'
   }
  **/
 export const constantRouterMap = [{
-    path: '/login',
+  path: '/login',
+  component: () =>
+    import('@/views/login/index'),
+  hidden: true
+},
+{
+  path: '/404',
+  component: () =>
+    import('@/views/404'),
+  hidden: true
+},
+{
+  path: '/index',
+  component: Layout,
+  children: [{
+    path: '',
+    name: '首页',
+    hidden: true,
     component: () =>
-      import ('@/views/login/index'),
-    hidden: true
-  },
-  {
-    path: '/404',
+      import('@/views/index/index'),
+    // meta: { title: '首页', icon: 'table', channel: 'QJS' }
+
+  }]
+},
+{
+  path: '/myvisit',
+  component: Layout,
+  children: [{
+    path: '',
+    name: '我的访问',
+    hidden: true,
     component: () =>
-      import ('@/views/404'),
-    hidden: true
-  },
-  {
-    path: '/index',
-    component: Layout,
-    children: [{
-      path: '',
-      name: '首页',
-      hidden: true,
-      component: () =>
-        import ('@/views/index/index'),
-      // meta: { title: '首页', icon: 'table', channel: 'QJS' }
+      import('@/views/myVisit/index'),
 
-    }]
-  },
-  {
-    path: '/myvisit',
-    component: Layout,
-    children: [{
-      path: '',
-      name: '我的访问',
-      hidden: true,
-      component: () =>
-        import ('@/views/myVisit/index'),
+  }]
+},
+{
+  path: '/personalauth',
+  component: Layout,
+  children: [{
+    path: '',
+    name: '个人认证',
+    hidden: true,
+    component: () =>
+      import('@/views/personalAuth/index'),
 
-    }]
-  },
+  }]
+},
 
-  {
-    path: '/',
-    component: Layout,
-    redirect: '/product/QJS',
-    name: '货架',
-    hidden: true
+{
+  path: '/',
+  component: Layout,
+  redirect: '/product/QJS',
+  name: '货架',
+  hidden: true
+},
+{
+  path: '/product',
+  component: Layout,
+  redirect: '/product/QJS',
+  name: 'product',
+  meta: {
+    title: '产品货架',
+    icon: 'tree'
   },
-  {
-    path: '/product',
-    component: Layout,
-    redirect: '/product/QJS',
-    name: 'product',
+  children: [{
+    path: 'QJS',
+    name: 'QJS',
+    component: () =>
+      import('@/views/product/index'),
     meta: {
-      title: '产品货架',
-      icon: 'tree'
-    },
-    children: [{
-        path: 'QJS',
-        name: 'QJS',
-        component: () =>
-          import ('@/views/product/index'),
-        meta: {
-          title: '侨金所',
-          icon: 'table',
-          channel: 'QJS'
-        }
-      },
-      {
-        path: 'GAN',
-        name: 'GAN',
-        component: () =>
-          import ('@/views/product/index'),
-        meta: {
-          title: '赣金中心',
-          icon: 'table',
-          channel: 'GAN'
-        }
-      }
-    ]
+      title: '侨金所',
+      icon: 'table',
+      channel: 'QJS'
+    }
+  },
+  {
+    path: 'GAN',
+    name: 'GAN',
+    component: () =>
+      import('@/views/product/index'),
+    meta: {
+      title: '赣金中心',
+      icon: 'table',
+      channel: 'GAN'
+    }
   }
+  ]
+}
 ]
 
 export default new Router({
@@ -112,40 +124,40 @@ export default new Router({
 // 异步挂载的路由
 // 动态需要根据权限加载的路由表
 export const asyncRouterMap = [{
-    path: '/account',
-    component: Layout,
-    redirect: '/account/newaccount',
-    name: 'manageraccount',
+  path: '/account',
+  component: Layout,
+  redirect: '/account/newaccount',
+  name: 'manageraccount',
+  meta: {
+    title: '账号管理',
+    icon: 'example',
+    role: [1]
+  }, // 页面需要的权限
+  children: [{
+    path: 'newaccount',
+    name: 'newaccount',
+    component: () =>
+      import('@/views/account/newAccount'),
     meta: {
-      title: '账号管理',
-      icon: 'example',
-      role: [1]
-    }, // 页面需要的权限
-    children: [{
-        path: 'newaccount',
-        name: 'newaccount',
-        component: () =>
-          import ('@/views/account/newAccount'),
-        meta: {
-          title: '创建账号',
-          icon: 'table'
-        }
-      },
-      {
-        path: 'editAccount',
-        name: 'editaccount',
-        component: () =>
-          import ('@/views/account/editAccount'),
-        meta: {
-          title: '编辑账号',
-          icon: 'tree'
-        }
-      }
-    ]
+      title: '创建账号',
+      icon: 'table'
+    }
   },
   {
-    path: '*',
-    redirect: '/404',
-    hidden: true
+    path: 'editAccount',
+    name: 'editaccount',
+    component: () =>
+      import('@/views/account/editAccount'),
+    meta: {
+      title: '编辑账号',
+      icon: 'tree'
+    }
   }
+  ]
+},
+{
+  path: '*',
+  redirect: '/404',
+  hidden: true
+}
 ]

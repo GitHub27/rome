@@ -36,9 +36,127 @@ $maincolor:#f07026;
     font-size: 18;
   }
 }
+.rome-warp {
+  width: 100%;
+  background-color: #f5f5f5;
+}
+.rome {
+  width: 1201px;
+  margin: 0 auto;
+  margin-top: 20px;
+  overflow: hidden;
+  background-color: #f5f5f5;
+.sidebar {
+    float: left;
+    width: 253px;
+    background-color: #fff;
+    ul {
+      background-color: #f5f5f5;
+      li {
+        display: block;
+        background-color: #fff;
+        height: 57px;
+        line-height: 57px;
+        font-size: 16px;
+        color: #333;
+      }
+      .user-menu {
+        padding-left: 79px;
+        cursor: pointer;
+        position: relative;
+        &.active:after {
+          position: absolute;
+          content: "";
+          top: 10px;
+          bottom: 10px;
+          left: 0;
+          width: 4px;
+          background-color: #f07026;
+        }
+        &:hover:after {
+          position: absolute;
+          content: "";
+          top: 10px;
+          bottom: 10px;
+          left: 0;
+          width: 4px;
+          background-color: #f07026;
+        }
+      }
+      .user-info {
+        width: 253px;
+        height: 223px;
+        margin-bottom: 10px;
+        text-align: center;
+        padding-top: 19px;
+        h1 {
+          margin: 14px 0 10px;
+          font-size: 18px;
+          color: #333;
+        }
+        .user-tag {
+          font-size: 16px;
+          color: #333;
+        }
+        .score {
+          color: #f07026;
+          margin-right: 5px;
+        }
+        .icon-evaluate {
+          vertical-align: top;
+        }
+        .user-phone {
+          height: 94px;
+          width: 94px;
+        }
+      }
+    }
+  }
+  .rome-main {
+    margin-left: 271px;
+  }
+}
 
-// .rome-main {
-//   .search-main .svg-container-search {
-//     margin: 14px 11px;
-//   }
-// }
+.icon-evaluate {
+  display: inline-block;
+  width: 44px;
+  height: 22px;
+  line-height: 22px;
+  background-color: #e73802;
+  color: #fff;
+  font-size: 12px;
+  text-align: center;
+  border-radius: 12px;
+}
+
+.ranking-icon {
+  display: inline-block;
+  width: 28px;
+  height: 25px;
+  background-image: url("../../assets/index/ranking.png");
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  vertical-align: middle;
+}
+.rome-main {
+  .page-header {
+    color: #333;
+    font-size: 18px;
+    margin-bottom: 20px;
+  }
+  .search-warp {
+    width: 100%;
+    background-color: #fff;
+    padding: 20px 41px 22px;
+    margin-top: 18px;
+    .search-main {
+      width: 547px;
+    }
+  }
+}
+.resume-main-warp {
+  float: left;
+}
+.resume-introduce {
+  float: right;
+}

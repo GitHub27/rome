@@ -83,6 +83,9 @@ video {
   background: transparent;
   line-height: 1;
 }
+ul{
+  list-style: none;
+}
 
 body {
   -moz-osx-font-smoothing: grayscale;
@@ -121,7 +124,7 @@ body {
 
 .main-container {
   min-height: 100%;
-  padding-bottom: 100px;
+  padding-bottom: 200px;
   position: relative;
   background-color: #f5f5f5;
 }
@@ -288,4 +291,81 @@ a:hover {
       }
     }
   }
+}
+.rome-pagination{
+  text-align: center;
+  margin: 27px 0 0;
+  .btn-prev {
+    background-color: #fff;
+    i::before{
+      font-weight: normal;      
+      content: '上一页'
+    }
+  }
+  .btn-next {
+    background-color: #fff;
+    i::before{
+      font-weight: normal;
+      content: '下一页'
+    }
+  }
+}
+.el-pagination.is-background .btn-next, .el-pagination.is-background .btn-prev,{
+  background-color: #fff;
+  font-size: 14px;
+  color: #333;
+  height: 38px;
+  line-height: 100%;
+  width: 65px;
+}
+.el-pagination.is-background .el-pager li{
+  background-color: #fff;
+  font-size: 14px;
+  font-weight: normal;
+  color: #333;
+  height: 38px;
+  width: 38px;
+  line-height: 38px;
+}
+.el-pagination.is-background .el-pager li:not(.disabled).active{
+  background-color: #F07026;
+  color: #fff;
+}
+.el-pagination button, .el-pagination span:not([class*=suffix]){
+  height: 38px;
+  line-height: 38px;  
+  margin-left: 14px;
+  font-size: 14p;
+  color: #333;
+}
+.el-pagination .el-pagination__jump{
+  position: relative;
+  &:after{
+    cursor: pointer;
+    position: absolute;
+    content: '确定';
+    right: -80px;
+    top: 0;
+    bottom: 0;
+    height: 38px;
+    line-height: 38px;
+    text-align: center;
+    width: 52px;
+    border: 1px solid #ddd;
+    border-radius: 3px;
+    color: #333;
+    background-color: #fff;
+  }
+}
+.el-pagination__editor.el-input .el-input__inner{
+    width: 38px;
+    height: 38px;
+    line-height: 38px;
+}
+.el-pagination.is-background .el-pager li:not(.disabled):hover {
+    color: #F07026;
+}
+.el-input.is-active .el-input__inner, .el-input__inner:focus {
+    border-color: #F07026;
+    outline: 0;
 }

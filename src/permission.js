@@ -9,7 +9,7 @@ import {
   getToken
 } from '@/utils/auth' // 验权
 
-const whiteList = ['/login', '/index', '/myvisit'] // 不重定向白名单
+const whiteList = ['/login', '/index', '/myvisit', '/personalauth'] // 不重定向白名单
 router.beforeEach((to, from, next) => {
   NProgress.start()
   if (getToken()) {
@@ -25,7 +25,8 @@ router.beforeEach((to, from, next) => {
             roles
           }).then(() => { // 生成可访问的路由表
             router.addRoutes(store.getters.addRouters) // 动态添加可访问路由表
-            next({ ...to,
+            next({
+              ...to,
               replace: true
             }) // hack方法 确保addRoutes已完成 ,set the replace: true so the navigation will not leave a history record
           })

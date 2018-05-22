@@ -38,7 +38,6 @@ export default {
   height: 100%;
   width: 100%;
 }
-.main-container{
-  
+.main-container {
 }
 </style>
