@@ -138,7 +138,7 @@ $dark_gray: #889aa4;
 $light_gray: #eee;
 
 .login-container {
-  position: fixed;
+  // position: fixed;
   height: 100%;
   width: 100%;
   background-color: $bg;

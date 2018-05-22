@@ -4,6 +4,15 @@ $maincolor:#f07026;
   padding-left: 8px;
 }
 
+.theme-color {
+  color: $maincolor;
+}
+
+.fs12c9 {
+  font-size: 12px;
+  color: #999;
+}
+
 .search-main {
   background-color: #fff;
   height: 46px;
@@ -36,17 +45,19 @@ $maincolor:#f07026;
     font-size: 18;
   }
 }
+
 .rome-warp {
   width: 100%;
   background-color: #f5f5f5;
 }
+
 .rome {
   width: 1201px;
   margin: 0 auto;
   margin-top: 20px;
   overflow: hidden;
   background-color: #f5f5f5;
-.sidebar {
+  .sidebar {
     float: left;
     width: 253px;
     background-color: #fff;
@@ -106,8 +117,10 @@ $maincolor:#f07026;
           vertical-align: top;
         }
         .user-phone {
+          display: block;
           height: 94px;
           width: 94px;
+          margin: 0 auto;
         }
       }
     }
@@ -138,10 +151,12 @@ $maincolor:#f07026;
   background-repeat: no-repeat;
   vertical-align: middle;
 }
+
 .rome-main {
   .page-header {
     color: #333;
     font-size: 18px;
+    font-weight: normal;
     margin-bottom: 20px;
   }
   .search-warp {
@@ -154,9 +169,11 @@ $maincolor:#f07026;
     }
   }
 }
+
 .resume-main-warp {
   float: left;
 }
+
 .resume-introduce {
   float: right;
 }
