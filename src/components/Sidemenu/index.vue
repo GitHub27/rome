@@ -11,14 +11,30 @@
                     <span class="icon-evaluate">极好</span>
                 </div>
             </li>
-            <li class="user-menu bb active">我的账户</li>
-            <li class="user-menu">我的访问</li>
-            <li class="user-menu bb">我的共享</li>
-            <li class="user-menu">我的收益</li>
-            <li class="user-menu">提现记录</li>
-            <li class="user-menu bb">现金管理账户</li>
-            <li class="user-menu">我的认证</li>
-            <li class="user-menu">个人认证</li>
+            <li class="user-menu bb active">
+                <router-link to="/">我的账户</router-link>
+            </li>
+            <li class="user-menu">
+                <router-link to="/myvisit">我的访问</router-link>
+            </li>
+            <li class="user-menu bb">
+                <router-link to="/myshare">我的共享</router-link>
+            </li>
+            <li class="user-menu">
+                <router-link to="/myshare">我的收益</router-link>
+            </li>
+            <li class="user-menu">
+                <router-link to="/myshare">提现记录</router-link>
+            </li>
+            <li class="user-menu bb">
+                <router-link to="/myshare">现金管理账户</router-link>
+            </li>
+            <li class="user-menu">
+                <router-link to="/myshare">我的认证</router-link>
+            </li>
+            <li class="user-menu">
+                <router-link to="/personal-auth">个人认证</router-link>
+            </li>
         </ul>
     </div>
 </template>
