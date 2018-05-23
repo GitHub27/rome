@@ -4,6 +4,24 @@ $maincolor:#f07026;
   padding-left: 8px;
 }
 
+.theme-color {
+  color: $maincolor;
+}
+
+.fs12c9 {
+  font-size: 12px;
+  color: #999;
+}
+
+.share-total {
+  font-size: 16px;
+  color: #333;
+  margin-bottom: 18px;
+  span {
+    color: #f07026;
+  }
+}
+
 .search-main {
   background-color: #fff;
   height: 46px;
@@ -36,17 +54,19 @@ $maincolor:#f07026;
     font-size: 18;
   }
 }
+
 .rome-warp {
   width: 100%;
   background-color: #f5f5f5;
 }
+
 .rome {
   width: 1201px;
   margin: 0 auto;
   margin-top: 20px;
   overflow: hidden;
   background-color: #f5f5f5;
-.sidebar {
+  .sidebar {
     float: left;
     width: 253px;
     background-color: #fff;
@@ -60,7 +80,8 @@ $maincolor:#f07026;
         font-size: 16px;
         color: #333;
       }
-      .user-menu {
+      .user-menu a {
+        display: block;
         padding-left: 79px;
         cursor: pointer;
         position: relative;
@@ -106,8 +127,10 @@ $maincolor:#f07026;
           vertical-align: top;
         }
         .user-phone {
+          display: block;
           height: 94px;
           width: 94px;
+          margin: 0 auto;
         }
       }
     }
@@ -138,10 +161,12 @@ $maincolor:#f07026;
   background-repeat: no-repeat;
   vertical-align: middle;
 }
+
 .rome-main {
   .page-header {
     color: #333;
     font-size: 18px;
+    font-weight: normal;
     margin-bottom: 20px;
   }
   .search-warp {
@@ -154,9 +179,30 @@ $maincolor:#f07026;
     }
   }
 }
+
 .resume-main-warp {
   float: left;
 }
+
 .resume-introduce {
   float: right;
+}
+
+//----我的任务
+.tasklist {
+  background-color: #fff; //保证高度大于等于侧边菜单
+  padding-bottom: 2000px;
+  margin-bottom: -2000px;
+  a {
+    display: block;
+    padding: 26px 91px 26px 45px;
+    font-size: 14px;
+    color: #333;
+    border-bottom: 1px solid #eee;
+    .task-tip {
+      font-size: 12px;
+      color: #999;
+      margin-left: 8px;
+    }
+  }
 }

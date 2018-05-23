@@ -3,8 +3,11 @@
     <div class="rome">
       <side-menu></side-menu>
       <div class="rome-main">
-        <h2 class="page-header blpl">我的访问记录</h2>
+        <h2 class="page-header blpl">我的共享记录</h2>
         <div class="search-warp">
+          <p class="share-total">累计共分享条数：
+            <span>230</span>
+          </p>
           <div class="search-main">
             <span class="svg-container ">
               <svg-icon icon-class="search" class="svg-container-search" />

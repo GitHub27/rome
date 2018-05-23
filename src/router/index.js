@@ -59,15 +59,25 @@ export const constantRouterMap = [{
   }]
 },
 {
-  path: '/personalauth',
+  path: '/myshare',
   component: Layout,
   children: [{
     path: '',
-    name: '个人认证',
+    name: '我的共享',
     hidden: true,
     component: () =>
-      import('@/views/personalAuth/index'),
-
+      import('@/views/myShare/index'),
+  }]
+},
+{
+  path: '/task',
+  component: Layout,
+  children: [{
+    path: '',
+    name: '我的任务',
+    hidden: true,
+    component: () =>
+      import('@/views/task/index'),
   }]
 },
 {
@@ -81,6 +91,30 @@ export const constantRouterMap = [{
   //     import('@/views/test/index'),
   // }]
 },
+{
+  path: '/personal-auth',
+  component: Layout,
+  children: [{
+    path: '',
+    name: '个人认证',
+    hidden: true,
+    component: () =>
+      import('@/views/personalAuth/index'),
+
+  }]
+},
+{
+  path: '/account',
+  component: Layout,
+  children: [{
+    path: '',
+    name: '我的账户',
+    hidden: true,
+    component: () =>
+      import('@/views/account/index'),
+  }]
+},
+
 
 {
   path: '/',
@@ -135,7 +169,7 @@ export default new Router({
 // 异步挂载的路由
 // 动态需要根据权限加载的路由表
 export const asyncRouterMap = [{
-  path: '/account',
+  path: '/account1',
   component: Layout,
   redirect: '/account/newaccount',
   name: 'manageraccount',
