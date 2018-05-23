@@ -12,7 +12,7 @@
                 </div>
             </li>
             <li class="user-menu bb active">
-                <router-link to="/">我的账户</router-link>
+                <router-link to="/account">我的账户</router-link>
             </li>
             <li class="user-menu">
                 <router-link to="/myvisit">我的访问</router-link>
