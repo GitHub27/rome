@@ -70,6 +70,17 @@ export const constantRouterMap = [{
 
   }]
 },
+{
+  path: '/testpage',
+  component: () => import('@/views/test/index'),
+  // children: [{
+  //   path: '',
+  //   name: '测试页面',
+  //   hidden: true,
+  //   component: () =>
+  //     import('@/views/test/index'),
+  // }]
+},
 
 {
   path: '/',

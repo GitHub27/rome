@@ -36,7 +36,6 @@
 
 <script>
 import SideMenu from "@/components/Sidemenu/index";
-
 export default {
   components: {
     SideMenu
