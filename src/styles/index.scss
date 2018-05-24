@@ -273,7 +273,8 @@ a:hover {
     .menus {
       overflow: hidden;
       float: right;
-      p {
+      p,
+      a {
         height: 41px;
         line-height: 41px;
         float: left;
@@ -284,6 +285,7 @@ a:hover {
           color: $maincolor;
         }
         &.share {
+          display: block;
           background-color: $maincolor;
           width: 122px;
           height: 40px;
@@ -377,6 +379,10 @@ a:hover {
 
 .el-pagination.is-background .el-pager li:not(.disabled):hover {
   color: #F07026;
+}
+
+.el-pagination.is-background .el-pager li.active:hover {
+  color: #fff;
 }
 
 .el-input.is-active .el-input__inner,

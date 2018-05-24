@@ -22,21 +22,25 @@
         </div>
       </div>
       <div class="education">
-        <p>
+        <div>
           <span class="fl">2007~2010</span>
-          <span class="br3">湖南科技大学</span>
-          <span class="br3">广告设计</span>
-          <span>硕士</span>
-          <span class="br3">湖南科技大学</span>
-          <span class="br3">广告设计</span>
-          <span>硕士</span>
-        </p>
-        <p>
-          <span>2007~2010</span>
-          <span class="br3">湖南科技大学</span>
-          <span class="br3">广告设计</span>
-          <span>硕士</span>
-        </p>
+          <p>
+            <span class="br3">湖南科技大学</span>
+            <span class="br3">广告设计</span>
+            <span>硕士</span>
+            <span class="br3">湖南科技大学</span>
+            <span class="br3">广告设计</span>
+            <span>硕士</span>
+          </p>
+        </div>
+        <div>
+          <span class="fl">2007~2010</span>
+          <p>
+            <span class="br3">湖南科技大学</span>
+            <span class="br3">广告设计</span>
+            <span>硕士</span>
+          </p>
+        </div>
       </div>
     </div>
     <div class="resume-introduce">
@@ -82,7 +86,7 @@ export default {
   .resume-main-warp {
     float: left;
     width: 380px;
-    padding-right: 40px;
+    padding-right: 10px;
   }
   .resume-introduce {
     width: 549px;

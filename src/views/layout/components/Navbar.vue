@@ -22,9 +22,7 @@
           <p class="login-link">首页</p>
           <p>访问</p>
           <p>个人中心</p>
-          <p class="share">
-            分享人才信息
-          </p>
+          <router-link class="share" to="/share">分享人才信息</router-link>
         </div>
       </div>
     </div>

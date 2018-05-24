@@ -294,8 +294,18 @@
     .education {
       padding: 0 18px;
       margin-top: 1px;
-      p {
+      div {
         margin-top: 7px;
+        overflow: hidden;
+        &>span {
+          line-height: 1.2;
+          display: block;
+          margin-top: 3px;
+        }
+        p {
+          margin-left: 79px;
+          line-height: 1.2;
+        }
       }
     }
   }
