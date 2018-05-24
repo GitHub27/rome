@@ -36,17 +36,40 @@
                 <router-link to="/personal-auth">个人认证</router-link>
             </li>
         </ul>
+        <template v-for="(item,index) in routers">
+            <!-- {{item.name?'1':'2'}} -->
+            <p v-if="!item.hidden&&!item.children" :key="index">
+                <span>
+                    {{item.name?item.name:'--'}}
+                </span>
+            </p>
+            <p v-else-if="item.children" :key="index">
+                <span v-for="(citem,cindex) in item.children" :key="cindex">
+                    <span v-if="citem.name">
+                        {{citem.name}}
+                    </span>
+
+                </span>
+            </p>
+        </template>
     </div>
 </template>
 
 <script>
+import { mapGetters } from "vuex";
+
 export default {
   components: {},
   data() {
     return {};
   },
   watch: {},
-  computed: {},
+  computed: {
+    ...mapGetters(["routers"]),
+    routes() {
+      return this.routers;
+    }
+  },
   methods: {},
   created() {},
   mounted() {},
