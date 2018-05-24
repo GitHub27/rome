@@ -39,7 +39,7 @@ export const constantRouterMap = [{
   children: [{
     path: '',
     name: '首页',
-    hidden: true,
+    hidden: false,
     component: () =>
       import('@/views/index/index'),
     // meta: { title: '首页', icon: 'table', channel: 'QJS' }
