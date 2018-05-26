@@ -23,23 +23,10 @@
       </div>
       <div class="education">
         <div>
-          <span class="fl">2007~2010</span>
-          <p>
-            <span class="br3">湖南科技大学</span>
-            <span class="br3">广告设计</span>
-            <span>硕士</span>
-            <span class="br3">湖南科技大学</span>
-            <span class="br3">广告设计</span>
-            <span>硕士</span>
-          </p>
+          2007~2010&nbsp; 湖南科技大学 | 广告设计 | 硕士
         </div>
         <div>
-          <span class="fl">2007~2010</span>
-          <p>
-            <span class="br3">湖南科技大学</span>
-            <span class="br3">广告设计</span>
-            <span>硕士</span>
-          </p>
+          2007~2010&nbsp; 湖南科技大学 广告设计广告设计广告设计 硕士
         </div>
       </div>
     </div>

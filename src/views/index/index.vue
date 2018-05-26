@@ -28,7 +28,7 @@
               <i class="ranking-icon"></i>
               <span class="icon-evaluate">极好</span>
               <span class="total-profit">累计现金收益超过
-                <z>￥2323</z>
+                <i>￥2323</i>
               </span>
             </div>
             <div class="ranking-item-warp">
@@ -37,7 +37,7 @@
               <i class="ranking-icon"></i>
               <span class="icon-evaluate">极好</span>
               <span class="total-profit">累计现金收益超过
-                <z>￥2323</z>
+                <i>￥2323</i>
               </span>
             </div>
             <div class="ranking-item-warp">
@@ -46,7 +46,7 @@
               <i class="ranking-icon"></i>
               <span class="icon-evaluate">极好</span>
               <span class="total-profit">累计现金收益超过
-                <z>￥2323</z>
+                <i>￥2323</i>
               </span>
             </div>
             <div class="ranking-item-warp">
@@ -55,7 +55,7 @@
               <i class="ranking-icon"></i>
               <span class="icon-evaluate">极好</span>
               <span class="total-profit">累计现金收益超过
-                <z>￥2323</z>
+                <i>￥2323</i>
               </span>
             </div>
             <div class="ranking-item-warp">
@@ -64,7 +64,7 @@
               <i class="ranking-icon"></i>
               <span class="icon-evaluate">极好</span>
               <span class="total-profit">累计现金收益超过
-                <z>￥2323</z>
+                <i>￥2323</i>
               </span>
             </div>
           </div>
@@ -83,7 +83,7 @@
               <i class="ranking-icon"></i>
               <span class="icon-evaluate">极好</span>
               <span class="total-profit">累计共享人才信息:
-                <z>2323条</z>
+                <i>2323条</i>
               </span>
             </div>
             <div class="ranking-item-warp">
@@ -92,7 +92,7 @@
               <i class="ranking-icon"></i>
               <span class="icon-evaluate">极好</span>
               <span class="total-profit">累计共享人才信息:
-                <z>2323条</z>
+                <i>2323条</i>
               </span>
             </div>
             <div class="ranking-item-warp">
@@ -101,7 +101,7 @@
               <i class="ranking-icon"></i>
               <span class="icon-evaluate">极好</span>
               <span class="total-profit">累计共享人才信息:
-                <z>2323条</z>
+                <i>2323条</i>
               </span>
             </div>
             <div class="ranking-item-warp">
@@ -110,7 +110,7 @@
               <i class="ranking-icon"></i>
               <span class="icon-evaluate">极好</span>
               <span class="total-profit">累计共享人才信息:
-                <z>2323条</z>
+                <i>2323条</i>
               </span>
             </div>
             <div class="ranking-item-warp">
@@ -119,7 +119,7 @@
               <i class="ranking-icon"></i>
               <span class="icon-evaluate">极好</span>
               <span class="total-profit">累计共享人才信息:
-                <z>2323条</z>
+                <i>2323条</i>
               </span>
             </div>
           </div>

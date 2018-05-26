@@ -1,8 +1,8 @@
 <template>
     <div class="search-containter">
         <div class="search-type">
-            <p class="active">职位</p>
-            <p>公司</p>
+            <p @click='toggleSearchType' :class="{active:searchType=='job'}">职位</p>
+            <p @click='toggleSearchType' :class="{active:searchType=='company'}">公司</p>
         </div>
         <div class="search-main">
             <span class="svg-container ">
@@ -28,11 +28,21 @@
 export default {
   components: {},
   data() {
-    return {};
+    return {
+      searchType: "job"
+    };
   },
   watch: {},
   computed: {},
-  methods: {},
+  methods: {
+    toggleSearchType() {
+      if (this.searchType == "job") {
+        this.searchType = "company";
+      } else {
+        this.searchType = "job";
+      }
+    }
+  },
   created() {},
   mounted() {},
   destroyed() {}

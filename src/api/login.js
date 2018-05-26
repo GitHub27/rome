@@ -17,8 +17,19 @@ export function logout() {
 
 // 获取图形验证码
 export function captcha() {
-  return request({
+  return request()({
     url: '/captcha',
     method: 'get'
+  })
+}
+
+// 登录发送短信
+export function sendSMS(param) {
+  return request({
+
+  })({
+    url: '/login/sendsms',
+    method: 'post',
+    data: param
   })
 }

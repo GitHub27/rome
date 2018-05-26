@@ -31,3 +31,19 @@ export function validatAlphabets(str) {
   return reg.test(str)
 }
 
+/*手机号码验证 */
+export function isPhoneNumber(str) {
+  var myreg = /^[1][3,4,5,6,7,8,9][0-9]{9}$/;
+  if (!myreg.test(str.trim())) {
+    return false;
+  } else {
+    return true;
+  }
+}
+
+/*数字验证 */
+export function isNumber(str) {
+  var myreg = /^[1-9]\d*$/;
+  return myreg.test(str.trim());
+
+}

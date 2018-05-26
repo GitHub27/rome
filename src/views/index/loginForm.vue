@@ -6,15 +6,12 @@
       <div class="tab-nav" :class="{'tab-nav-pwd':loginType!=='SMS'}"></div>
     </header>
     <section>
-      <el-form autoComplete="on" :model="loginForm" :rules="loginRules" ref="loginForm" label-position="left" label-width="0px" class="card-box login-form">
-        <el-form-item prop="phone">
-          <el-input name="phone" type="text" v-model="loginForm.phone" autoComplete="on" placeholder="请输入手机号码" />
+      <el-form v-loading="smsLoginStepLoading" autoComplete="on" :model="loginForm" :rules="loginRules" ref="loginForm" label-position="left" label-width="0px" class="card-box login-form">
+        <el-form-item prop="phone" :error="asynError.phone">
+          <el-input @keyup.native="captchaKeyup" maxlength="11" name="phone" type="text" v-model="loginForm.phone" autoComplete="on" placeholder="手机号" />
         </el-form-item>
-        <!-- <el-form-item prop="password">
-          <el-input name="password" type="password" @keyup.enter.native="handleLogin" v-model="loginForm.password" autoComplete="on" placeholder="password"></el-input>
-        </el-form-item> -->
-        <el-form-item prop="captcha">
-          <el-input class="captcha-input fl" name="captcha" type="text" v-model="loginForm.captcha" @keyup.enter.native="handleLogin" autoComplete="on" placeholder="请输入图片验证码" />
+        <el-form-item prop="captcha" :error="asynError.captcha">
+          <el-input maxlength="6" class="captcha-input fl" name="captcha" type="text" v-model="loginForm.captcha" @keyup.native="captchaKeyup" autoComplete="on" placeholder="图片验证码" />
           <img :src="captchaUrl" alt="点击刷新" class="captcha" @click="getCaptcha">
         </el-form-item>
         <el-form-item>
@@ -32,13 +29,17 @@
 </template>
 
 <script>
-import { captcha } from "@/api/login";
+import { captcha, sendSMS } from "@/api/login";
+import { isPhoneNumber, isNumber } from "../../utils/validate";
 export default {
   components: {},
   data() {
     const validatePhone = (rule, value, callback) => {
       if (value.length < 1) {
         callback(new Error("手机号码不能为空"));
+      }
+      if (!isPhoneNumber(value)) {
+        callback(new Error("手机号格式不对"));
       } else {
         callback();
       }
@@ -55,6 +56,8 @@ export default {
         callback(new Error("请重新获取图片验证码"));
       } else if (value.length < 1) {
         callback(new Error("图片验证码不能为空"));
+      } else if (value.length < 6) {
+        callback(new Error("请输入有效的验证码"));
       } else {
         callback();
       }
@@ -69,7 +72,13 @@ export default {
         captcha: ""
       },
       loginRules: {
-        phone: [{ required: true, trigger: "blur", validator: validatePhone }],
+        phone: [
+          {
+            required: true,
+            trigger: "blur",
+            validator: validatePhone
+          }
+        ],
         password: [
           { required: true, trigger: "blur", validator: validatePass }
         ],
@@ -77,7 +86,12 @@ export default {
           { required: true, trigger: "blur", validator: validateCaptcha }
         ]
       },
-      loading: false
+      loading: false,
+      smsLoginStepLoading: false,
+      asynError: {
+        phone: "",
+        captcha: ""
+      }
     };
   },
   watch: {},
@@ -92,6 +106,44 @@ export default {
         .catch(message => {
           console.log("get captcha error", message);
         });
+    },
+    /**
+     * 监听验证码输入是否完成
+     */
+    captchaKeyup() {
+      console.log(this.loginForm.captcha);
+      //图形验证码
+      if (this.captCode === "") {
+        return;
+      } else if (this.loginForm.captcha.length < 1) {
+        return;
+      } else if (this.loginForm.captcha.length < 6) {
+        return;
+      }
+      //手机号码
+      if (this.loginForm.phone.length < 1) {
+        return;
+      }
+      if (!isPhoneNumber(this.loginForm.phone)) {
+        return;
+      }
+      this.$refs.loginForm.validate(valid => {
+        if (valid) {
+          this.smsLoginStepLoading = true;
+          sendSMS().then(
+            d => {
+              if (d.data.result) {
+                console.log("ok");
+                this.smsLoginStepLoading = false;
+              }
+            },
+            d => {
+              this.smsLoginStepLoading = false;
+              console.log(1, d);
+            }
+          );
+        }
+      });
     },
     toggleLogin() {
       if (this.loginType == "SMS") {
