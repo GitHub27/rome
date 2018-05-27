@@ -36,7 +36,7 @@ app.use('/jjz/captcha', function (req, res) {
     'message': 'sorry'
   })
 })
-app.use('/jjz/login/sendsms1', function (req, res) {
+app.use('/jjz/login/sendsms', function (req, res) {
   res.json({
     'code': '0000',
     'data': {

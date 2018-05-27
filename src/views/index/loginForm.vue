@@ -1,34 +1,123 @@
 <template>
-  <div class="login-container">
-    <header>
-      <p @click="toggleLogin" :class="{'active':loginType=='SMS'}">验证码登录</p>
-      <p @click="toggleLogin" :class="{'active':loginType!=='SMS'}">密码登录</p>
-      <div class="tab-nav" :class="{'tab-nav-pwd':loginType!=='SMS'}"></div>
-    </header>
-    <section>
-      <el-form v-loading="smsLoginStepLoading" autoComplete="on" :model="loginForm" :rules="loginRules" ref="loginForm" label-position="left" label-width="0px" class="card-box login-form">
-        <el-form-item prop="phone" :error="asynError.phone">
-          <el-input @keyup.native="captchaKeyup" maxlength="11" name="phone" type="text" v-model="loginForm.phone" autoComplete="on" placeholder="手机号" />
-        </el-form-item>
-        <el-form-item prop="captcha" :error="asynError.captcha">
-          <el-input maxlength="6" class="captcha-input fl" name="captcha" type="text" v-model="loginForm.captcha" @keyup.native="captchaKeyup" autoComplete="on" placeholder="图片验证码" />
-          <img :src="captchaUrl" alt="点击刷新" class="captcha" @click="getCaptcha">
-        </el-form-item>
-        <el-form-item>
-          <el-button type="primary" style="width:100%;" :loading="loading" @click.native.prevent="handleLogin">
-            登 录
-          </el-button>
-          <p class="tip">还没有账号？
-            <span>立即注册</span>
-          </p>
-        </el-form-item>
-      </el-form>
+  <transition-group name="breadcrumb">
+    <div class="login-container" v-if="!isLogin" :key=10>
+      <header>
+        <p @click="toggleLogin(true)" :class="{'active':smsLogin}">验证码登录</p>
+        <p @click="toggleLogin(false)" :class="{'active':!smsLogin}">密码登录</p>
+        <div class="tab-nav" :class="{'tab-nav-pwd':!smsLogin}"></div>
+      </header>
+      <transition-group name="breadcrumb">
+        <section :key="20" v-if="smsLogin">
+          <el-form v-loading="smsLoginStepLoading" :model="loginForm" :rules="loginRules" ref="loginForm" label-position="left" label-width="0px" class="card-box login-form">
+            <transition-group name="breadcrumb">
+              <div :key="1" v-if="smsLoginStep==0">
+                <el-form-item prop="phone" :error="asynError.phone">
+                  <el-input maxlength="11" name="phone" type="text" v-model="loginForm.phone" autoComplete="on" placeholder="手机号" />
+                </el-form-item>
+                <el-form-item prop="captcha" :error="asynError.captcha">
+                  <el-input maxlength="4" class="captcha-input fl" name="captcha" type="text" v-model="loginForm.captcha" placeholder="图片验证码" />
+                  <img :src="captchaUrl" alt="点击刷新" class="captcha" @click="getCaptcha">
+                </el-form-item>
+              </div>
+              <div :key="2" v-else-if="smsLoginStep==1">
+                <p class="sms-send-tip">已将短信验证码发送至您的手机号：</p>
+                <p class="smd-phone">{{loginForm.phone}}
+                  <span class="fr" @click="toggleSMSLoginStep"><img src="../../assets/index/edit-phone.png" alt="">返回修改</span>
+                </p>
+                <el-form-item prop="smsCode" :error="asynError.smsCode" class="smscode-warp">
+                  <el-input maxlength="6" class="captcha-input fl" name="smsCode" type="text" v-model="loginForm.smsCode" placeholder="短信验证码" />
+                  <span class="fr" :class="{'sms-disabled':smsDisabled}" @click="getLoginSMS">{{smsText}}</span>
+                </el-form-item>
+              </div>
+            </transition-group>
+            <el-form-item>
+              <el-button type="primary" style="width:100%;" :loading="loading" @click.native.prevent="handleLogin">
+                登 录
+              </el-button>
+              <p class="tip">还没有账号？
+                <span>立即注册</span>
+              </p>
+            </el-form-item>
+          </el-form>
+        </section>
+        <section :key="21" v-else>
+          <el-form :model="loginForm" :rules="loginRules" ref="loginForm" label-position="left" label-width="0px" class="card-box login-form">
+            <el-form-item prop="phone" :error="asynError.phone">
+              <el-input maxlength="11" name="phone" type="text" v-model="loginForm.phone" autoComplete="on" placeholder="手机号" />
+            </el-form-item>
+            <el-form-item prop="password" :error="asynError.password">
+              <el-input maxlength="18" name="password" type="password" v-model="loginForm.password" autoComplete="on" placeholder="密码" />
+            </el-form-item>
+            <el-form-item>
+              <el-button type="primary" style="width:100%;" :loading="loading" @click.native.prevent="handleLogin">
+                登 录
+              </el-button>
+              <p class="remember-warp">
+                <el-checkbox v-model="remember" text-color="red">备选项</el-checkbox>
+                <span>忘记密码?</span>
+              </p>
+              <p class="tip">还没有账号？
+                <span>立即注册</span>
+              </p>
+            </el-form-item>
+          </el-form>
+        </section>
+      </transition-group>
+    </div>
+    <div v-else :key=11 class="loged-warp">
+      <div class="user-main">
+        <img class="user-phone" src="../../assets/user/user-phone.png" alt="">
+        <h1>红色猎人</h1>
+        <div class="user-tag">
+          <i class="ranking-icon"></i>
+          ROME诚信
+          <span class="score">93.6</span>
+          <span class="icon-evaluate">极好</span>
+        </div>
+        <div class="user-account">
+          <div class="fl brp">
+            <p class="uc-title">
+              <i class="icon-rome"></i>
+              <span>可用ROME币</span>
+            </p>
+            <p class="uc-tip">
+              <i class="icon-tip"></i>
+              <span class="vm">什么是ROME币?</span>
+            </p>
+            <p class="uc-rome">
+              <i class="icon-r"></i>
+              <span class="vm">3,012</span>
+            </p>
+          </div>
+          <div class="fl">
+            <p class="uc-title">
+              <i class="icon-prefit"></i>
+              <span>昨日收益</span>
+            </p>
+            <p class="uc-tip">
+              <span class="vm">&nbsp;</span>
+            </p>
+            <p class="uc-rome">
+              <i class="icon-r"></i>
+              <span class="vm">3,012</span>
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="withdraw">
+        <span>可用现金</span>
+        <span class="wd-money">￥2,188</span>
+        <span class="wd-btn">提现</span>
+      </div>
+      <div>
 
-    </section>
-  </div>
+      </div>
+    </div>
+  </transition-group>
 </template>
 
 <script>
+import { Message, MessageBox } from "element-ui";
 import { captcha, sendSMS } from "@/api/login";
 import { isPhoneNumber, isNumber } from "../../utils/validate";
 export default {
@@ -46,7 +135,7 @@ export default {
     };
     const validatePass = (rule, value, callback) => {
       if (value.length < 1) {
-        callback(new Error("图片验证码不能为空"));
+        callback(new Error("密码不能为空"));
       } else {
         callback();
       }
@@ -56,42 +145,61 @@ export default {
         callback(new Error("请重新获取图片验证码"));
       } else if (value.length < 1) {
         callback(new Error("图片验证码不能为空"));
+      } else if (value.length < 4) {
+        callback(new Error("请输入有效的验证码"));
+      } else {
+        callback();
+      }
+    };
+    const validateSmsCode = (rule, value, callback) => {
+      if (value.length < 1) {
+        callback(new Error("请输入验证码"));
       } else if (value.length < 6) {
         callback(new Error("请输入有效的验证码"));
       } else {
         callback();
       }
     };
+
     return {
-      loginType: "SMS",
       captchaUrl: "",
       loginForm: {
         phone: "",
         password: "",
         captCode: "",
-        captcha: ""
+        captcha: "",
+        smsCode: ""
       },
       loginRules: {
-        phone: [
-          {
-            required: true,
-            trigger: "blur",
-            validator: validatePhone
-          }
-        ],
+        phone: [{ required: true, trigger: "blur", validator: validatePhone }],
         password: [
           { required: true, trigger: "blur", validator: validatePass }
         ],
         captcha: [
           { required: true, trigger: "blur", validator: validateCaptcha }
+        ],
+        smsCode: [
+          {}
+          // required: true, trigger: "blur", validator: validateSmsCode
         ]
       },
-      loading: false,
-      smsLoginStepLoading: false,
       asynError: {
         phone: "",
-        captcha: ""
-      }
+        captcha: "",
+        smsCode: "",
+        password: ""
+      },
+      loading: false,
+      isLogin: false,
+      smsLogin: true,
+      sms_Interval: 0,
+      smsLoginStepLoading: false,
+      smsLoginStep: 0,
+      countDown: 60, //倒计时60秒
+      smsDisabled: false, //短信验证码按钮禁止点击
+      smsText: "获取验证码",
+      smsDefaultText: "重新获取",
+      remember: false
     };
   },
   watch: {},
@@ -108,23 +216,30 @@ export default {
         });
     },
     /**
-     * 监听验证码输入是否完成
+     * 获取登录短信验证码
      */
-    captchaKeyup() {
-      console.log(this.loginForm.captcha);
+    getLoginSMS() {
+      //TODO:目前不要输入完六位验证码自动发送验证码，需要点按钮触发
+      //如果要还原请给手机号码input和图形验证码input加keyup事件
+      //@keyup.native="getLoginSMS"
+      //对应事件：getLoginSMS()
+      //-------------------------------------------------------
       //图形验证码
-      if (this.captCode === "") {
-        return;
-      } else if (this.loginForm.captcha.length < 1) {
-        return;
-      } else if (this.loginForm.captcha.length < 6) {
-        return;
-      }
-      //手机号码
-      if (this.loginForm.phone.length < 1) {
-        return;
-      }
-      if (!isPhoneNumber(this.loginForm.phone)) {
+      // if (this.captCode === "") {
+      //   return;
+      // } else if (this.loginForm.captcha.length < 1) {
+      //   return;
+      // } else if (this.loginForm.captcha.length < 4) {
+      //   return;
+      // }
+      // //手机号码
+      // if (this.loginForm.phone.length < 1) {
+      //   return;
+      // }
+      // if (!isPhoneNumber(this.loginForm.phone)) {
+      //   return;
+      // }
+      if (this.smsDisabled) {
         return;
       }
       this.$refs.loginForm.validate(valid => {
@@ -133,50 +248,122 @@ export default {
           sendSMS().then(
             d => {
               if (d.data.result) {
+                this.smsDisabled = false;
+                this.smsCounrdown();
                 console.log("ok");
                 this.smsLoginStepLoading = false;
+                this.smsLoginStep = 1;
               }
             },
             d => {
               this.smsLoginStepLoading = false;
-              console.log(1, d);
+              this.toggleSMSLoginStep();
             }
           );
         }
       });
     },
-    toggleLogin() {
-      if (this.loginType == "SMS") {
-        this.loginType = "PWD";
+    /*短信倒计时 */
+    smsCounrdown() {
+      this.smsDisabled = true;
+      let _countDown = this.countDown;
+      clearInterval(this.sms_Interval);
+      this.sms_Interval = setInterval(() => {
+        if (_countDown <= 0) {
+          this.smsText = this.smsDefaultText;
+          this.smsDisabled = false;
+          clearInterval(this.sms_Interval);
+          return;
+        }
+        this.smsText = _countDown + "秒后重新获取";
+        _countDown--;
+      }, 1000);
+    },
+    /*切换短信登录step */
+    toggleSMSLoginStep() {
+      if (this.smsLoginStep == 0) {
+        this.smsLoginStep = 1;
       } else {
-        this.loginType = "SMS";
+        this.smsLoginStep = 0;
       }
     },
+    toggleLogin(result) {
+      this.smsLogin = result;
+    },
     handleLogin() {
+      let loginReq;
+      if (this.smsLogin) {
+        if (this.smsLoginStep == 0) {
+          this.getLoginSMS();
+          return;
+        }
+      }
+      //TODO:这种方式有bug，还有用两个表单吧，待修改！！！！
+      if (!this.loginForm.smsCode) {
+        this.asynError.smsCode = "请输入短信验证码";
+        return;
+      }
+      if (this.loginForm.smsCode.length < 6) {
+        this.asynError.smsCode = "请输入正确的验证码长度";
+        return;
+      }
       this.$refs.loginForm.validate(valid => {
         if (valid) {
           this.loading = true;
-          const loginReq = {
-            captcha: this.loginForm.captcha,
-            captchaCode: this.loginForm.captCode,
-            loginPass: this.loginForm.password,
-            userAccount: this.loginForm.phone.trim()
-          };
-          this.$store
-            .dispatch("Login", loginReq)
-            .then(() => {
-              this.loading = false;
-              this.$router.push({ path: "/" });
-            })
-            .catch(() => {
-              this.getCaptcha();
-              this.loading = false;
-            });
+          if (this.smsLogin) {
+            loginReq = {
+              captcha: this.loginForm.captcha,
+              captchaCode: this.loginForm.captCode,
+              smsCode: this.loginForm.smsCode,
+              userAccount: this.loginForm.phone.trim()
+            };
+          } else {
+            loginReq = {
+              loginPass: this.loginForm.password.trim(),
+              userAccount: this.loginForm.phone.trim()
+            };
+          }
+          this.submitLogin(loginReq);
         } else {
           console.log("error submit!!");
           return false;
         }
       });
+    },
+    submitLogin(loginReq) {
+      this.$store
+        .dispatch("Login", loginReq)
+        .then(
+          () => {
+            this.loading = false;
+            this.isLogin = true;
+          },
+          function(d) {
+            Message({
+              //TODO:替换错误的字段
+              message: (d && d.errormsg) || "网络异常，请重新输入",
+              type: "error",
+              duration: 5 * 1000
+            });
+            this.loginForm.smsCode = "";
+            this.loginForm.captcha = "";
+            this.smsLoginStep = 0;
+            this.getCaptcha();
+            this.loading = false;
+          }
+        )
+        .catch(() => {
+          Message({
+            message: "网络异常，请重新输入",
+            type: "error",
+            duration: 5 * 1000
+          });
+          this.loginForm.smsCode = "";
+          this.loginForm.captcha = "";
+          this.smsLoginStep = 0;
+          this.getCaptcha();
+          this.loading = false;
+        });
     }
   },
   created() {

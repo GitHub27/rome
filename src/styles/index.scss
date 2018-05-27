@@ -182,6 +182,24 @@ a:hover {
   text-decoration: none;
 }
 
+.vm {
+  vertical-align: middle;
+}
+
+.brp {
+  position: relative;
+  &:after {
+    position: absolute;
+    top: 20px;
+    content: '';
+    right: 0;
+    bottom: 0;
+    height: 62px;
+    width: 1px;
+    background-color: #e5e5e5;
+  }
+}
+
 .clearfix {
   &:after {
     visibility: hidden;
@@ -248,8 +266,7 @@ a:hover {
 
 .main-nav-containter {
   width: 100%;
-  background-color: #fff;
-  margin-top: 30px;
+  background-color: #fff; // margin-top: 30px;
   padding-bottom: 18px;
   border-bottom: 2px solid #F07026;
   .main-nav {
@@ -265,10 +282,14 @@ a:hover {
     }
     img {
       vertical-align: bottom;
+      width: 200px;
+      height: 40px;
+      display: inline-block;
     }
     span.mission {
       display: inline-block;
       vertical-align: bottom;
+      padding-bottom: 5px;
     }
     .menus {
       overflow: hidden;

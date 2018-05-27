@@ -15,7 +15,7 @@
     <div class="main-nav-containter">
       <div class="main-nav">
         <div class="fl">
-          <img src="../../../assets/index/logo.png" alt="智汇ROME" style="border:1px solid #f7f7f7;">
+          <img class="top-logo" src="../../../assets/index/logo.png" alt="智汇ROME">
           <span class="mission">让4亿人才信息流动起来！</span>
         </div>
         <div class="menus fr">

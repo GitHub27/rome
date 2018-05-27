@@ -189,4 +189,7 @@ export default {
     margin-left: 7px;
   }
 }
+.main-nav-containter {
+  border-bottom: none;
+}
 </style>

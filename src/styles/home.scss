@@ -1,31 +1,42 @@
 @import './index.scss';
-.login-form {
-  padding: 38px 13px 10px;
-  .el-input__inner {
-    width: 100%;
-    height: 52px;
-    font-size: 16px;
-  }
-  .captcha-input {
-    width: 177px;
-    .el-input__inner {
-      width: 177px;
-    }
-  }
-  .captcha {
-    float: right;
-    height: 50px;
-    width: 120px;
-  }
-  .el-form-item {
-    margin-bottom: 30px;
-  }
-  .el-button--primary {
-    height: 52px;
-    background-color: #F07026;
-    border-color: #F07026;
-    font-size: 18px;
-  }
+.icon-rome {
+  display: inline-block;
+  width: 19px;
+  height: 24px;
+  background-image: url("../../assets/index/rome.png");
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  vertical-align: middle;
+}
+
+.icon-r {
+  display: inline-block;
+  width: 22px;
+  height: 33px;
+  background-image: url("../../assets/index/r.png");
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  vertical-align: middle;
+}
+
+.icon-tip {
+  display: inline-block;
+  width: 15px;
+  height: 15px;
+  background-image: url("../../assets/index/tip.png");
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  vertical-align: middle;
+}
+
+.icon-prefit {
+  display: inline-block;
+  width: 19px;
+  height: 24px;
+  background-image: url("../../assets/index/prefit.png");
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  vertical-align: middle;
 }
 
 //----统计----begin
@@ -83,11 +94,8 @@
       margin: 0;
       color: #333;
       font-size: 20px;
-      transition: transform 0.4s;
-      transform: scale(0.8);
       &.active {
         color: #f07026;
-        transform: scale(1);
       }
     }
     .tab-nav {
@@ -97,13 +105,82 @@
       background-color: #f07026;
       z-index: 3;
       bottom: 0;
-      content: " ";
-      transition: transform 0.2s;
+      content: " "; // transition: transform 0.2s;
       height: 3px;
       left: 0;
     }
     .tab-nav-pwd {
       transform: translateX(100%);
+    }
+  }
+  .login-form {
+    padding: 38px 13px 10px;
+    .sms-send-tip {
+      font-size: 16px;
+      color: #333;
+    }
+    .smd-phone {
+      font-size: 32px;
+      color: #f07026;
+      overflow: hidden;
+      margin: 14px 0 32px;
+      span {
+        cursor: pointer;
+        font-size: 16px;
+        color: #333;
+        padding-top: 8px;
+      }
+      img {
+        display: inline-block;
+        width: 14px;
+        height: 15px;
+        margin-right: 9px;
+        vertical-align: middle;
+      }
+    }
+    .smscode-warp {
+      span {
+        display: inline-block;
+        width: 153px;
+        height: 52px;
+        line-height: 52px;
+        border: none;
+        background-color: #f07026;
+        font-size: 16px;
+        color: #fff;
+        text-align: center;
+        cursor: pointer;
+        &.sms-disabled {
+          border: 2px solid #eee;
+          background-color: #f5f5f5;
+          color: #999;
+        }
+      }
+    }
+    .el-input__inner {
+      width: 100%;
+      height: 52px;
+      font-size: 16px;
+    }
+    .captcha-input {
+      width: 177px;
+      .el-input__inner {
+        width: 177px;
+      }
+    }
+    .captcha {
+      float: right;
+      height: 50px;
+      width: 120px;
+    }
+    .el-form-item {
+      margin-bottom: 30px;
+    }
+    .el-button--primary {
+      height: 52px;
+      background-color: #F07026;
+      border-color: #F07026;
+      font-size: 18px;
     }
   }
   .tip {
@@ -118,6 +195,106 @@
   input:-webkit-autofill {
     -webkit-box-shadow: 0 0 0px 1000px #fff inset !important;
     -webkit-text-fill-color: #606266 !important;
+  }
+  .remember-warp {
+    .el-checkbox__input.is-checked .el-checkbox__inner {
+      background-color: #fff;
+      border-color: #e5e5e5;
+    }
+    .el-checkbox__inner::after {
+      // border: 1px solid #F07026;
+    }
+  }
+}
+
+//----已登录----
+.loged-warp {
+  position: relative;
+  display: inline-block;
+  width: 411px;
+  height: 422px;
+  border: 1px solid #f07026;
+  cursor: pointer;
+  .user-main {
+    margin: 0 auto;
+    text-align: center;
+    font-size: 16px;
+    color: #333;
+    border-bottom: 1px solid #e5e5e5;
+    padding: 15px 0 25px;
+    .user-phone {
+      width: 113px;
+      height: 113px;
+    }
+    h1 {
+      font-size: 18px;
+      color: #333;
+      margin: 14px 0 10px;
+    }
+    .score {
+      color: #f07026;
+      margin-right: 5px;
+    }
+    .user-account {
+      overflow: hidden;
+      margin-top: 30px;
+      &>div {
+        width: 50%;
+        box-sizing: border-box;
+      }
+      .uc-title {
+        font-size: 18px;
+        color: #333;
+        font-weight: normal;
+        height: 24px;
+        line-height: 24px;
+        span {
+          display: inline-block; // padding-top: 3px;
+          vertical-align: middle;
+        }
+      }
+      .uc-tip {
+        font-size: 12px;
+        color: #999;
+        text-align: center;
+        margin-top: 4px;
+      }
+      .uc-rome {
+        font-size: 30px;
+        color: #333;
+        margin-top: 10px;
+      }
+    }
+  }
+}
+
+.withdraw {
+  height: 80px;
+  line-height: 80px;
+  text-align: center;
+  padding-top: 3px;
+  span {
+    vertical-align: middle;
+    font-size: 18px;
+    color: #333;
+  }
+  span.wd-money {
+    vertical-align: middle;
+    font-size: 30px;
+    font-weight: 600;
+    margin: 0 44px 0 8px;
+  }
+  span.wd-btn {
+    vertical-align: middle;
+    display: inline-block;
+    font-size: 16px;
+    width: 62px;
+    height: 33px;
+    line-height: 33px;
+    background-color: #F07026;
+    color: #fff;
+    border-radius: 2px;
+    margin-top: -5px;
   }
 }
 

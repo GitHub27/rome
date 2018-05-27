@@ -1,8 +1,8 @@
 import request from '@/utils/request'
 
 export function login(loginReq) {
-  return request({
-    url: '/user/login',
+  return request()({
+    url: '/user/login?t=' + new Date().getTime(),
     method: 'post',
     data: loginReq
   })
