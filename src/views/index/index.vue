@@ -175,7 +175,7 @@ export default {
 };
 </script>
 
-<style rel="stylesheet/scss" lang="scss" scoped>
+<style rel="stylesheet/scss" lang="scss">
 .head-warp {
   width: 100%;
   background-color: #fff;
@@ -190,6 +190,6 @@ export default {
   }
 }
 .main-nav-containter {
-  border-bottom: none;
+  border-bottom: none !important;
 }
 </style>

@@ -23,9 +23,15 @@ import Layout from '../views/layout/Layout'
  **/
 export const constantRouterMap = [{
     path: '/login',
-    component: () =>
-      import ('@/views/login/index'),
-    hidden: true
+    component: Layout,
+    children: [{
+      path: '',
+      name: '首页',
+      hidden: false,
+      component: () =>
+        import ('@/views/index/index'),
+      hidden: true
+    }]
   },
   {
     path: '/404',
@@ -50,19 +56,6 @@ export const constantRouterMap = [{
     component: () =>
       import ('@/views/404'),
     hidden: true
-  },
-  {
-    path: '/index',
-    component: Layout,
-    children: [{
-      path: '',
-      name: '首页',
-      hidden: true,
-      component: () =>
-        import ('@/views/index/index'),
-      // meta: { title: '首页', icon: 'table', channel: 'QJS' }
-
-    }]
   },
   {
     path: '/myvisit',
@@ -198,41 +191,4 @@ export default new Router({
 
 // 异步挂载的路由
 // 动态需要根据权限加载的路由表
-export const asyncRouterMap = [{
-    path: '/account1',
-    component: Layout,
-    redirect: '/account/newaccount',
-    name: 'manageraccount',
-    meta: {
-      title: '账号管理',
-      icon: 'example',
-      role: [1]
-    }, // 页面需要的权限
-    children: [{
-        path: 'newaccount',
-        name: 'newaccount',
-        component: () =>
-          import ('@/views/account/newAccount'),
-        meta: {
-          title: '创建账号',
-          icon: 'table'
-        }
-      },
-      {
-        path: 'editAccount',
-        name: 'editaccount',
-        component: () =>
-          import ('@/views/account/editAccount'),
-        meta: {
-          title: '编辑账号',
-          icon: 'tree'
-        }
-      }
-    ]
-  },
-  {
-    path: '*',
-    redirect: '/404',
-    hidden: true
-  }
-]
+export const asyncRouterMap = []

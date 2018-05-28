@@ -2,8 +2,8 @@
   <transition-group name="breadcrumb">
     <div class="login-container" v-if="!isLogin" :key=10>
       <header>
-        <p @click="toggleLogin(true)" :class="{'active':smsLogin}">验证码登录</p>
-        <p @click="toggleLogin(false)" :class="{'active':!smsLogin}">密码登录</p>
+        <p @click="toggleLoginType(true)" :class="{'active':smsLogin}">验证码登录</p>
+        <p @click="toggleLoginType(false)" :class="{'active':!smsLogin}">密码登录</p>
         <div class="tab-nav" :class="{'tab-nav-pwd':!smsLogin}"></div>
       </header>
       <transition-group name="breadcrumb">
@@ -53,10 +53,9 @@
                 登 录
               </el-button>
               <p class="remember-warp">
-              <span class="checkbox" checkbox=" " id="cbspan"></span>
-<span class="ivyd" id="isreservationtext">我已阅读并同意以下四条协议</span>
-                <el-checkbox v-model="remember" text-color="red">备选项</el-checkbox>
-                <span>忘记密码?</span>
+                <span class="checkbox" :class="{'ivcheckbox':remember}" checkbox="" @click="toggleRemember"></span>
+                <span class="ivyd" @click="toggleRemember">下次自动登录</span>
+                <span class="fr forget">忘记密码?</span>
               </p>
               <p class="tip">还没有账号？
                 <span>立即注册</span>
@@ -207,6 +206,9 @@ export default {
   watch: {},
   computed: {},
   methods: {
+    toggleRemember() {
+      this.remember = !this.remember;
+    },
     getCaptcha() {
       captcha()
         .then(({ data }) => {
@@ -289,7 +291,7 @@ export default {
         this.smsLoginStep = 0;
       }
     },
-    toggleLogin(result) {
+    toggleLoginType(result) {
       this.smsLogin = result;
     },
     handleLogin() {
@@ -299,16 +301,17 @@ export default {
           this.getLoginSMS();
           return;
         }
+        //TODO:这种方式有bug，还有用两个表单吧，待修改！！！！
+        if (!this.loginForm.smsCode) {
+          this.asynError.smsCode = "请输入短信验证码";
+          return;
+        }
+        if (this.loginForm.smsCode.length < 6) {
+          this.asynError.smsCode = "请输入正确的验证码长度";
+          return;
+        }
       }
-      //TODO:这种方式有bug，还有用两个表单吧，待修改！！！！
-      if (!this.loginForm.smsCode) {
-        this.asynError.smsCode = "请输入短信验证码";
-        return;
-      }
-      if (this.loginForm.smsCode.length < 6) {
-        this.asynError.smsCode = "请输入正确的验证码长度";
-        return;
-      }
+
       this.$refs.loginForm.validate(valid => {
         if (valid) {
           this.loading = true;
@@ -377,20 +380,4 @@ export default {
 </script>
 <style rel="stylesheet/scss" lang="scss">
 @import "../../styles/home.scss";
-
-.checkbox {
-    display: inline-block;
-    width: .4693333333333333rem;
-    height: .384rem;
-    border: 1px solid #e4e4e4;
-    background-color: #fff;
-}
-
-.ivcheckbox {
-    background: url(/css/img2.0/yesg.png) no-repeat;
-    background-size: cover;
-}
-.ivyd {
-    margin-left: .3rem;
-}
 </style>

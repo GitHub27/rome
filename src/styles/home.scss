@@ -70,6 +70,7 @@
   width: 411px;
   height: 422px;
   background-color: #f5f5f5;
+  border: 1px solid #f07026;
   padding: 45px 25px 75px;
   header {
     position: relative;
@@ -197,6 +198,33 @@
     -webkit-text-fill-color: #606266 !important;
   }
   .remember-warp {
+    cursor: pointer;
+    margin-top: 8px;
+    .checkbox {
+      display: inline-block;
+      width: 18px;
+      height: 18px;
+      border: 1px solid #e4e4e4;
+      background-color: #fff;
+      vertical-align: middle;
+    }
+    .ivcheckbox {
+      background-color: #fff;
+      background: url(../../assets/index/yesg.png) no-repeat;
+      background-size: 11px 9px;
+      background-position: 3px 4px;
+    }
+    .ivyd {
+      margin-left: 0.3rem;
+      vertical-align: middle;
+      font-size: 14px;
+      color: #999;
+    }
+    .forget {
+      font-size: 14px;
+      color: #f07026;
+      vertical-align: middle;
+    }
     .el-checkbox__input.is-checked .el-checkbox__inner {
       background-color: #fff;
       border-color: #e5e5e5;

@@ -57,30 +57,31 @@ function request(params) {
       if (_config.loading) {
         loadTip.close()
       }
-      if (res.code !== '0000') {
-        // 1000:Token 过期了;
-        if (res.code === '1000') {
-          MessageBox.alert(res.message, '登录过期', {
-            confirmButtonText: '重新登录',
-            callback: () => {
-              store.dispatch('FedLogOut').then(() => {
-                location.reload() // 为了重新实例化vue-router对象 避免bug
-              })
-            }
-          })
-        } else {
-          if (!response.config.handleError) {
-            Message({
-              message: res.message,
-              type: 'error',
-              duration: 5 * 1000
-            })
-          }
-        }
-        return Promise.reject(res.message)
-      } else {
-        return response.data
-      }
+      return res;
+      // if (res.code !== '0000') {
+      //   // 1000:Token 过期了;
+      //   if (res.code === '1000') {
+      //     MessageBox.alert(res.message, '登录过期', {
+      //       confirmButtonText: '重新登录',
+      //       callback: () => {
+      //         store.dispatch('FedLogOut').then(() => {
+      //           location.reload() // 为了重新实例化vue-router对象 避免bug
+      //         })
+      //       }
+      //     })
+      //   } else {
+      //     if (!response.config.handleError) {
+      //       Message({
+      //         message: res.message,
+      //         type: 'error',
+      //         duration: 5 * 1000
+      //       })
+      //     }
+      //   }
+      //   return Promise.reject(res.message)
+      // } else {
+      //   return response.data
+      // }
     },
     error => {
       if (_config.loading) {
