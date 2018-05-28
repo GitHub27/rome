@@ -53,6 +53,8 @@
                 登 录
               </el-button>
               <p class="remember-warp">
+              <span class="checkbox" checkbox=" " id="cbspan"></span>
+<span class="ivyd" id="isreservationtext">我已阅读并同意以下四条协议</span>
                 <el-checkbox v-model="remember" text-color="red">备选项</el-checkbox>
                 <span>忘记密码?</span>
               </p>
@@ -375,4 +377,20 @@ export default {
 </script>
 <style rel="stylesheet/scss" lang="scss">
 @import "../../styles/home.scss";
+
+.checkbox {
+    display: inline-block;
+    width: .4693333333333333rem;
+    height: .384rem;
+    border: 1px solid #e4e4e4;
+    background-color: #fff;
+}
+
+.ivcheckbox {
+    background: url(/css/img2.0/yesg.png) no-repeat;
+    background-size: cover;
+}
+.ivyd {
+    margin-left: .3rem;
+}
 </style>
