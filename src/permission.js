@@ -12,26 +12,25 @@ import {
 const whiteList = ['/login', '/index', '/myvisit', '/personal-auth', '/myshare', '/task', '/account', '/testpage', '/share'] // 不重定向白名单
 
 
+
 router.beforeEach((to, from, next) => {
   NProgress.start()
   if (getToken()) {
+    next();
+    return;
     if (to.path === '/login') {
       next({
         path: '/'
       })
     } else {
-      if (store.getters.roles.length === 0) {
-        store.dispatch('GenerateRoutes').then(() => { // 生成可访问的路由表
-          router.addRoutes(store.getters.addRouters) // 动态添加可访问路由表
-          next({
-            ...to,
-            replace: true
-          }) // hack方法 确保addRoutes已完成 ,set the replace: true so the navigation will not leave a history record
-        })
-
-      } else {
-        next()
-      }
+      // store.dispatch('GenerateRoutes').then(() => { // 生成可访问的路由表
+      //   router.addRoutes(store.getters.addRouters) // 动态添加可访问路由表
+      //   next({
+      //     ...to,
+      //     replace: true
+      //   }) // hack方法 确保addRoutes已完成 ,set the replace: true so the navigation will not leave a history record
+      // })
+      next();
     }
   } else {
     if (whiteList.indexOf(to.path) !== -1) {

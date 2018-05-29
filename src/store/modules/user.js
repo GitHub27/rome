@@ -1,6 +1,17 @@
-import { login, logout } from '@/api/login'
-import { getToken, setToken, removeToken } from '@/utils/auth'
-import { createAccount, changePwd, getInfo } from '@/api/user'
+import {
+  login,
+  logout
+} from '@/api/login'
+import {
+  getToken,
+  setToken,
+  removeToken
+} from '@/utils/auth'
+import {
+  createAccount,
+  changePwd,
+  getInfo
+} from '@/api/user'
 const user = {
   state: {
     token: getToken(),
@@ -29,19 +40,37 @@ const user = {
 
   actions: {
     // 登录
-    Login({ commit }, userInfo) {
+    Login({
+      commit
+    }, userInfo) {
       return new Promise((resolve, reject) => {
         login(userInfo).then(response => {
           const data = response.data
-          setToken(data.token)
-          commit('SET_TOKEN', data.token)
-          resolve()
+          commit('SET_TOKEN', getToken()),
+            resolve()
         }).catch(error => {
           reject(error)
         })
       })
     },
-    ChangePwd({ commit }, info) {
+    // 注册
+    Register({
+      commit
+    }, userInfo) {
+      return new Promise((resolve, reject) => {
+        register(userInfo).then(response => {
+          const data = response.data
+          commit('SET_TOKEN', getToken()),
+            resolve()
+        }).catch(error => {
+          reject(error)
+        })
+      })
+    },
+
+    ChangePwd({
+      commit
+    }, info) {
       return new Promise((resolve, reject) => {
         changePwd(info.oriPwd, info.newPwd, info.repeat).then(response => {
           // const data = response.data
@@ -54,7 +83,9 @@ const user = {
       })
     },
     // 创建账号
-    CreateAccount({ commit }, info) {
+    CreateAccount({
+      commit
+    }, info) {
       return new Promise((resolve, reject) => {
         createAccount(info).then(response => {
           resolve()
@@ -64,7 +95,10 @@ const user = {
       })
     },
     // 获取用户信息
-    GetInfo({ commit, state }) {
+    GetInfo({
+      commit,
+      state
+    }) {
       return new Promise((resolve, reject) => {
         getInfo(state.token).then(response => {
           const data = response.data
@@ -79,7 +113,10 @@ const user = {
     },
 
     // 登出
-    LogOut({ commit, state }) {
+    LogOut({
+      commit,
+      state
+    }) {
       return new Promise((resolve, reject) => {
         logout(state.token).then(() => {
           commit('SET_TOKEN', '')
@@ -93,7 +130,9 @@ const user = {
     },
 
     // 前端 登出
-    FedLogOut({ commit }) {
+    FedLogOut({
+      commit
+    }) {
       return new Promise(resolve => {
         commit('SET_TOKEN', '')
         removeToken()

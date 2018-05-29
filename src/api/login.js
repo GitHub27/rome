@@ -1,5 +1,14 @@
 import request from '@/utils/request'
 
+
+export function register(loginReq) {
+  return request()({
+    url: '/user/register?t=' + new Date().getTime(),
+    method: 'post',
+    data: loginReq
+  })
+}
+
 export function login(loginReq) {
   return request()({
     url: '/user/login?t=' + new Date().getTime(),

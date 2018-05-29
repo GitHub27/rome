@@ -45,5 +45,10 @@ export function isPhoneNumber(str) {
 export function isNumber(str) {
   var myreg = /^[1-9]\d*$/;
   return myreg.test(str.trim());
+}
+
+export function passwordRule(str) {
+  var myreg = /^(?![0-9]+$)(?![a-zA-Z]+$)[0-9A-Za-z]{8,16}$/
+  return myreg.test(str.trim());
 
 }

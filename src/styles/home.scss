@@ -65,13 +65,19 @@
 
 //----统计----end
 //----登录框
-.login-container {
+.login-border {
+  border: 1px solid #f07026;
   display: inline-block;
   width: 411px;
   height: 422px;
+}
+
+.login-container {
+  display: inline-block;
+  width: 409px;
+  height: 420px;
   background-color: #f5f5f5;
-  border: 1px solid #f07026;
-  padding: 45px 25px 75px;
+  padding: 20px 25px 75px;
   header {
     position: relative;
     overflow: hidden;
@@ -91,7 +97,7 @@
       text-align: center;
       width: 50%;
       float: left;
-      padding: 10px;
+      padding: 5px 0 13px;
       margin: 0;
       color: #333;
       font-size: 20px;
@@ -184,12 +190,19 @@
       font-size: 18px;
     }
   }
+  .register-form {
+    padding-top: 18px;
+    .has-account {
+      margin-top: 2px;
+    }
+  }
   .tip {
     float: right;
     font-size: 16px;
     color: #333;
     margin-top: 18px;
     span {
+      cursor: pointer;
       color: #f07026;
     }
   }
@@ -202,8 +215,8 @@
     margin-top: 8px;
     .checkbox {
       display: inline-block;
-      width: 18px;
-      height: 18px;
+      width: 16px;
+      height: 16px;
       border: 1px solid #e4e4e4;
       background-color: #fff;
       vertical-align: middle;
@@ -212,7 +225,7 @@
       background-color: #fff;
       background: url(../../assets/index/yesg.png) no-repeat;
       background-size: 11px 9px;
-      background-position: 3px 4px;
+      background-position: 2px 3px;
     }
     .ivyd {
       margin-left: 0.3rem;
@@ -239,10 +252,33 @@
 .loged-warp {
   position: relative;
   display: inline-block;
-  width: 411px;
-  height: 422px;
-  border: 1px solid #f07026;
+  width: 409px;
+  height: 420px;
   cursor: pointer;
+  .index-mytask {
+    position: absolute;
+    z-index: 2;
+    top: 5px;
+    right: 5px;
+    padding: 5px;
+    font-size: 14px;
+    color: #333;
+    border: 1px solid transparent;
+    &.active {
+      border: 1px solid #ddd;
+      background-color: #f5f5f5;
+    }
+    .mytask-num {
+      display: inline-block;
+      height: 20px;
+      line-height: 20px;
+      width: 20px;
+      text-align: center;
+      background-color: #F07026;
+      color: #fff;
+      border-radius: 50%;
+    }
+  }
   .user-main {
     margin: 0 auto;
     text-align: center;

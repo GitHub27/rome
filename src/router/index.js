@@ -22,11 +22,17 @@ import Layout from '../views/layout/Layout'
   }
  **/
 export const constantRouterMap = [{
+    path: '/',
+    component: Layout,
+    redirect: '/account'
+  },
+
+  {
     path: '/login',
     component: Layout,
     children: [{
       path: '',
-      name: '首页',
+      name: '登录',
       hidden: false,
       component: () =>
         import ('@/views/index/index'),
@@ -137,48 +143,6 @@ export const constantRouterMap = [{
         import ('@/views/account/index'),
     }]
   },
-
-
-  {
-    path: '/',
-    component: Layout,
-    redirect: '/product/QJS',
-    name: '货架',
-    hidden: true
-  },
-  {
-    path: '/product',
-    component: Layout,
-    redirect: '/product/QJS',
-    name: 'product',
-    meta: {
-      title: '产品货架',
-      icon: 'tree'
-    },
-    children: [{
-        path: 'QJS',
-        name: 'QJS',
-        component: () =>
-          import ('@/views/product/index'),
-        meta: {
-          title: '侨金所',
-          icon: 'table',
-          channel: 'QJS'
-        }
-      },
-      {
-        path: 'GAN',
-        name: 'GAN',
-        component: () =>
-          import ('@/views/product/index'),
-        meta: {
-          title: '赣金中心',
-          icon: 'table',
-          channel: 'GAN'
-        }
-      }
-    ]
-  }
 ]
 
 export default new Router({

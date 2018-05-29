@@ -15,6 +15,14 @@ app.use('/jjz/user/login', login)
 var user = require('./login/user')
 app.use('/jjz/user/findAccount', user)
 
+app.use('/jjz/user/register', function (req, res) {
+  res.json({
+    'code': '0000',
+    'message': 'ok'
+  })
+})
+
+
 var logout = require('./login/logout')
 app.use('/user/logout', logout)
 app.use('/jjz/user/modifyAccountPwd', function (req, res) {
