@@ -12,7 +12,7 @@
             <transition-group name="breadcrumb">
               <div :key="1" v-if="smsLoginStep==0">
                 <el-form-item prop="phone" :error="asynError.phone">
-                  <el-input maxlength="11" name="phone" type="text" v-model="loginForm.phone" autoComplete="on" placeholder="手机号" />
+                  <el-input maxlength="11" name="phone" type="text" v-model="loginForm.phone" placeholder="手机号" />
                 </el-form-item>
                 <el-form-item prop="captcha" :error="asynError.captcha">
                   <el-input maxlength="4" class="captcha-input fl" name="captcha" type="text" v-model="loginForm.captcha" placeholder="图片验证码" />
@@ -41,10 +41,10 @@
           </el-form>
           <el-form :key="21" v-else :model="loginForm" :rules="loginRules" ref="loginForm" label-position="left" label-width="0px" class="card-box login-form">
             <el-form-item prop="phone" :error="asynError.phone">
-              <el-input maxlength="11" name="phone" type="text" v-model="loginForm.phone" autoComplete="on" placeholder="手机号" />
+              <el-input maxlength="11" name="phone" type="text" v-model="loginForm.phone" placeholder="手机号" />
             </el-form-item>
             <el-form-item prop="password" :error="asynError.password">
-              <el-input maxlength="16" name="password" type="password" v-model="loginForm.password" autoComplete="on" placeholder="密码" />
+              <el-input maxlength="16" name="password" type="password" v-model="loginForm.password" placeholder="密码" />
             </el-form-item>
             <el-form-item>
               <el-button type="primary" style="width:100%;" :loading="loading" @click.native.prevent="handleLogin">
@@ -62,7 +62,7 @@
           </el-form>
         </transition-group>
       </div>
-      <div v-else-if="logged && !isRegister" :key=11 class="loged-warp">
+      <div v-else-if="logged && !isRegister" :key=11 class="loged-warp" @click="()=>{this.$router.push('/')}">
         <div class="user-main">
           <img class="user-phone" src="../../assets/user/user-phone.png" alt="">
           <h1>红色猎人</h1>
@@ -112,17 +112,17 @@
           <span class="mytask-num">3</span>
         </p>
       </div>
-      <div class="login-container" v-else="isRegister" :key=12>
+      <div class="login-container" v-else-if="isRegister" :key=12>
         <header>
           <p class="active w100">账户注册</p>
           <div class="tab-nav w100"></div>
         </header>
         <el-form :key="21" :model="loginForm" :rules="loginRules" ref="loginForm" label-position="left" label-width="0px" class="card-box login-form register-form">
           <el-form-item prop="phone">
-            <el-input maxlength="11" name="phone" type="text" v-model="loginForm.phone" autoComplete="on" placeholder="中国大陆手机号" />
+            <el-input maxlength="11" name="phone" type="text" v-model="loginForm.phone" placeholder="中国大陆手机号" />
           </el-form-item>
           <el-form-item prop="password">
-            <el-input maxlength="16" name="password" type="password" v-model="loginForm.password" autoComplete="on" placeholder="密码为8-16位字母+数字组合" />
+            <el-input maxlength="16" name="password" type="password" v-model="loginForm.password" placeholder="密码为8-16位字母+数字组合" />
           </el-form-item>
           <el-form-item prop="captcha">
             <el-input maxlength="4" class="captcha-input fl" name="captcha" type="text" v-model="loginForm.captcha" placeholder="图片验证码" />
@@ -224,7 +224,7 @@ export default {
         password: ""
       },
       loading: false,
-      logged: true, //false------------------------------test测试
+      logged: !!this.$store.getters.token,
       smsLogin: true,
       sms_Interval: 0,
       smsLoginStepLoading: false,
@@ -466,8 +466,7 @@ export default {
     }
   },
   created() {
-    //TODO:注意用户进入页面前已经登录的情况！！！
-    this.getCaptcha();
+    !this.logged && this.getCaptcha();
   },
   mounted() {},
   destroyed() {}

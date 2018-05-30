@@ -46,6 +46,7 @@ const user = {
       return new Promise((resolve, reject) => {
         login(userInfo).then(response => {
           const data = response.data
+          setToken('test________________________');
           commit('SET_TOKEN', getToken()),
             resolve()
         }).catch(error => {

@@ -6,9 +6,10 @@
           您好，欢迎入驻智汇ROME！
         </div>
         <div class="menus fr">
-          <p class="login-link">登录 | 免费注册</p>
-          <p>联系客服</p>
-          <p>帮助中心</p>
+          <router-link v-if="!logged" to="/index" class="theme-color">登录 | 免费注册</router-link>
+          <a v-if="logged" class="theme-color" href="javascript:void(0);" @click="signOut">喾莳豆豆 | 退出</a>
+          <a>联系客服</a>
+          <a>帮助中心</a>
         </div>
       </div>
     </div>
@@ -19,9 +20,9 @@
           <span class="mission">让4亿人才信息流动起来！</span>
         </div>
         <div class="menus fr">
-          <p class="login-link">首页</p>
-          <p>访问</p>
-          <p>个人中心</p>
+          <router-link to="/index" :class="{'theme-color':currentRouter=='/index'}">首页</router-link>
+          <router-link to="/myvisit" :class="{'theme-color':currentRouter=='/myvisit'}">访问</router-link>
+          <router-link to="/account" :class="{'theme-color':currentRouter=='/account'}">个人中心</router-link>
           <router-link class="share" to="/share">分享人才信息</router-link>
         </div>
       </div>
@@ -30,13 +31,32 @@
 </template>
 
 <script>
+import { removeToken } from "@/utils/auth";
 export default {
   components: {},
   computed: {},
   data() {
-    return {};
+    return {
+      logged: !!this.$store.getters.token,
+      currentRouter: this.$route.path
+    };
   },
-  methods: {}
+  methods: {
+    //TODO:根据当前路由改变头部菜单颜色
+    signOut() {
+      this.$router.push("/index");
+      removeToken();
+    },
+    toggleMuneColor(router) {
+      this.currentRouter = router.path;
+      console.log(router.path);
+    }
+  },
+  created() {},
+  watch: {
+    // 如果路由有变化，会再次执行该方法
+    $route: "toggleMuneColor"
+  }
 };
 </script>
 

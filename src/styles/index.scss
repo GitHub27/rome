@@ -205,7 +205,7 @@ a:hover {
 }
 
 .theme-color {
-  color: #f07026;
+  color: #f07026 !important;
 }
 
 .fsn {
@@ -261,16 +261,15 @@ a:hover {
     .menus {
       overflow: hidden;
       float: right;
-      p {
+      p,
+      a {
+        display: inline-block;
         height: 41px;
         line-height: 41px;
         float: left;
         margin-left: 30px;
         color: #3c3c3c;
         font-size: 14px;
-        &.login-link {
-          color: $maincolor;
-        }
       }
     }
   }
@@ -314,9 +313,6 @@ a:hover {
         margin-left: 30px;
         color: #3c3c3c;
         font-size: 14px;
-        &.login-link {
-          color: $maincolor;
-        }
         &.share {
           display: block;
           background-color: $maincolor;
