@@ -1,14 +1,26 @@
 <template>
+  <div>
+    <div id="echarts-warp" style="width: 600px;height:400px;"></div>
+    <br/>
     <div>
-        <div id="echarts-warp" style="width: 600px;height:400px;"></div>
+      <scroll-number :numbers="number">
+      </scroll-number>
     </div>
+  </div>
+
 </template>
 
 <script>
 import echarts from "../../../static/echarts.min.js";
+import ScrollNumber from "@/components/ScrollNumber/index";
 export default {
   data() {
-    return {};
+    return {
+      number: ""
+    };
+  },
+  components: {
+    ScrollNumber
   },
   mounted: function() {
     // 基于准备好的dom，初始化echarts实例
@@ -73,6 +85,10 @@ export default {
 
     // 使用刚指定的配置项和数据显示图表。
     myChart.setOption(option);
+
+    setTimeout(() => {
+      //this.number = "1234560";
+    }, 1000);
   }
   //   destroyed() {}
 };
