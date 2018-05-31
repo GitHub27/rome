@@ -152,6 +152,7 @@
 import { Message, MessageBox } from "element-ui";
 import { captcha, sendSMS } from "@/api/login";
 import { isPhoneNumber, isNumber, passwordRule } from "../../utils/validate";
+import {mapGetters} from 'vuex';
 export default {
   components: {},
   data() {
@@ -224,7 +225,6 @@ export default {
         password: ""
       },
       loading: false,
-      logged: !!this.$store.getters.token,
       smsLogin: true,
       sms_Interval: 0,
       smsLoginStepLoading: false,
@@ -239,7 +239,11 @@ export default {
     };
   },
   watch: {},
-  computed: {},
+  computed: {
+    ...mapGetters({
+      logged:'token'
+    })
+  },
   methods: {
     /*切换用户注册协议 */
     toggleAgreement() {
@@ -385,7 +389,6 @@ export default {
         .then(
           () => {
             this.loading = false;
-            this.logged = true;
           },
           function(d) {
             Message({
@@ -439,7 +442,6 @@ export default {
         .then(
           () => {
             this.loading = false;
-            this.logged = true;
           },
           function(d) {
             Message({

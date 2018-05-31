@@ -24,7 +24,7 @@ app.use('/jjz/user/register', function (req, res) {
 
 
 var logout = require('./login/logout')
-app.use('/user/logout', logout)
+app.use('/jjz/user/logout', logout)
 app.use('/jjz/user/modifyAccountPwd', function (req, res) {
   // res.json({ 'code': 20000, 'data': { 'name': '22' }})
   res.json({
@@ -71,317 +71,317 @@ app.use('/jjz/product/queryAllProductList', function (req, res) {
       'pageNo': 0,
       'pageSize': 0,
       'rows': [{
-          'categoryCode': '22',
-          'investPeriod': 0,
-          'minYieldRate': 'string',
-          'productCode': '222',
-          'productDisplayName': 'string',
-          'productName': 'string',
-          'productStartTime': 'string',
-          'product_status': '1',
-          'totalAmount': 'string',
-          'valueTime': 'string'
-        },
-        {
-          'categoryCode': '11',
-          'investPeriod': 0,
-          'minYieldRate': 'string',
-          'productCode': '222',
-          'productDisplayName': 'string',
-          'productName': 'string',
-          'productStartTime': 'string',
-          'product_status': '2',
-          'totalAmount': 'string',
-          'valueTime': 'string'
-        },
-        {
-          'categoryCode': '11',
-          'investPeriod': 0,
-          'minYieldRate': 'string',
-          'productCode': '222',
-          'productDisplayName': 'string',
-          'productName': 'string',
-          'productStartTime': 'string',
-          'product_status': '2',
-          'totalAmount': 'string',
-          'valueTime': 'string'
-        },
-        {
-          'categoryCode': '11',
-          'investPeriod': 0,
-          'minYieldRate': 'string',
-          'productCode': '222',
-          'productDisplayName': 'string',
-          'productName': 'string',
-          'productStartTime': 'string',
-          'product_status': '2',
-          'totalAmount': 'string',
-          'valueTime': 'string'
-        },
-        {
-          'categoryCode': '11',
-          'investPeriod': 0,
-          'minYieldRate': 'string',
-          'productCode': '222',
-          'productDisplayName': 'string',
-          'productName': 'string',
-          'productStartTime': 'string',
-          'product_status': '2',
-          'totalAmount': 'string',
-          'valueTime': 'string'
-        },
-        {
-          'categoryCode': '11',
-          'investPeriod': 0,
-          'minYieldRate': 'string',
-          'productCode': '222',
-          'productDisplayName': 'string',
-          'productName': 'string',
-          'productStartTime': 'string',
-          'product_status': '2',
-          'totalAmount': 'string',
-          'valueTime': 'string'
-        },
-        {
-          'categoryCode': '11',
-          'investPeriod': 0,
-          'minYieldRate': 'string',
-          'productCode': '222',
-          'productDisplayName': 'string',
-          'productName': 'string',
-          'productStartTime': 'string',
-          'product_status': '2',
-          'totalAmount': 'string',
-          'valueTime': 'string'
-        },
-        {
-          'categoryCode': '11',
-          'investPeriod': 0,
-          'minYieldRate': 'string',
-          'productCode': '222',
-          'productDisplayName': 'string',
-          'productName': 'string',
-          'productStartTime': 'string',
-          'product_status': '2',
-          'totalAmount': 'string',
-          'valueTime': 'string'
-        },
-        {
-          'categoryCode': '11',
-          'investPeriod': 0,
-          'minYieldRate': 'string',
-          'productCode': '222',
-          'productDisplayName': 'string',
-          'productName': 'string',
-          'productStartTime': 'string',
-          'product_status': '2',
-          'totalAmount': 'string',
-          'valueTime': 'string'
-        },
-        {
-          'categoryCode': '11',
-          'investPeriod': 0,
-          'minYieldRate': 'string',
-          'productCode': '222',
-          'productDisplayName': 'string',
-          'productName': 'string',
-          'productStartTime': 'string',
-          'product_status': '2',
-          'totalAmount': 'string',
-          'valueTime': 'string'
-        },
-        {
-          'categoryCode': '11',
-          'investPeriod': 0,
-          'minYieldRate': 'string',
-          'productCode': '222',
-          'productDisplayName': 'string',
-          'productName': 'string',
-          'productStartTime': 'string',
-          'product_status': '2',
-          'totalAmount': 'string',
-          'valueTime': 'string'
-        },
-        {
-          'categoryCode': '11',
-          'investPeriod': 0,
-          'minYieldRate': 'string',
-          'productCode': '222',
-          'productDisplayName': 'string',
-          'productName': 'string',
-          'productStartTime': 'string',
-          'product_status': '2',
-          'totalAmount': 'string',
-          'valueTime': 'string'
-        },
-        {
-          'categoryCode': '11',
-          'investPeriod': 0,
-          'minYieldRate': 'string',
-          'productCode': '222',
-          'productDisplayName': 'string',
-          'productName': 'string',
-          'productStartTime': 'string',
-          'product_status': '2',
-          'totalAmount': 'string',
-          'valueTime': 'string'
-        },
-        {
-          'categoryCode': '11',
-          'investPeriod': 0,
-          'minYieldRate': 'string',
-          'productCode': '222',
-          'productDisplayName': 'string',
-          'productName': 'string',
-          'productStartTime': 'string',
-          'product_status': '2',
-          'totalAmount': 'string',
-          'valueTime': 'string'
-        },
-        {
-          'categoryCode': '11',
-          'investPeriod': 0,
-          'minYieldRate': 'string',
-          'productCode': '222',
-          'productDisplayName': 'string',
-          'productName': 'string',
-          'productStartTime': 'string',
-          'product_status': '2',
-          'totalAmount': 'string',
-          'valueTime': 'string'
-        },
-        {
-          'categoryCode': '11',
-          'investPeriod': 0,
-          'minYieldRate': 'string',
-          'productCode': '222',
-          'productDisplayName': 'string',
-          'productName': 'string',
-          'productStartTime': 'string',
-          'product_status': '2',
-          'totalAmount': 'string',
-          'valueTime': 'string'
-        },
-        {
-          'categoryCode': '11',
-          'investPeriod': 0,
-          'minYieldRate': 'string',
-          'productCode': '222',
-          'productDisplayName': 'string',
-          'productName': 'string',
-          'productStartTime': 'string',
-          'product_status': '2',
-          'totalAmount': 'string',
-          'valueTime': 'string'
-        },
-        {
-          'categoryCode': '11',
-          'investPeriod': 0,
-          'minYieldRate': 'string',
-          'productCode': '222',
-          'productDisplayName': 'string',
-          'productName': 'string',
-          'productStartTime': 'string',
-          'product_status': '2',
-          'totalAmount': 'string',
-          'valueTime': 'string'
-        },
-        {
-          'categoryCode': '11',
-          'investPeriod': 0,
-          'minYieldRate': 'string',
-          'productCode': '222',
-          'productDisplayName': 'string',
-          'productName': 'string',
-          'productStartTime': 'string',
-          'product_status': '2',
-          'totalAmount': 'string',
-          'valueTime': 'string'
-        },
-        {
-          'categoryCode': '11',
-          'investPeriod': 0,
-          'minYieldRate': 'string',
-          'productCode': '222',
-          'productDisplayName': 'string',
-          'productName': 'string',
-          'productStartTime': 'string',
-          'product_status': '2',
-          'totalAmount': 'string',
-          'valueTime': 'string'
-        },
-        {
-          'categoryCode': '11',
-          'investPeriod': 0,
-          'minYieldRate': 'string',
-          'productCode': '222',
-          'productDisplayName': 'string',
-          'productName': 'string',
-          'productStartTime': 'string',
-          'product_status': '2',
-          'totalAmount': 'string',
-          'valueTime': 'string'
-        },
-        {
-          'categoryCode': '11',
-          'investPeriod': 0,
-          'minYieldRate': 'string',
-          'productCode': '222',
-          'productDisplayName': 'string',
-          'productName': 'string',
-          'productStartTime': 'string',
-          'product_status': '2',
-          'totalAmount': 'string',
-          'valueTime': 'string'
-        },
-        {
-          'categoryCode': '11',
-          'investPeriod': 0,
-          'minYieldRate': 'string',
-          'productCode': '222',
-          'productDisplayName': 'string',
-          'productName': 'string',
-          'productStartTime': 'string',
-          'product_status': '2',
-          'totalAmount': 'string',
-          'valueTime': 'string'
-        },
-        {
-          'categoryCode': '11',
-          'investPeriod': 0,
-          'minYieldRate': 'string',
-          'productCode': '222',
-          'productDisplayName': 'string',
-          'productName': 'string',
-          'productStartTime': 'string',
-          'product_status': '2',
-          'totalAmount': 'string',
-          'valueTime': 'string'
-        },
-        {
-          'categoryCode': '11',
-          'investPeriod': 0,
-          'minYieldRate': 'string',
-          'productCode': '222',
-          'productDisplayName': 'string',
-          'productName': 'string',
-          'productStartTime': 'string',
-          'product_status': '2',
-          'totalAmount': 'string',
-          'valueTime': 'string'
-        },
-        {
-          'categoryCode': '11',
-          'investPeriod': 0,
-          'minYieldRate': 'string',
-          'productCode': '222',
-          'productDisplayName': 'string',
-          'productName': 'string',
-          'productStartTime': 'string',
-          'product_status': '2',
-          'totalAmount': 'string',
-          'valueTime': 'string'
-        }
+        'categoryCode': '22',
+        'investPeriod': 0,
+        'minYieldRate': 'string',
+        'productCode': '222',
+        'productDisplayName': 'string',
+        'productName': 'string',
+        'productStartTime': 'string',
+        'product_status': '1',
+        'totalAmount': 'string',
+        'valueTime': 'string'
+      },
+      {
+        'categoryCode': '11',
+        'investPeriod': 0,
+        'minYieldRate': 'string',
+        'productCode': '222',
+        'productDisplayName': 'string',
+        'productName': 'string',
+        'productStartTime': 'string',
+        'product_status': '2',
+        'totalAmount': 'string',
+        'valueTime': 'string'
+      },
+      {
+        'categoryCode': '11',
+        'investPeriod': 0,
+        'minYieldRate': 'string',
+        'productCode': '222',
+        'productDisplayName': 'string',
+        'productName': 'string',
+        'productStartTime': 'string',
+        'product_status': '2',
+        'totalAmount': 'string',
+        'valueTime': 'string'
+      },
+      {
+        'categoryCode': '11',
+        'investPeriod': 0,
+        'minYieldRate': 'string',
+        'productCode': '222',
+        'productDisplayName': 'string',
+        'productName': 'string',
+        'productStartTime': 'string',
+        'product_status': '2',
+        'totalAmount': 'string',
+        'valueTime': 'string'
+      },
+      {
+        'categoryCode': '11',
+        'investPeriod': 0,
+        'minYieldRate': 'string',
+        'productCode': '222',
+        'productDisplayName': 'string',
+        'productName': 'string',
+        'productStartTime': 'string',
+        'product_status': '2',
+        'totalAmount': 'string',
+        'valueTime': 'string'
+      },
+      {
+        'categoryCode': '11',
+        'investPeriod': 0,
+        'minYieldRate': 'string',
+        'productCode': '222',
+        'productDisplayName': 'string',
+        'productName': 'string',
+        'productStartTime': 'string',
+        'product_status': '2',
+        'totalAmount': 'string',
+        'valueTime': 'string'
+      },
+      {
+        'categoryCode': '11',
+        'investPeriod': 0,
+        'minYieldRate': 'string',
+        'productCode': '222',
+        'productDisplayName': 'string',
+        'productName': 'string',
+        'productStartTime': 'string',
+        'product_status': '2',
+        'totalAmount': 'string',
+        'valueTime': 'string'
+      },
+      {
+        'categoryCode': '11',
+        'investPeriod': 0,
+        'minYieldRate': 'string',
+        'productCode': '222',
+        'productDisplayName': 'string',
+        'productName': 'string',
+        'productStartTime': 'string',
+        'product_status': '2',
+        'totalAmount': 'string',
+        'valueTime': 'string'
+      },
+      {
+        'categoryCode': '11',
+        'investPeriod': 0,
+        'minYieldRate': 'string',
+        'productCode': '222',
+        'productDisplayName': 'string',
+        'productName': 'string',
+        'productStartTime': 'string',
+        'product_status': '2',
+        'totalAmount': 'string',
+        'valueTime': 'string'
+      },
+      {
+        'categoryCode': '11',
+        'investPeriod': 0,
+        'minYieldRate': 'string',
+        'productCode': '222',
+        'productDisplayName': 'string',
+        'productName': 'string',
+        'productStartTime': 'string',
+        'product_status': '2',
+        'totalAmount': 'string',
+        'valueTime': 'string'
+      },
+      {
+        'categoryCode': '11',
+        'investPeriod': 0,
+        'minYieldRate': 'string',
+        'productCode': '222',
+        'productDisplayName': 'string',
+        'productName': 'string',
+        'productStartTime': 'string',
+        'product_status': '2',
+        'totalAmount': 'string',
+        'valueTime': 'string'
+      },
+      {
+        'categoryCode': '11',
+        'investPeriod': 0,
+        'minYieldRate': 'string',
+        'productCode': '222',
+        'productDisplayName': 'string',
+        'productName': 'string',
+        'productStartTime': 'string',
+        'product_status': '2',
+        'totalAmount': 'string',
+        'valueTime': 'string'
+      },
+      {
+        'categoryCode': '11',
+        'investPeriod': 0,
+        'minYieldRate': 'string',
+        'productCode': '222',
+        'productDisplayName': 'string',
+        'productName': 'string',
+        'productStartTime': 'string',
+        'product_status': '2',
+        'totalAmount': 'string',
+        'valueTime': 'string'
+      },
+      {
+        'categoryCode': '11',
+        'investPeriod': 0,
+        'minYieldRate': 'string',
+        'productCode': '222',
+        'productDisplayName': 'string',
+        'productName': 'string',
+        'productStartTime': 'string',
+        'product_status': '2',
+        'totalAmount': 'string',
+        'valueTime': 'string'
+      },
+      {
+        'categoryCode': '11',
+        'investPeriod': 0,
+        'minYieldRate': 'string',
+        'productCode': '222',
+        'productDisplayName': 'string',
+        'productName': 'string',
+        'productStartTime': 'string',
+        'product_status': '2',
+        'totalAmount': 'string',
+        'valueTime': 'string'
+      },
+      {
+        'categoryCode': '11',
+        'investPeriod': 0,
+        'minYieldRate': 'string',
+        'productCode': '222',
+        'productDisplayName': 'string',
+        'productName': 'string',
+        'productStartTime': 'string',
+        'product_status': '2',
+        'totalAmount': 'string',
+        'valueTime': 'string'
+      },
+      {
+        'categoryCode': '11',
+        'investPeriod': 0,
+        'minYieldRate': 'string',
+        'productCode': '222',
+        'productDisplayName': 'string',
+        'productName': 'string',
+        'productStartTime': 'string',
+        'product_status': '2',
+        'totalAmount': 'string',
+        'valueTime': 'string'
+      },
+      {
+        'categoryCode': '11',
+        'investPeriod': 0,
+        'minYieldRate': 'string',
+        'productCode': '222',
+        'productDisplayName': 'string',
+        'productName': 'string',
+        'productStartTime': 'string',
+        'product_status': '2',
+        'totalAmount': 'string',
+        'valueTime': 'string'
+      },
+      {
+        'categoryCode': '11',
+        'investPeriod': 0,
+        'minYieldRate': 'string',
+        'productCode': '222',
+        'productDisplayName': 'string',
+        'productName': 'string',
+        'productStartTime': 'string',
+        'product_status': '2',
+        'totalAmount': 'string',
+        'valueTime': 'string'
+      },
+      {
+        'categoryCode': '11',
+        'investPeriod': 0,
+        'minYieldRate': 'string',
+        'productCode': '222',
+        'productDisplayName': 'string',
+        'productName': 'string',
+        'productStartTime': 'string',
+        'product_status': '2',
+        'totalAmount': 'string',
+        'valueTime': 'string'
+      },
+      {
+        'categoryCode': '11',
+        'investPeriod': 0,
+        'minYieldRate': 'string',
+        'productCode': '222',
+        'productDisplayName': 'string',
+        'productName': 'string',
+        'productStartTime': 'string',
+        'product_status': '2',
+        'totalAmount': 'string',
+        'valueTime': 'string'
+      },
+      {
+        'categoryCode': '11',
+        'investPeriod': 0,
+        'minYieldRate': 'string',
+        'productCode': '222',
+        'productDisplayName': 'string',
+        'productName': 'string',
+        'productStartTime': 'string',
+        'product_status': '2',
+        'totalAmount': 'string',
+        'valueTime': 'string'
+      },
+      {
+        'categoryCode': '11',
+        'investPeriod': 0,
+        'minYieldRate': 'string',
+        'productCode': '222',
+        'productDisplayName': 'string',
+        'productName': 'string',
+        'productStartTime': 'string',
+        'product_status': '2',
+        'totalAmount': 'string',
+        'valueTime': 'string'
+      },
+      {
+        'categoryCode': '11',
+        'investPeriod': 0,
+        'minYieldRate': 'string',
+        'productCode': '222',
+        'productDisplayName': 'string',
+        'productName': 'string',
+        'productStartTime': 'string',
+        'product_status': '2',
+        'totalAmount': 'string',
+        'valueTime': 'string'
+      },
+      {
+        'categoryCode': '11',
+        'investPeriod': 0,
+        'minYieldRate': 'string',
+        'productCode': '222',
+        'productDisplayName': 'string',
+        'productName': 'string',
+        'productStartTime': 'string',
+        'product_status': '2',
+        'totalAmount': 'string',
+        'valueTime': 'string'
+      },
+      {
+        'categoryCode': '11',
+        'investPeriod': 0,
+        'minYieldRate': 'string',
+        'productCode': '222',
+        'productDisplayName': 'string',
+        'productName': 'string',
+        'productStartTime': 'string',
+        'product_status': '2',
+        'totalAmount': 'string',
+        'valueTime': 'string'
+      }
       ],
       'totalPage': 12,
       'totalRecordsCount': 0
@@ -393,17 +393,17 @@ app.use('/jjz/product/productCategoryList', function (req, res) {
   res.json({
     'code': '0000',
     'data': [{
-        'categoryCode': '11',
-        'categoryName': '分类11',
-        'description': 11,
-        'oper': 11
-      },
-      {
-        'categoryCode': '22',
-        'categoryName': '分类22',
-        'description': 22,
-        'oper': 11
-      }
+      'categoryCode': '11',
+      'categoryName': '分类11',
+      'description': 11,
+      'oper': 11
+    },
+    {
+      'categoryCode': '22',
+      'categoryName': '分类22',
+      'description': 22,
+      'oper': 11
+    }
     ],
     'message': 'sorry'
   })
@@ -451,16 +451,16 @@ app.use('/jjz/product/productStatusList', function (req, res) {
   res.json({
     'code': '0000',
     'data': [{
-        'code': '22',
-        'message': '下架'
-      }, {
-        'code': '244',
-        'message': 's架'
-      },
-      {
-        'code': '233',
-        'message': '2222下2架'
-      }
+      'code': '22',
+      'message': '下架'
+    }, {
+      'code': '244',
+      'message': 's架'
+    },
+    {
+      'code': '233',
+      'message': '2222下2架'
+    }
     ],
     'message': 'sorry'
   })

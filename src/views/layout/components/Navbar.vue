@@ -32,20 +32,28 @@
 
 <script>
 import { removeToken } from "@/utils/auth";
+import {mapGetters} from 'vuex';
 export default {
   components: {},
-  computed: {},
+  computed: {
+    ...mapGetters({
+      logged:'token'
+    })
+  },
   data() {
     return {
-      logged: !!this.$store.getters.token,
+      // logged: !!this.$store.getters.token,
       currentRouter: this.$route.path
     };
   },
   methods: {
     //TODO:根据当前路由改变头部菜单颜色
     signOut() {
-      this.$router.push("/index");
-      removeToken();
+      this.$store.dispatch("LogOut").then(() => {
+        this.$router.push("/index");
+      }).catch((e)=>{
+        console.log("signOut:"+e)
+      });
     },
     toggleMuneColor(router) {
       this.currentRouter = router.path;
