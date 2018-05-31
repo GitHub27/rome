@@ -1,12 +1,68 @@
 <template>
-    <div class="rome-warp">
-        <div class="rome">
-            <side-menu></side-menu>
-            <div class="rome-main">
-                <div id="echarts-warp" style="width: 600px;height:400px;"></div>
-            </div>
+  <div class="rome-warp">
+    <div class="rome">
+      <side-menu></side-menu>
+      <div class="rome-main">
+        <h2 class="page-header blpl">我的账户</h2>
+        <div class="rome-amount-warp">
+          <div>
+            <p class="ra-title">
+              当前可用ROME币
+              <i class="icon-tip"></i>
+            </p>
+            <p>
+              <i class="icon-r"></i>
+
+              <span class="rome-num-big">
+                3,012
+              </span>
+              <span class="fs14">
+                兑换现金
+              </span>
+            </p>
+          </div>
+          <div>
+            <p class="ra-title">
+              昨日收益
+              <i class="icon-tip"></i>
+            </p>
+            <p>
+              <i class="icon-r"></i>
+
+              <span class="rome-num-big theme-color">
+                3,012
+              </span>
+            </p>
+          </div>
+          <div>
+            <p class="ra-title">累计ROME币收益
+              <i class="icon-tip"></i>
+            </p>
+            <p>
+              <i class="icon-r"></i>
+              <span class="rome-num-big theme-color">
+                3,012
+              </span>
+            </p>
+          </div>
+          <p class="rome-amount-footer text-r fs14 color333">
+            <span>
+              ROME赠送
+              <i class="rome-num-normal">￥100</i>
+            </span>
+            <span>
+              可用现金
+              <i class="rome-num-big">￥2,188</i>
+            </span>
+            <span>
+              提 现
+            </span>
+          </p>
         </div>
+        <div id="echarts-warp" style="width: 600px;height:400px;"></div>
+      </div>
     </div>
+  </div>
 </template>
 
 <script>
