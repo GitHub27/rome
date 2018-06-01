@@ -30,28 +30,13 @@
                 <router-link to="/myshare">现金管理账户</router-link>
             </li>
             <li class="user-menu">
-                <router-link to="/myshare">我的认证</router-link>
+                <router-link to="/account">我的任务</router-link>
             </li>
             <li class="user-menu">
                 <router-link to="/personal-auth">个人认证</router-link>
             </li>
         </ul>
-        <template v-for="(item,index) in routers">
-            <!-- {{item.name?'1':'2'}} -->
-            <p v-if="!item.hidden&&!item.children" :key="index">
-                <span>
-                    {{item.name?item.name:'--'}}
-                </span>
-            </p>
-            <p v-else-if="item.children" :key="index">
-                <span v-for="(citem,cindex) in item.children" :key="cindex">
-                    <span v-if="citem.name">
-                        {{citem.name}}
-                    </span>
 
-                </span>
-            </p>
-        </template>
     </div>
 </template>
 
@@ -79,3 +64,19 @@ export default {
 
 <style rel="stylesheet/scss" lang="scss" scoped>
 </style>
+
+        <!-- <template v-for="(item,index) in routers" v-show="false">
+            <p v-if="!item.hidden&&!item.children" :key="index">
+                <span>
+                    {{item.name?item.name:'--'}}
+                </span>
+            </p>
+            <p v-else-if="item.children" :key="index">
+                <span v-for="(citem,cindex) in item.children" :key="cindex">
+                    <span v-if="citem.name">
+                        {{citem.name}}
+                    </span>
+
+                </span>
+            </p>
+        </template> -->

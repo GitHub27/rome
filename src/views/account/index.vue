@@ -59,7 +59,9 @@
             </span>
           </p>
         </div>
-        <div id="echarts-warp" style="width: 600px;height:400px;"></div>
+        <div class="echarts-warp">
+          <div id="echarts-warp" style="width: 803px;height:363px;"></div>
+        </div>
       </div>
     </div>
   </div>
@@ -91,6 +93,10 @@ export default {
         nameLocation: "end",
         axisTick: {
           show: false
+        },
+        axisLine: {
+          symbol: ["none", "arrow"],
+          symbolSize: [6, 12]
         }
       },
       tooltip: {
@@ -121,8 +127,7 @@ export default {
           backgroundColor:
             // '#123234',
             {
-              image:
-                "data:image/Png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAAAcCAYAAADRJblSAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAALASURBVFhH5ZY7cuMwDIZ9qa1UuvExdIF0PkB8gsy4cZPRBeLSjSqnywF0gTTpt9yOyxcogARImpJ37NniG49FEI8fIKXN7z9KPTPTNBE4mxyrC9CaSCu4+Ja4Ty/AUu5yBJ5JhP9KAC6vJgEepsCfd7V93aiN4fSuJs4GsVgAcMA5+rdc1QsUTtirC2svIwrAFWn+j+fOB9up4w/dsxxf2MeVWfPgrnPk9jLUCzDt+YBVQlzVZaLPWIE/d96n3MnLB4qtx/4S9gDzXi5GTN0REIsHcqP3rY4nbOf+d+cxSg7ZiV3EvgxGfO6Zs48F4ASpEACdN5SYdTb2c2Ap6dzI4j3I7gVNS5w0mQDwgRskitcqQHDOd3lOKDcFOngyqtEeIc547tXhCyVdnEZPxVvBsKIAtHMxiQBvB5JgWDeJC1Oz/fy2HRyGdI3D2OMcOMoCoGSwQztO+AgYpPFLutarIRpFfkJS+tGNcRJbn/0tuQvcs9IFbQXgzsYMvWSgy2wX0NgFn0k3aVJgxwlgirV22AfEiP3a58z3gW5KyMXHxFQIoBFG0qIDH+EYJAIMSULxMQmxyZR0SedmgUDAq+qDvcP4ToXc22mT6isfAc/0dVAdcayxI48m5PRL/7oEp2lUhzdkG+x5/0TkYciuy1No7qn4tTjfXUFs8KmpF0BUUfosjUDTITFfqMzZDQKgtdxkAkh0UQBY4AvMQ0dz4Tc6KQjvwVNGhcxfnuW4iQA3iYDPbVBa/jLLEeJnC+J8xfE8Pp9cTeY5OQI54wSxWw76xZYXAeJCbF6EkpBu+sRLFj3Da8U7QHIwF9jRLzVM4WYHcknem2YBnOI7W3w2eT0p5u0R3ukPRlEAjpqO1dg8AjfdAbBesjPU2LSwtt8mAbi1W1jih9u7xN9NAqzFmnHAV6u/pjvgHkhFlIorredR6i9nc/ZQiMngsAAAAABJRU5ErkJggg=="
+              image: "" //img
             },
           width: 94,
           height: 46

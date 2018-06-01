@@ -2,7 +2,7 @@
   <div class="resume-list-warp">
     <div class="resume-list-header">
       <h2 class="fl">AI推荐</h2>
-      <span class="fr">更多人才信息 > ></span>
+      <router-link class="fr" to='/share'>更多人才信息 > ></router-link>
     </div>
     <div class="resume-list">
       <el-carousel :interval="5000" arrow="always" :autoplay='false' trigger="click" height="784px">
@@ -11,6 +11,10 @@
           <resume-item></resume-item>
           <resume-item></resume-item>
           <resume-item></resume-item>
+          <resume-item></resume-item>
+
+          <resume-item></resume-item>
+
         </el-carousel-item>
       </el-carousel>
     </div>
