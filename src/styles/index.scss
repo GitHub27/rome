@@ -208,10 +208,31 @@ a:hover {
   color: #f07026 !important;
 }
 
+.fs14 {
+  font-size: 14px;
+}
+
 .fsn {
   font-style: normal;
 }
 
+.text-r {
+  text-align: right;
+}
+
+.color333 {
+  color: #333 !important;
+}
+
+// .icon-r {
+//   display: inline-block;
+//   width: 23px;
+//   height: 32px;
+//   background-image: url(/assets/user/r.png);
+//   background-size: 100% 100%;
+//   background-repeat: no-repeat;
+//   vertical-align: middle;
+// }
 .clearfix {
   &:after {
     visibility: hidden;
