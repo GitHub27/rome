@@ -1,110 +1,71 @@
 <template>
   <div>
-    <p class="scroll-warp" ref="scrollWarp">
-      <span>0</span>
-      <span>1</span>
-      <span>2</span>
-      <span>3</span>
-      <span>4</span>
-      <span>5</span>
-      <span>6</span>
-      <span>7</span>
-      <span>8</span>
-      <span>9</span>
-    </p>
-    <!-- <span v-for="(item,index) in numbersArray" :key="index">
-            {{item}}
-        </span> -->
-    from:{{this.from}}--to:{{this.to}}
+    <transition-group name="list" tag="div">
+      <item v-for="(item,index) in numbers" :from="item.from" :to="item.to" :key="index"></item>
+    </transition-group>
+    <ul>
+      <li v-for="(item,index) in ['a','b','c']" :key="index">
+        {{index}},{{item}}
+      </li>
+    </ul>
   </div>
 </template>
 
 <script>
+import item from "./item.vue";
+
 export default {
   name: "ScrollNumber",
   props: {
-    numbers: {
+    original: {
       required: true,
-      default: "0000",
-      type: [String, Number]
+      default: "0"
+      // type: ["Number", "String"]
+    },
+    current: {
+      required: true,
+      default: "0"
+      // type: ["Number", "String"]
     }
   },
-  components: {},
+  components: {
+    item
+  },
   data() {
-    return {
-      from: 1,
-      to: 0
-    };
+    return {};
   },
   watch: {},
   computed: {
-    // numbersArray() {
-    //   return (this.numbers + "").split("");
-    // }
-  },
-  methods: {
-    scroll(totalRange) {
-      let scrollRange = 0;
-      let _interval = setInterval(() => {
-        let scrollWarp = this.$refs.scrollWarp;
-        let scrollTop = scrollWarp.scrollTop;
-        let scrollItemHeight = scrollWarp.clientHeight;
-        let scrollHeight = scrollItemHeight * 9;
-        console.log(
-          scrollWarp.scrollTop,
-          scrollHeight,
-          scrollRange,
-          totalRange
-        );
-        if (scrollWarp.scrollTop == scrollHeight) {
-          scrollWarp.scrollTop = 0;
-        } else {
-          scrollWarp.scrollTop++;
-        }
-        scrollRange++;
-        if (scrollRange >= totalRange) {
-          clearInterval(_interval);
-        }
-      }, 10);
+    numbers: function() {
+      var _current = this.current;
+      var _original = this.original;
+      var _currArray = (_current + "").split("");
+      var _oriArray = (_original + "").split("");
+      var _from = 0;
+      var numberArray = _currArray.map((item, index) => {
+        _from = _oriArray[index] ? _oriArray[index] : 0;
+        return { to: Number(item), from: Number(_from) };
+      });
+      let _numberArray = JSON.stringify(numberArray);
+      return JSON.parse(_numberArray);
     }
   },
+  methods: {},
   created() {},
-  mounted() {
-    let scrollWarp = this.$refs.scrollWarp;
-    let scrollTop = scrollWarp.scrollTop;
-    let scrollItemHeight = scrollWarp.clientHeight;
-    let scrollHeight = scrollItemHeight * 9;
-    //转换
-
-    //显示默认位置
-    scrollWarp.scrollTop = scrollItemHeight * this.from;
-    //差值
-    let diff = this.to - this.from;
-    let totalRange = 0;
-    if (diff < 0) {
-      totalRange = (9 - this.from + this.to + 1) * scrollItemHeight;
-    } else {
-      totalRange = diff * scrollItemHeight;
-    }
-    this.scroll(totalRange);
-  },
+  mounted() {},
   destroyed() {}
 };
 </script>
 
-<style rel="stylesheet/scss" lang="scss" scoped>
-.scroll-warp {
-  display: inline-block;
-  width: 50px;
-  height: 30px;
-  overflow: hidden;
-  span {
-    display: inline-block;
-    width: 100%;
-    height: 30px;
-    line-height: 30px;
-    text-align: center;
-    background-color: #e5e5e5;
-  }
+<style rel="stylesheet/scss" lang="scss">
+/*for*/
+.list-enter-active,
+.list-leave-active {
+  transition: all 1s;
+}
+.list-enter,
+.list-leave-to {
+  opacity: 0;
+  transform: translateY(30px);
 }
 </style>

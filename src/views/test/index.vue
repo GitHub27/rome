@@ -2,12 +2,14 @@
   <div>
     <div id="echarts-warp" style="width: 600px;height:400px;"></div>
     <br/>
-    <div>
-      <scroll-number :numbers="number">
-      </scroll-number>
+    <div class="scroll-warp">
+      <scroll-number :original="original" :current="current"></scroll-number>
     </div>
-  </div>
+    {{current}}
+    <input type="button" value='add' @click="add">
+    <input type="button" value='remove' @click="remove">
 
+  </div>
 </template>
 
 <script>
@@ -16,7 +18,8 @@ import ScrollNumber from "@/components/ScrollNumber/index";
 export default {
   data() {
     return {
-      number: ""
+      original: "1234",
+      current: 987
     };
   },
   components: {
@@ -89,8 +92,19 @@ export default {
     setTimeout(() => {
       //this.number = "1234560";
     }, 1000);
+  },
+  methods: {
+    add() {
+      this.current = Number(this.current) + 1;
+      //修改滚动起始值
+      setTimeout(() => {
+        this.original = this.current;
+      }, 10);
+    },
+    remove() {
+      this.current = Number(this.current) - 1;
+    }
   }
-  //   destroyed() {}
 };
 </script>
 
