@@ -284,3 +284,51 @@ $maincolor:#f07026;
   width: 933px;
   margin-top: 7px;
 }
+
+//我的分享
+.search-condition {
+  background-color: #fff;
+  margin: 10px 0 30px;
+  padding: 10px 0px;
+  li {
+    height: 70px;
+    line-height: 70px;
+    padding: 0 20px;
+    border-bottom: 1px solid #eee;
+    h3 {
+      font-size: 16px;
+      color: #333; // font-weight: normal;
+      display: inline-block;
+      margin-right: 20px;
+    }
+    .con-item {
+      display: inline-block;
+      font-size: 16px;
+      color: #666;
+      height: 33px;
+      line-height: 33px;
+      .con-item-title {
+        margin-left: 97px;
+      }
+      span {
+        cursor: pointer;
+        display: inline-block;
+        text-align: center;
+        height: 33px;
+        line-height: 33px;
+        padding: 0 10px;
+        border-radius: 2px;
+        margin-right: 14px;
+        &.active {
+          background-color: #f07026;
+          color: #fff;
+        }
+      }
+      input {
+        width: 333px;
+        height: 43px;
+        padding-left: 12px;
+      }
+    }
+  }
+}

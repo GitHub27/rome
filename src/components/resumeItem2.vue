@@ -65,6 +65,7 @@ export default {
   cursor: default;
   margin-bottom: 0px;
   float: none;
+  border-radius: 0;
   &:hover {
     .visit {
       display: none;

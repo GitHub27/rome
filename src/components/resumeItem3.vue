@@ -41,6 +41,7 @@
     <div class="visit">
     </div>
     <p class="visit-date">访问时间：2018-05-10 09：00</p>
+    <p class="recom"></p>
   </div>
 </template>
 
@@ -66,6 +67,7 @@ export default {
   cursor: default;
   margin-bottom: 0px;
   float: none;
+  border-radius: 0;
   &:hover {
     .visit {
       display: none;
@@ -128,6 +130,14 @@ export default {
     h1 {
       display: inline-block;
     }
+  }
+  .recom {
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: #f07026;
+    width: 60px;
+    height: 20px;
   }
 }
 </style>
