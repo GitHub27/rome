@@ -22,127 +22,139 @@ import Layout from '../views/layout/Layout'
   }
  **/
 export const constantRouterMap = [{
-    path: '/',
-    component: Layout,
-    redirect: '/account'
-  },
+  path: '/',
+  component: Layout,
+  redirect: '/account'
+},
 
-  {
-    path: '/login',
-    component: Layout,
-    children: [{
-      path: '',
-      name: '登录',
-      hidden: false,
-      component: () =>
-        import ('@/views/index/index'),
-      hidden: true
-    }]
-  },
-  {
-    path: '/404',
+{
+  path: '/login',
+  component: Layout,
+  children: [{
+    path: '',
+    name: '登录',
+    hidden: false,
     component: () =>
-      import ('@/views/404'),
+      import('@/views/index/index'),
     hidden: true
-  },
-  {
-    path: '/index',
-    component: Layout,
-    children: [{
-      path: '',
-      name: '首页',
-      hidden: false,
-      component: () =>
-        import ('@/views/index/index'),
-      hidden: true
-    }]
-  },
-  {
-    path: '/404',
+  }]
+},
+{
+  path: '/404',
+  component: () =>
+    import('@/views/404'),
+  hidden: true
+},
+{
+  path: '/index',
+  component: Layout,
+  children: [{
+    path: '',
+    name: '首页',
+    hidden: false,
     component: () =>
-      import ('@/views/404'),
+      import('@/views/index/index'),
     hidden: true
-  },
-  {
-    path: '/myvisit',
-    component: Layout,
-    children: [{
-      path: '',
-      name: '我的访问',
-      hidden: true,
-      component: () =>
-        import ('@/views/myVisit/index'),
-
-    }]
-  },
-  {
-    path: '/myshare',
-    component: Layout,
-    children: [{
-      path: '',
-      name: '我的共享',
-      hidden: true,
-      component: () =>
-        import ('@/views/myShare/index'),
-    }]
-  },
-  {
-    path: '/task',
-    component: Layout,
-    children: [{
-      path: '',
-      name: '我的任务',
-      hidden: true,
-      component: () =>
-        import ('@/views/task/index'),
-    }]
-  },
-  {
-    path: '/share',
-    component: Layout,
-    children: [{
-      path: '',
-      name: '共享人才信息',
-      hidden: true,
-      component: () =>
-        import ('@/views/share/index'),
-    }]
-  },
-  {
-    path: '/testpage',
+  }]
+},
+{
+  path: '/404',
+  component: () =>
+    import('@/views/404'),
+  hidden: true
+},
+{
+  path: '/myvisit',
+  component: Layout,
+  children: [{
+    path: '',
+    name: '我的访问',
+    hidden: true,
     component: () =>
-      import ('@/views/test/index'),
-    // children: [{
-    //   path: '',
-    //   name: '测试页面',
-    //   hidden: true,
-    //   component: () =>
-    //     import('@/views/test/index'),
-    // }]
-  },
-  {
-    path: '/personal-auth',
-    component: Layout,
-    children: [{
-      path: '',
-      name: '个人认证',
-      hidden: true,
-      component: () =>
-        import ('@/views/personalAuth/index'),
+      import('@/views/myVisit/index'),
 
-    }]
-  },
-  {
-    path: '/account',
-    component: Layout,
-    children: [{
-      path: '',
-      name: '我的账户',
-      hidden: true,
-      component: () =>
-        import ('@/views/account/index'),
-    }]
-  },
+  }]
+},
+{
+  path: '/myshare',
+  component: Layout,
+  children: [{
+    path: '',
+    name: '我的共享',
+    hidden: true,
+    component: () =>
+      import('@/views/myShare/index'),
+  }]
+},
+{
+  path: '/task',
+  component: Layout,
+  children: [{
+    path: '',
+    name: '我的任务',
+    hidden: true,
+    component: () =>
+      import('@/views/task/index'),
+  }]
+},
+{
+  path: '/share',
+  component: Layout,
+  children: [{
+    path: '',
+    name: '共享人才信息',
+    hidden: true,
+    component: () =>
+      import('@/views/share/index'),
+  }]
+},
+{
+  path: '/testpage',
+  component: () =>
+    import('@/views/test/index'),
+  // children: [{
+  //   path: '',
+  //   name: '测试页面',
+  //   hidden: true,
+  //   component: () =>
+  //     import('@/views/test/index'),
+  // }]
+},
+{
+  path: '/personal-auth',
+  component: Layout,
+  children: [{
+    path: '',
+    name: '个人认证',
+    hidden: true,
+    component: () =>
+      import('@/views/personalAuth/index'),
+
+  }]
+},
+{
+  path: '/management-password',
+  component: Layout,
+  children: [{
+    path: '',
+    name: '密码管理',
+    hidden: true,
+    component: () =>
+      import('@/views/password/index'),
+
+  }]
+},
+{
+  path: '/account',
+  component: Layout,
+  children: [{
+    path: '',
+    name: '我的账户',
+    hidden: true,
+    component: () =>
+      import('@/views/account/index'),
+  }]
+},
 ]
 
 export default new Router({

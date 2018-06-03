@@ -45,6 +45,9 @@
               </span>
             </p>
           </div>
+
+        </div>
+        <div class="withdraw-warp">
           <p class="rome-amount-footer text-r fs14 color333">
             <span>
               ROME赠送

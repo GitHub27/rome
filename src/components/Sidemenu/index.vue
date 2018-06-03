@@ -35,6 +35,9 @@
             <li class="user-menu">
                 <router-link to="/personal-auth">个人认证</router-link>
             </li>
+            <li class="user-menu">
+                <router-link to="/management-password">密码管理</router-link>
+            </li>
         </ul>
 
     </div>
