@@ -26,7 +26,7 @@ $maincolor:#f07026;
   }
 }
 
-.icon-alipay{
+.icon-alipay {
   display: inline-block;
   width: 118px;
   height: 50px;
@@ -36,7 +36,7 @@ $maincolor:#f07026;
   vertical-align: middle;
 }
 
-.icon-wechatpay{
+.icon-wechatpay {
   display: inline-block;
   width: 118px;
   height: 50px;
@@ -46,7 +46,7 @@ $maincolor:#f07026;
   vertical-align: middle;
 }
 
-.icon-bankpay{
+.icon-bankpay {
   display: inline-block;
   width: 118px;
   height: 50px;
@@ -262,7 +262,8 @@ $maincolor:#f07026;
 }
 
 //我的账户
-.rome-amount-warp,.withdraw-warp {
+.rome-amount-warp,
+.withdraw-warp {
   width: 100%;
   background-color: #fff;
   padding: 20px 30px 20px 100px;
@@ -305,11 +306,11 @@ $maincolor:#f07026;
     }
   }
 }
-.withdraw-warp{
+
+.withdraw-warp {
   background-color: transparent;
   margin-top: 0;
   padding: 25px 30px 30px 100px;
-
 }
 
 //我的账户
@@ -367,6 +368,7 @@ $maincolor:#f07026;
     }
   }
 }
+
 //个人认证
 .auth-progress {
   width: 100%;
@@ -414,6 +416,7 @@ $maincolor:#f07026;
     }
   }
 }
+
 .auth-main {
   background-color: #fff;
   margin-top: 8px;
@@ -433,7 +436,7 @@ $maincolor:#f07026;
         line-height: 40px;
         text-align: right;
       }
-      &.auth-title{
+      &.auth-title {
         font-size: 16px;
         color: #333;
         margin-left: 66px;
@@ -445,19 +448,19 @@ $maincolor:#f07026;
         height: 40px;
         line-height: 40px;
       }
-      .input-tip{
+      .input-tip {
         display: inline-block;
         height: 38px;
         line-height: 38px;
         color: #999;
-        font-size:14px;
+        font-size: 14px;
         margin-left: 9px;
       }
-      &.imgyzm{
-        .captcha-input{
+      &.imgyzm {
+        .captcha-input {
           width: 114px;
         }
-        img{
+        img {
           float: right;
           height: 40px;
           line-height: 40px;
@@ -465,7 +468,7 @@ $maincolor:#f07026;
           width: 90px;
         }
       }
-      .important-tip{
+      .important-tip {
         display: inline-block;
         color: #E83902;
         font-size: 12px;
@@ -476,7 +479,8 @@ $maincolor:#f07026;
     }
     .idcard-upload {
       height: 163px;
-      label,img {
+      label,
+      img {
         display: inline-block;
         width: 212px;
         height: 163px;
@@ -494,11 +498,10 @@ $maincolor:#f07026;
         cursor: pointer;
       }
     }
-    .choose-paytype{
+    .choose-paytype {
       height: 80px;
-
     }
-    .pay-item{
+    .pay-item {
       width: 122px;
       text-align: center;
       font-size: 14px;
@@ -506,31 +509,61 @@ $maincolor:#f07026;
       display: block;
       float: left;
       margin-right: 6px;
-      .paytype{
+      .paytype {
         border: 1px solid #ddd;
         margin-bottom: 8px;
       }
     }
-    .default-userinfo{
+    .default-userinfo {
       position: absolute;
-      top:0;
-      right: 0;
+      top: 30px;
+      right: 280px;
       text-align: right;
+      width: 94px;
+      height: 95px;
+      z-index: 1;
+      p {
+        position: relative;
+        img {
+          width: 94px;
+          height: 70px;
+        }
+        .useit {
+          bottom: -25px;
+          background-color: #fff;
+          color: #f07026;
+        }
+        span {
+          position: absolute;
+          text-align: center;
+          bottom: 2px;
+          right: 0;
+          left: 0;
+          text-align: center;
+          padding: 3px;
+          width: 94px;
+          display: block;
+          z-index: 2;
+          background-color: #333;
+          opacity: 0.8;
+          color: #fff;
+          font-size: 12px;
+        }
+      }
     }
   }
-  .progress-result{
+  .progress-result {
     font-size: 20px;
     color: #333;
     text-align: center;
     margin-top: 202px;
   }
-    .progress-result-tip{
+  .progress-result-tip {
     font-size: 14px;
     color: #f07026;
     text-align: center;
     margin-top: 21px;
   }
-  
   .auth-submit {
     text-align: center;
     .el-button--primary {
@@ -542,50 +575,66 @@ $maincolor:#f07026;
       border-radius: 0;
     }
   }
-  .password-submit{
+  .password-submit {
     margin-top: 47px;
   }
 }
-  .auth-main0{
-    .auth-submit {
-      .el-button--primary {
-      margin-left: -120px;
-      }
-    }
-  }
-  .auth-main2,.auth-main1{
-    .auth-submit {
-      margin-top: 50px;
-    }
-  }
 
-  //提现
-  .withdraw-header{
-    background-color: #fff;
-    height: 56px;
-    line-height: 56px;
-    margin-bottom: 8px;
-    padding: 20px 0 0 40px;
-    p{
-      font-size: 16px;
-      color: #333;
-      margin-right: 60px;
-    }
-    span{
-      color: #f07026;
+.auth-main0 {
+  .auth-submit {
+    .el-button--primary {
+      margin-left: -120px;
     }
   }
-  .withdraw-footer{
-    margin-top: 9px;
-    padding: 20px 40px;
-    background-color: #fff;
-    h4{
-      font-size: 12px;
-      color: #333;
-    }
-    p{
-      margin-top: 10px;
-      font-size: 12px;
-      color: #999;      
-    }
+}
+
+.auth-main2,
+.auth-main1 {
+  .auth-submit {
+    margin-top: 50px;
   }
+} //提现
+.withdraw-header {
+  background-color: #fff;
+  height: 56px;
+  line-height: 56px;
+  margin-bottom: 8px;
+  padding: 20px 0 0 40px;
+  p {
+    font-size: 16px;
+    color: #333;
+    margin-right: 60px;
+  }
+  span {
+    color: #f07026;
+  }
+}
+
+.withdraw-footer {
+  margin-top: 9px;
+  padding: 20px 40px;
+  background-color: #fff;
+  h4 {
+    font-size: 12px;
+    color: #333;
+  }
+  p {
+    margin-top: 10px;
+    font-size: 12px;
+    color: #999;
+  }
+}
+
+.withdraw0 {
+  min-height: 516px;
+}
+
+.withdraw1 {
+  min-height: 503px;
+  .el-form-item::before,
+  .el-form-item::after,
+  .el-form-item__content::after,
+  .el-form-item__content::before {
+    display: none;
+  }
+}

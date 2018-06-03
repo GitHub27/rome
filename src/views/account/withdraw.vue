@@ -14,18 +14,23 @@
                         <span>￥2,188</span>
                     </p>
                 </div>
-                <div v-if='withdrawProgress==0' class="auth-main auth-main0">
+                <div v-if='withdrawProgress==0' class="auth-main withdraw0">
                     <p class="progress-result">您还未完成
                         <span class="theme-color">个人认证</span>，请先完成认证，再设置交易密码</p>
                     <p class="progress-result-tip cursor-p">
                         <router-link to="/personal-auth">马上认证 >></router-link>
                     </p>
                 </div>
-                <div v-if='withdrawProgress==1' class="auth-main auth-main0">
+                <div v-if='withdrawProgress==1' class="auth-main withdraw1">
                     <el-form autoComplete="on" :model="authForm" :rules="authRules" ref="authForm" label-position="left" label-width="0px" class="">
                         <ul>
                             <li class="default-userinfo">
-                                123213
+                                <p>
+                                    <img src="../../assets/user/idcard.png" alt="">
+                                    <span>已认证</span>
+                                    <span class="useit">使用</span>
+                                </p>
+
                             </li>
                             <li class="auth-title">
                                 添加收款账户：
@@ -147,7 +152,7 @@ export default {
         idcard: [{ required: true, trigger: "blur", validator: validateIdcard }]
       },
       withdrawProgress: 1,
-      payType: 0, //0：未完成“个人认证”,1:设置交易密码，2：修改交易密码
+      payType: 1, //0：未完成“个人认证”,1:设置交易密码，2：修改交易密码
       idcardBase64: "",
       captchaUrl: "",
       loading: false
