@@ -117,7 +117,7 @@ export default {
         ],
         idcard: [{ required: true, trigger: "blur", validator: validateIdcard }]
       },
-      auth_progress: 0,
+      auth_progress: 0, //0:基本信息认证，1：审核资料,2:审核结果
       idcardBase64: "",
       loading: false
     };

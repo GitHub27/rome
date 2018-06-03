@@ -9,7 +9,7 @@ import {
   getToken
 } from '@/utils/auth' // 验权
 
-const whiteList = ['/login', '/index', '/myvisit', '/personal-auth', '/myshare', '/task', '/account', '/testpage', '/share', '/management-password'] // 不重定向白名单
+const whiteList = ['/login', '/index', '/myvisit', '/personal-auth', '/myshare', '/task', '/account', '/account/withdraw', '/testpage', '/share', '/management-password'] // 不重定向白名单
 
 
 

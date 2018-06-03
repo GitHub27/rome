@@ -26,6 +26,36 @@ $maincolor:#f07026;
   }
 }
 
+.icon-alipay{
+  display: inline-block;
+  width: 118px;
+  height: 50px;
+  background-image: url('../../assets/user/alipay.png');
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  vertical-align: middle;
+}
+
+.icon-wechatpay{
+  display: inline-block;
+  width: 118px;
+  height: 50px;
+  background-image: url('../../assets/user/wechatpay.png');
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  vertical-align: middle;
+}
+
+.icon-bankpay{
+  display: inline-block;
+  width: 118px;
+  height: 50px;
+  background-image: url('../../assets/user/bankpay.png');
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  vertical-align: middle;
+}
+
 .search-main {
   background-color: #fff;
   height: 46px;
@@ -390,6 +420,7 @@ $maincolor:#f07026;
   padding-top: 41px;
   min-height: 596px;
   ul {
+    position: relative;
     li {
       width: 100%;
       overflow: hidden;
@@ -402,12 +433,19 @@ $maincolor:#f07026;
         line-height: 40px;
         text-align: right;
       }
+      &.auth-title{
+        font-size: 16px;
+        color: #333;
+        margin-left: 66px;
+        font-weight: 600;
+        height: 30px;
+      }
       .auth-text {
         min-width: 212px;
         height: 40px;
         line-height: 40px;
       }
-      .forget-pwd{
+      .input-tip{
         display: inline-block;
         height: 38px;
         line-height: 38px;
@@ -456,14 +494,35 @@ $maincolor:#f07026;
         cursor: pointer;
       }
     }
-    // .limit-tip {
-    //   margin-top: 37px;
-    // }
+    .choose-paytype{
+      height: 80px;
+
+    }
+    .pay-item{
+      width: 122px;
+      text-align: center;
+      font-size: 14px;
+      color: #333;
+      display: block;
+      float: left;
+      margin-right: 6px;
+      .paytype{
+        border: 1px solid #ddd;
+        margin-bottom: 8px;
+      }
+    }
+    .default-userinfo{
+      position: absolute;
+      top:0;
+      right: 0;
+      text-align: right;
+    }
   }
   .progress-result{
     font-size: 20px;
     color: #333;
     text-align: center;
+    margin-top: 202px;
   }
     .progress-result-tip{
     font-size: 14px;
@@ -495,8 +554,38 @@ $maincolor:#f07026;
     }
   }
   .auth-main2,.auth-main1{
-    padding-top: 202px;
     .auth-submit {
       margin-top: 50px;
+    }
+  }
+
+  //提现
+  .withdraw-header{
+    background-color: #fff;
+    height: 56px;
+    line-height: 56px;
+    margin-bottom: 8px;
+    padding: 20px 0 0 40px;
+    p{
+      font-size: 16px;
+      color: #333;
+      margin-right: 60px;
+    }
+    span{
+      color: #f07026;
+    }
+  }
+  .withdraw-footer{
+    margin-top: 9px;
+    padding: 20px 40px;
+    background-color: #fff;
+    h4{
+      font-size: 12px;
+      color: #333;
+    }
+    p{
+      margin-top: 10px;
+      font-size: 12px;
+      color: #999;      
     }
   }

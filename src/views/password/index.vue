@@ -23,7 +23,7 @@
                                     </el-form-item>
 
                                 </div>
-                                <router-link to='/' class="forget-pwd">忘记登录密码？</router-link>
+                                <router-link to='/' class="input-tip">忘记登录密码？</router-link>
                             </li>
                             <li class="idcard">
                                 <div class="fl auth-label ">
@@ -56,9 +56,16 @@
                     </el-form>
                 </div>
                 <div v-if='passwordType==1' class="auth-main auth-main0">
-                    <el-form autoComplete="on" :model="authForm" :rules="authRules" ref="authForm" label-position="left" label-width="0px" class="">
+                    <template v-if="payType==0">
+                        <p class="progress-result">您还未完成
+                            <span class="theme-color">个人认证</span>，请先完成认证，再设置交易密码</p>
+                        <p class="progress-result-tip cursor-p">
+                            <router-link to="/personal-auth">马上认证 >></router-link>
+                        </p>
+                    </template>
+                    <el-form v-else autoComplete="on" :model="authForm" :rules="authRules" ref="authForm" label-position="left" label-width="0px" class="">
                         <ul>
-                            <li :class="{'display-none':payType!=0}">
+                            <li :class="{'display-none':payType!=1}">
                                 <div class="fl auth-label">
                                     <span class="theme-color">* </span>当前交易密码：
                                 </div>
@@ -68,11 +75,11 @@
                                     </el-form-item>
 
                                 </div>
-                                <router-link to='/' class="forget-pwd">忘记交易密码？</router-link>
+                                <router-link to='/' class="input-tip">忘记交易密码？</router-link>
                             </li>
                             <li class="idcard">
                                 <div class="fl auth-label ">
-                                    <span class="theme-color">* </span>{{payType==0?'新交易密码：':'设置交易密码：'}}
+                                    <span class="theme-color">* </span>{{payType==1?'新交易密码：':'设置交易密码：'}}
                                 </div>
                                 <div class="fl auth-text">
                                     <el-form-item prop="idcard">
@@ -152,7 +159,7 @@ export default {
         idcard: [{ required: true, trigger: "blur", validator: validateIdcard }]
       },
       passwordType: 1,
-      payType: 0,
+      payType: 1, //0：未完成“个人认证”,1:设置交易密码，2：修改交易密码
       idcardBase64: "",
       captchaUrl: "",
       loading: false

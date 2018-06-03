@@ -58,7 +58,8 @@
               <i class="rome-num-big">￥2,188</i>
             </span>
             <span>
-              提 现
+              <router-link to="/account/withdraw">提 现</router-link>
+
             </span>
           </p>
         </div>

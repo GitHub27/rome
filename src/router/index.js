@@ -153,7 +153,14 @@ export const constantRouterMap = [{
     hidden: true,
     component: () =>
       import('@/views/account/index'),
-  }]
+  }, {
+    path: 'withdraw',
+    name: '我的账户',
+    hidden: true,
+    component: () =>
+      import('@/views/account/withdraw'),
+  }
+  ]
 },
 ]
 
