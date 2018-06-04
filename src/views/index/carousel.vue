@@ -1,5 +1,5 @@
 <template>
-  <el-carousel :interval="10000" arrow="hover">
+  <el-carousel :interval="10000" arrow="always">
     <el-carousel-item v-for="(item,index) in listFilter" :key="index">
       <a :href='item.link'>
         <img :src="item.img" alt="">
@@ -45,6 +45,7 @@ export default {
 .el-carousel {
   float: left;
   display: block;
+  overflow: hidden;
 }
 .el-carousel__container {
   width: 783px;
