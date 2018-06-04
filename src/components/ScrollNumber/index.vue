@@ -1,14 +1,8 @@
 <template>
-  <div>
-    <transition-group name="list" tag="div">
-      <item v-for="(item,index) in numbers" :from="item.from" :to="item.to" :key="index"></item>
-    </transition-group>
-    <ul>
-      <li v-for="(item,index) in ['a','b','c']" :key="index">
-        {{index}},{{item}}
-      </li>
-    </ul>
-  </div>
+  <transition-group name="list" tag="div">
+    <item v-for="(item,index) in numbers" :from="item.from" :to="item.to" :key="index"></item>
+  </transition-group>
+
 </template>
 
 <script>

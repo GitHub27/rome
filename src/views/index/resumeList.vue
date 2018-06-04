@@ -5,16 +5,14 @@
       <router-link class="fr" to='/share'>更多人才信息 > ></router-link>
     </div>
     <div class="resume-list">
-      <el-carousel :interval="5000" arrow="always" :autoplay='false' trigger="click" height="784px">
+      <el-carousel :interval="5000" arrow="never" :autoplay='false' trigger="click" height="784px">
         <el-carousel-item v-for="(item,index) in 4" :key="index">
           <resume-item></resume-item>
           <resume-item></resume-item>
           <resume-item></resume-item>
           <resume-item></resume-item>
           <resume-item></resume-item>
-
           <resume-item></resume-item>
-
         </el-carousel-item>
       </el-carousel>
     </div>

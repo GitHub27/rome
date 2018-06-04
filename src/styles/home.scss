@@ -407,6 +407,8 @@
       width: 100%;
       padding: 0 125px 0 40px;
       border: 1px solid $maincolor;
+      font-size: 18px;
+      line-height: 100%;
     }
     .search-btn {
       position: absolute;
@@ -459,7 +461,24 @@
     .el-carousel__container {
       width: 1201px;
       overflow: hidden;
-      height: 500px;
+      height: 702px !important;
+    }
+    .el-carousel__indicators {
+      background-color: #C4C4C4;
+      border-radius: 10px;
+      height: 22px;
+      line-height: 22px;
+      padding: 0 30px;
+      margin-bottom: 10px;
+    }
+    .el-carousel__indicator {
+      padding: 0 4px;
+    }
+    .el-carousel__button {
+      opacity: 1;
+    }
+    .el-carousel__indicator.is-active button {
+      background-color: #f07026;
     }
   }
 }

@@ -162,11 +162,11 @@ export default {
     return {
       carousel_list: [
         {
-          img: "../static/banner1.jpg",
+          img: "../static/banner2.jpg",
           link: "/#/product"
         },
         {
-          img: "../static/banner2.jpg",
+          img: "../static/banner1.jpg",
           link: "/demo.html"
         }
       ]

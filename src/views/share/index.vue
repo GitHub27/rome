@@ -3,15 +3,13 @@
     <div class="rome">
       <!-- <side-menu></side-menu> -->
       <div class="rome-main ml0">
-        <h2 class="page-header blpl">xxxxxxxxxxxx</h2>
         <div class="search-warp">
-          <div class="search-main">
-            <span class="svg-container ">
-              <svg-icon icon-class="search" class="svg-container-search" />
-            </span>
-            <input class="search-word" type="text" placeholder='姓名/公司/职位'>
-            <input class="search-btn btn" type="button" value='搜索'>
+          <div class="scroll-number-warp">
+            <span class="scroll-number-title">今日网站累计共享次数</span>
+            <!-- TODO:滚动数字背景颜色需要改成颜色渐变！！！！！！！！ -->
+            <scroll-number class="scroll-number" :original="original" :current="current"></scroll-number>
           </div>
+          <search class="fr"></search>
         </div>
         <ul class="search-condition">
           <li>
@@ -91,10 +89,15 @@
 import resumeItem3 from "@/components/resumeItem3";
 import SideMenu from "@/components/Sidemenu/index";
 
+import ScrollNumber from "@/components/ScrollNumber/index";
+import search from "../index/search"; //TODO:提取到公共组件文件夹
+
 export default {
   components: {
     resumeItem3,
-    SideMenu
+    SideMenu,
+    ScrollNumber,
+    search
   },
   data() {
     return {
@@ -103,8 +106,17 @@ export default {
       date: 0,
       record: 0,
       salary: 0,
-      year: 0
+      year: 0,
+      searchType: "job",
+      searchWord: "",
+      original: "0000",
+      current: 79874
     };
+  },
+  created() {
+    this.$route.query.searchType &&
+      (this.searchType = this.$route.query.searchType);
+    this.searchWord = this.$route.query.searchWord;
   },
   methods: {
     handleSizeChange(val) {

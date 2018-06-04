@@ -28,7 +28,7 @@
                                 <p>
                                     <img src="../../assets/user/idcard.png" alt="">
                                     <span>已认证</span>
-                                    <span class="useit">使用</span>
+                                    <span class="useit cursor-p">使用</span>
                                 </p>
 
                             </li>
@@ -61,15 +61,15 @@
                                 </div>
                                 <div class="fl auth-text">
                                     <div class="pay-item">
-                                        <p class="icon-alipay paytype"></p>
+                                        <p class="icon-alipay paytype" :class="{'active':payType===0}" @click="togglePayType(0)"></p>
                                         <p>支付宝</p>
                                     </div>
                                     <div class="pay-item">
-                                        <p class="icon-wechatpay paytype"></p>
+                                        <p class="icon-wechatpay paytype" :class="{'active':payType===1}" @click="togglePayType(1)"></p>
                                         <p>微信</p>
                                     </div>
                                     <div class="pay-item">
-                                        <p class="icon-bankpay paytype"></p>
+                                        <p class="icon-bankpay paytype" :class="{'active':payType===2}" @click="togglePayType(2)"></p>
                                         <p>银行卡</p>
                                     </div>
                                 </div>
@@ -152,7 +152,7 @@ export default {
         idcard: [{ required: true, trigger: "blur", validator: validateIdcard }]
       },
       withdrawProgress: 1,
-      payType: 1, //0：未完成“个人认证”,1:设置交易密码，2：修改交易密码
+      payType: 0, //0：支付宝 1：微信 2：银行
       idcardBase64: "",
       captchaUrl: "",
       loading: false
@@ -160,7 +160,11 @@ export default {
   },
   watch: {},
   computed: {},
-  methods: {},
+  methods: {
+    togglePayType(type) {
+      this.payType = type;
+    }
+  },
   created() {
     captcha()
       .then(({ data }) => {

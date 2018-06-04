@@ -1,5 +1,5 @@
 <template>
-  <el-carousel :interval="10000" arrow="always">
+  <el-carousel :interval="10000" arrow="hover">
     <el-carousel-item v-for="(item,index) in listFilter" :key="index">
       <a :href='item.link'>
         <img :src="item.img" alt="">
