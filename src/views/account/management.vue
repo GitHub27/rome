@@ -4,16 +4,6 @@
       <side-menu activeMenu='accountManagement'></side-menu>
       <div class="rome-main">
         <h2 class="page-header blpl">现金账户管理</h2>
-        <div class="withdraw-header">
-          <p class="fl">
-            账户总现金：
-            <span>￥2,188</span>
-          </p>
-          <p class="fl">
-            可提现金额：
-            <span>￥2,188</span>
-          </p>
-        </div>
         <div v-if='withdrawProgress==0' class="auth-main withdraw0">
           <p class="progress-result">您还未完成
             <span class="theme-color">个人认证</span>，请先完成认证，再设置交易密码</p>
@@ -96,6 +86,15 @@
                 </div>
                 <span class="input-tip">若选择支付宝或微信零钱时，则不必填写。</span>
               </li>
+              <li class="idcard">
+                <div class="fl auth-label">
+
+                </div>
+                <div class="fl auth-text">
+                  <span class="checkbox" :class="{'ivcheckbox':addASdefault}" checkbox="" @click="toggleCheckbox"></span>
+                  <span class="ivyd" @click="toggleCheckbox">设为默认收款账户</span>
+                </div>
+              </li>
             </ul>
 
             <el-form-item class="auth-submit password-submit">
@@ -105,11 +104,75 @@
             </el-form-item>
           </el-form>
         </div>
-        <div class="withdraw-footer">
-          <h4>提现规则：</h4>
-          <p>1. ROME平台奖励的现金只可以消费，不可以提现，可提现的现金全部来自您的分享收益。 </p>
-          <p>2. 提现金额最低为1元且必须为整数。</p>
-          <p>3. 每日最多可提现2次。</p>
+        <div class="account-list">
+          <div class="account-list-item account-list-title">
+            <p class="account-cell">
+              收款人
+            </p>
+            <p class="account-cell">
+              收款方式
+            </p>
+            <p class="account-cell">
+              收款账号
+            </p>
+            <p class="account-cell">
+              操作
+            </p>
+            <p class="account-cell">
+              &nbsp;
+            </p>
+          </div>
+          <div class="account-list-item">
+            <p class="account-cell">
+              张胜利
+            </p>
+            <p class="account-cell">
+              支付宝
+            </p>
+            <p class="account-cell">
+              18916247913
+            </p>
+            <p class="account-cell">
+              <span>删除</span>
+            </p>
+            <p class="account-cell default-account">
+              <span>默认收款账户</span>
+            </p>
+          </div>
+          <div class="account-list-item">
+            <p class="account-cell">
+              张胜利
+            </p>
+            <p class="account-cell">
+              支付宝
+            </p>
+            <p class="account-cell">
+              18916247913
+            </p>
+            <p class="account-cell">
+              <span>删除</span>
+            </p>
+            <p class="account-cell" @click="toggleDefaultAccount">
+              <span>设为默认账户</span>
+            </p>
+          </div>
+          <div class="account-list-item">
+            <p class="account-cell">
+              张胜利
+            </p>
+            <p class="account-cell">
+              支付宝
+            </p>
+            <p class="account-cell">
+              18916247913
+            </p>
+            <p class="account-cell">
+              <span>删除</span>
+            </p>
+            <p class="account-cell " @click="toggleDefaultAccount">
+              <span>设为默认账户</span>
+            </p>
+          </div>
         </div>
       </div>
     </div>
@@ -155,15 +218,23 @@ export default {
       payType: 0, //0：支付宝 1：微信 2：银行
       idcardBase64: "",
       captchaUrl: "",
+      addASdefault: false,
       loading: false
     };
   },
   watch: {},
   computed: {},
   methods: {
+    /*切换设为默认的checkbox */
+    toggleCheckbox() {
+      this.addASdefault = !this.addASdefault;
+    },
+    /*切换支付方式 */
     togglePayType(type) {
       this.payType = type;
-    }
+    },
+    //设置默认账户
+    toggleDefaultAccount() {}
   },
   created() {
     captcha()
@@ -182,4 +253,67 @@ export default {
 
 <style rel="stylesheet/scss" lang="scss">
 @import "../../styles/user.scss";
+//临时代码，需要搬到user.scss
+.withdraw1 {
+  .checkbox {
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    border: 1px solid #e4e4e4;
+    background-color: #fff;
+    vertical-align: middle;
+    cursor: pointer;
+  }
+  .ivcheckbox {
+    background-color: #fff;
+    background: url(../../assets/index/yesg.png) no-repeat;
+    background-size: 11px 9px;
+    background-position: 2px 3px;
+  }
+  .ivyd {
+    cursor: pointer;
+    margin-left: 0.3rem;
+    vertical-align: middle;
+    font-size: 14px;
+    color: #999;
+  }
+  .ivyd {
+    color: #333;
+  }
+}
+.account-list {
+  width: 100%;
+  .account-cell {
+    font-size: 14px;
+    color: #333;
+    width: 20%;
+    float: left;
+    display: block;
+    text-align: center;
+    background-color: #fff;
+    height: 70px;
+    line-height: 70px;
+    span {
+      display: inline-block;
+      padding: 8px;
+      cursor: pointer;
+    }
+    &.default-account {
+      span {
+        cursor: default;
+        background-color: #f07026;
+        color: #fff;
+      }
+    }
+  }
+  .account-list-title {
+    .account-cell {
+      font-size: 16px;
+      font-weight: 700;
+      background-color: transparent;
+      height: 40px;
+      line-height: 40px;
+    }
+  }
+}
 </style>
