@@ -33,7 +33,6 @@ export const constantRouterMap = [{
   children: [{
     path: '',
     name: '登录',
-    hidden: false,
     component: () =>
       import('@/views/index/index'),
     hidden: true
@@ -69,7 +68,7 @@ export const constantRouterMap = [{
   children: [{
     path: '',
     name: '我的访问',
-    hidden: true,
+    hidden: false,
     component: () =>
       import('@/views/myVisit/index'),
 
@@ -81,7 +80,7 @@ export const constantRouterMap = [{
   children: [{
     path: '',
     name: '我的共享',
-    hidden: true,
+    hidden: false,
     component: () =>
       import('@/views/myShare/index'),
   }]
@@ -92,7 +91,7 @@ export const constantRouterMap = [{
   children: [{
     path: '',
     name: '我的任务',
-    hidden: true,
+    hidden: false,
     component: () =>
       import('@/views/task/index'),
   }]
@@ -111,14 +110,7 @@ export const constantRouterMap = [{
 {
   path: '/testpage',
   component: () =>
-    import('@/views/test/index'),
-  // children: [{
-  //   path: '',
-  //   name: '测试页面',
-  //   hidden: true,
-  //   component: () =>
-  //     import('@/views/test/index'),
-  // }]
+    import('@/views/test/index')
 },
 {
   path: '/personal-auth',
@@ -126,7 +118,7 @@ export const constantRouterMap = [{
   children: [{
     path: '',
     name: '个人认证',
-    hidden: true,
+    hidden: false,
     component: () =>
       import('@/views/personalAuth/index'),
 
@@ -138,7 +130,7 @@ export const constantRouterMap = [{
   children: [{
     path: '',
     name: '密码管理',
-    hidden: true,
+    hidden: false,
     component: () =>
       import('@/views/password/index'),
 
@@ -150,7 +142,7 @@ export const constantRouterMap = [{
   children: [{
     path: '',
     name: '我的账户',
-    hidden: true,
+    hidden: false,
     component: () =>
       import('@/views/account/index'),
   }, {
@@ -159,6 +151,27 @@ export const constantRouterMap = [{
     hidden: true,
     component: () =>
       import('@/views/account/withdraw'),
+  },
+  {
+    path: 'management',
+    name: '现金账户管理',
+    hidden: false,
+    component: () =>
+      import('@/views/account/management'),
+  },
+  {
+    path: 'profit',
+    name: '我的收益',
+    hidden: false,
+    component: () =>
+      import('@/views/account/profit'),
+  },
+  {
+    path: 'withdrawrecord',
+    name: '提现记录',
+    hidden: false,
+    component: () =>
+      import('@/views/account/withdrawRecord'),
   }
   ]
 },

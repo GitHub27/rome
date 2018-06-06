@@ -557,8 +557,20 @@ $maincolor:#f07026;
         border: 1px solid #ddd;
         margin-bottom: 8px;
         cursor: pointer;
+        position: relative;
         &.active {
           border: 1px solid #f07026;
+          &:after{
+            position: absolute;
+            display: block;
+            content: '';
+            top: 0;
+            right: 0;
+            width: 11px;
+            height: 11px;
+            background-image: url(../../assets/user/select.png);
+            background-size: 100% 100%;
+          }
         }
       }
     }
