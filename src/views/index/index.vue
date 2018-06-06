@@ -168,6 +168,10 @@ export default {
         {
           img: "../static/banner1.jpg",
           link: "/demo.html"
+        },
+        {
+          img: "../static/phone.png",
+          link: "/demo.html"
         }
       ]
     };

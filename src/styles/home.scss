@@ -461,7 +461,7 @@
     .el-carousel__container {
       width: 1201px;
       overflow: hidden;
-      height: 702px !important;
+      height: 707px !important;
     }
     .el-carousel__indicators {
       background-color: #C4C4C4;
@@ -472,10 +472,13 @@
       margin-bottom: 10px;
     }
     .el-carousel__indicator {
-      padding: 0 4px;
+      padding: 4px 4px;
     }
     .el-carousel__button {
       opacity: 1;
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
     }
     .el-carousel__indicator.is-active button {
       background-color: #f07026;

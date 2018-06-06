@@ -1,7 +1,7 @@
 <template>
   <div class="rome-warp">
     <div class="rome">
-      <side-menu></side-menu>
+      <side-menu activeMenu='myvisit'></side-menu>
       <div class="rome-main">
         <h2 class="page-header blpl">我的访问记录</h2>
         <div class="search-warp">

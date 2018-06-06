@@ -9,9 +9,16 @@ import {
   getToken
 } from '@/utils/auth' // 验权
 
-const whiteList = ['/login', '/index', '/myvisit', '/personal-auth', '/myshare', '/task', '/account', '/account/withdraw', '/testpage', '/share', '/management-password'] // 不重定向白名单
-
-
+const whiteList = [
+  '/login',
+  '/index',
+  '/myvisit',
+  '/personal-auth', '/myshare', '/task', '/account',
+  '/account/withdraw',
+  '/account/management',
+  '/account/profit',
+  '/account/withdrawrecord',
+  '/testpage', '/share', '/management-password'] // 不重定向白名单
 
 router.beforeEach((to, from, next) => {
   NProgress.start()
