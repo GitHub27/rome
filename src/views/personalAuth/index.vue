@@ -1,7 +1,7 @@
 <template>
   <div class="rome-warp">
     <div class="rome">
-      <side-menu></side-menu>
+      <side-menu activeMenu='personalAuth'></side-menu>
       <div class="rome-main">
         <h2 class="page-header blpl">个人认证</h2>
         <div class="auth-progress">

@@ -1,12 +1,12 @@
 <template>
-    <div class="rome-warp">
-        <div class="rome">
-            <side-menu></side-menu>
-            <div class="rome-main">
-                <h2 class="page-header blpl">我的收益</h2>
-            </div>
-        </div>
+  <div class="rome-warp">
+    <div class="rome">
+      <side-menu activeMenu='accountProfit'></side-menu>
+      <div class="rome-main">
+        <h2 class="page-header blpl">我的收益</h2>
+      </div>
     </div>
+  </div>
 </template>
 
 <script>

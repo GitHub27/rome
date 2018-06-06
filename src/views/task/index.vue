@@ -1,7 +1,7 @@
 <template>
     <div class="rome-warp">
         <div class="rome">
-            <side-menu></side-menu>
+            <side-menu activeMenu='task'></side-menu>
             <div class="rome-main">
                 <div class="tasklist">
                     <router-link to='/task'>观看ROME人才信息分享平台教程

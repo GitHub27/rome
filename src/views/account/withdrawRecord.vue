@@ -1,12 +1,12 @@
 <template>
-    <div class="rome-warp">
-        <div class="rome">
-            <side-menu></side-menu>
-            <div class="rome-main">
-                <h2 class="page-header blpl">收益记录</h2>
-            </div>
-        </div>
+  <div class="rome-warp">
+    <div class="rome">
+      <side-menu activeMenu='withdrawrecord'></side-menu>
+      <div class="rome-main">
+        <h2 class="page-header blpl">提现</h2>
+      </div>
     </div>
+  </div>
 </template>
 
 <script>

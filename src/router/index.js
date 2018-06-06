@@ -142,6 +142,7 @@ export const constantRouterMap = [{
   children: [{
     path: '',
     name: '我的账户',
+    menu: 1,
     hidden: false,
     component: () =>
       import('@/views/account/index'),

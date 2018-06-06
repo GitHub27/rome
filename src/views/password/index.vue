@@ -1,7 +1,7 @@
 <template>
     <div class="rome-warp">
         <div class="rome">
-            <side-menu></side-menu>
+            <side-menu activeMenu='managementPassword'></side-menu>
             <div class="rome-main">
                 <h2 class="page-header blpl">密码管理</h2>
                 <div class="auth-progress">
