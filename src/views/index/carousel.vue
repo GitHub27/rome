@@ -1,9 +1,5 @@
 <template>
-<<<<<<< HEAD
-  <el-carousel :interval="10000" arrow="always">
-=======
   <el-carousel class="banner-carousel" :interval="10000" arrow="always">
->>>>>>> 8cb268d9cf4080cd2662790031d92b7a0007b4fa
     <el-carousel-item v-for="(item,index) in listFilter" :key="index">
       <a :href='item.link'>
         <img :src="item.img" alt="">
