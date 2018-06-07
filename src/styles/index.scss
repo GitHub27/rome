@@ -200,11 +200,11 @@ a:hover {
   }
 }
 
-.cursor-p{
+.cursor-p {
   cursor: pointer;
 }
 
-.display-none{
+.display-none {
   display: none;
 }
 
@@ -451,7 +451,89 @@ a:hover {
   outline: 0;
 }
 
+/*重置element按钮样式*/
+
+.el-button--primary.is-active,
+.el-button--primary:active {
+  background: #f07026;
+  border-color: #f07026;
+  color: #fff;
+}
+
+.el-button--primary:focus,
+.el-button--primary:hover {
+  background: #f07026;
+  border-color: #f07026;
+  color: #fff;
+}
+
+.el-button:active {
+  color: #fff;
+  border-color: #f07026;
+  outline: 0;
+}
+
+.el-button:focus,
+.el-button:hover {
+  color: #fff;
+  border-color: #f07026;
+  background-color: #f07026;
+}
+
+.el-button--primary {
+  color: #fff;
+  background-color: #f07026;
+  border-color: #f07026;
+}
+
+.el-button.is-plain:active {
+  background: #fff;
+  outline: 0;
+}
+
+/*plain 朴素类型*/
+
+.el-button.is-active,
+.el-button.is-plain:active {
+  color: #f07026;
+  border-color: #f07026;
+}
+
+.el-button.is-plain:focus,
+.el-button.is-plain:hover {
+  background: #fff;
+  border-color: #dcdfe6;
+  color: #606266;
+}
+
+.el-button:focus,
+.el-button:hover {
+  color: #fff;
+  border-color: #f07026;
+  background-color: #f07026;
+}
+
+.el-button:active {
+  color: #fff;
+  border-color: #f07026;
+  outline: 0;
+}
+
+.el-button:active {
+  color: #f07026;
+  border-color: #f07026;
+  outline: 0;
+}
+
+.el-button:focus,
+.el-button:hover {
+  color: #fff;
+  border-color: #f07026;
+  background-color: #f07026;
+}
+
 /*复选框*/
+
 // .checkbox {
 //   display: inline-block;
 //   width: 16px;

@@ -1,8 +1,9 @@
 <template>
-    <div>
-        <el-button type="text" @click="toggleRegionVisible">打开嵌套表格的 Dialog</el-button>
-        <multiple-options :dialogVisible='dialogRegionVisible' @closeCB='closeCB'></multiple-options>
-    </div>
+  <div>
+    <el-button type="text" @click="toggleRegionVisible">打开嵌套表格的 Dialog</el-button>
+    <multiple-options :defaultID="defaultID" :defaultName="defaultName" :dialogVisible='dialogRegionVisible' @closeCB='closeCB' @selectedOption='selectedRegion'></multiple-options>
+    {{regionID}}{{regionName}}
+  </div>
 </template>
 <script>
 import MultipleOptions from "../../components/dialog/MultipleOptions";
@@ -12,7 +13,11 @@ export default {
   },
   data() {
     return {
-      dialogRegionVisible: true
+      dialogRegionVisible: true,
+      regionID: 0,
+      regionName: "",
+      defaultID: "1001",
+      defaultName: "北京"
     };
   },
   computed: {},
@@ -24,6 +29,12 @@ export default {
     closeCB(val) {
       console.log(val, 11);
       this.dialogRegionVisible = val;
+    },
+    selectedRegion(data) {
+      if (data) {
+        this.regionID = data.id;
+        this.regionName = data.name;
+      }
     }
   }
 };
@@ -31,17 +42,4 @@ export default {
 
 <style rel="stylesheet/scss" lang="scss">
 @import "../../styles/user.scss";
-.region-dialog {
-  .el-dialog__header {
-    border-bottom: 1px solid #ddd;
-  }
-  .dialog-title {
-    font-size: 16px;
-    color: #333;
-    span {
-      font-size: 14px;
-      color: #999;
-    }
-  }
-}
 </style>
