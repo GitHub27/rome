@@ -21,9 +21,9 @@
         </div>
         <div class="menus fr">
           <router-link to="/index" :class="{'theme-color':currentRouter=='/index'}">首页</router-link>
-          <router-link to="/myvisit" :class="{'theme-color':currentRouter=='/myvisit'}">访问</router-link>
+          <router-link to="/myvisit" :class="{'theme-color':currentRouter=='/share'}">人才信息</router-link>
           <router-link to="/account" :class="{'theme-color':currentRouter=='/account'}">个人中心</router-link>
-          <router-link class="share" to="/share">分享人才信息</router-link>
+          <router-link class="share" to="/share11111">共享人才信息</router-link>
         </div>
       </div>
     </div>
@@ -32,12 +32,12 @@
 
 <script>
 import { removeToken } from "@/utils/auth";
-import {mapGetters} from 'vuex';
+import { mapGetters } from "vuex";
 export default {
   components: {},
   computed: {
     ...mapGetters({
-      logged:'token'
+      logged: "token"
     })
   },
   data() {
@@ -49,11 +49,14 @@ export default {
   methods: {
     //TODO:根据当前路由改变头部菜单颜色
     signOut() {
-      this.$store.dispatch("LogOut").then(() => {
-        this.$router.push("/index");
-      }).catch((e)=>{
-        console.log("signOut:"+e)
-      });
+      this.$store
+        .dispatch("LogOut")
+        .then(() => {
+          this.$router.push("/index");
+        })
+        .catch(e => {
+          console.log("signOut:" + e);
+        });
     },
     toggleMuneColor(router) {
       this.currentRouter = router.path;

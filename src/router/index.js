@@ -176,6 +176,17 @@ export const constantRouterMap = [{
   }
   ]
 },
+{
+  path: '/resume',
+  component: Layout,
+  children: [{
+    path: 'add',
+    name: '添加简历',
+    hidden: true,
+    component: () =>
+      import('@/views/resume/add'),
+  }]
+},
 ]
 
 export default new Router({

@@ -18,7 +18,11 @@ const whiteList = [
   '/account/management',
   '/account/profit',
   '/account/withdrawrecord',
-  '/testpage', '/share', '/management-password'] // 不重定向白名单
+  '/testpage',
+  '/share',
+  '/management-password',
+  '/resume/add'
+] // 不重定向白名单
 
 router.beforeEach((to, from, next) => {
   NProgress.start()
