@@ -9,7 +9,12 @@
             <!-- TODO:滚动数字背景颜色需要改成颜色渐变！！！！！！！！ -->
             <scroll-number class="scroll-number" :original="original" :current="current"></scroll-number>
           </div>
-          <search class="fr"></search>
+          <search class="fr">
+            <p slot="region" class="search-region-option">
+              <!-- <svg-icon icon-class="triangle-down" /> -->
+              4234
+            </p>
+          </search>
         </div>
         <ul class="search-condition">
           <li>
@@ -137,4 +142,20 @@ export default {
 @import "../../styles/home.scss";
 
 @import "../../styles/user.scss";
+</style>
+<style rel="stylesheet/scss" lang="scss" scoped>
+/*TODO:明天再写*/
+.rome-main .search-warp .search-containter {
+  .search-main-warp {
+    width: 600px;
+    float: left;
+  }
+}
+
+.search-region-option {
+  display: block;
+  float: left;
+  width: 100px;
+  height: 105px;
+}
 </style>

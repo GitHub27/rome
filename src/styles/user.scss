@@ -61,6 +61,7 @@ $maincolor:#f07026;
   height: 46px;
   position: relative;
   width: 100%;
+  float: left;
   .svg-container-search {
     position: absolute;
     left: 0;
@@ -228,10 +229,8 @@ $maincolor:#f07026;
     margin: 0 auto;
     overflow: hidden;
     padding: 30px 0 10px;
-    .search-main {
-      // width: 547px;
-    }
     .search-containter {
+      overflow: hidden;
       width: 800px;
       margin-top: 0;
     }
@@ -560,7 +559,7 @@ $maincolor:#f07026;
         position: relative;
         &.active {
           border: 1px solid #f07026;
-          &:after{
+          &:after {
             position: absolute;
             display: block;
             content: '';

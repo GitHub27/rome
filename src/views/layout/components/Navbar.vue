@@ -21,7 +21,7 @@
         </div>
         <div class="menus fr">
           <router-link to="/index" :class="{'theme-color':currentRouter=='/index'}">首页</router-link>
-          <router-link to="/myvisit" :class="{'theme-color':currentRouter=='/share'}">人才信息</router-link>
+          <router-link to="/share" :class="{'theme-color':currentRouter=='/share'}">人才信息</router-link>
           <router-link to="/account" :class="{'theme-color':currentRouter=='/account'}">个人中心</router-link>
           <router-link class="share" to="/share11111">共享人才信息</router-link>
         </div>
