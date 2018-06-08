@@ -8,8 +8,8 @@
         <span class="options-selected" v-if="selectedName && !haschild">{{selectedName}}</span>
       </p>
       <p class="category1">
-        <span :class="{inactive:(selectedName && haschild)}">全国</span>
-        <span v-if="selectedName && haschild">{{selectedName}}</span>
+        <span :class="{inactive:showChildCategory}" @click="hideChildCategory">全国</span>
+        <span v-if="showChildCategory">{{preSelectedParentName}}</span>
       </p>
       <div class="category1-item-warp">
         <div class="category1-item" :class="{'display-none':showChildCategory}">
@@ -42,7 +42,9 @@
           <p class="category1-item-title">全部省份</p>
           <div class="category1-item-list province">
             <p>
-              <span :class="{'active':selectedID=='2000'}" @click="select('2000','江苏',true)">江苏</span>
+              <span :class="{'active':selectedID=='2000' ,'active-self':selectedParentID=='2000'}" @click="selectParent('2000','江苏')">
+                江苏
+              </span>
               <i>1</i>
             </p>
             <p>
@@ -81,13 +83,13 @@
           </div>
         </div>
         <div class="category1-item category2" :class="{'display-none':!showChildCategory}">
-          <p class="category1-item-title theme-color">{{selectedName}}</p>
+          <p class="category1-item-title  theme-color" @click="select('2000','江苏')">{{preSelectedParentName}}</p>
           <div class="category1-item-list">
             <p class="active">
-              <span :class="{'active':selectedID=='2001'}" @click="select('2001','南京','',true)">南京</span>
+              <span :class="{'active':selectedID=='2001'}" @click="select('2001','南京','2000')">南京</span>
             </p>
             <p>
-              <span :class="{'active':selectedID=='2002'}" @click="select('2002','无锡','',true)">无锡</span>
+              <span :class="{'active':selectedID=='2002'}" @click="select('2002','无锡','2000')">无锡</span>
             </p>
             <p>
               <span>北京</span>
@@ -151,9 +153,12 @@ export default {
     */
     return {
       visible: true,
-      selectedID: 0, //选中项ID
-      selectedParentID: 0, //选中的父级id
+      selectedID: 0, //选中项ID,可以理解为最终的选项，可以为子选项，可以为父选项
       selectedName: "", //选中项name
+      selectedParentID: 0, //选中的父级id
+      selectedParentName: 0, //选中的父级Name
+      preSelectedParentID: 0, //选中的父级id
+      preSelectedParentName: 0, //选中的父级Name
       haschild: false, //是否包含子选项
       showChildCategory: false //展示子菜单
     };
@@ -169,20 +174,46 @@ export default {
     close() {
       this.$emit("closeCB", false);
     },
-    /*点选*/
-    select(id, name, haschild, ischild) {
+    /**
+      选中热门选型/子选项
+      id:子选项id
+      name:子选项name
+      haschild：是否包含子选项
+     */
+    select(id, name, parentid, parentname) {
       this.selectedID = id;
       this.selectedName = name;
-      this.haschild = haschild;
-      //如果选择的是省份，则不更改父级选定的值
-      if (haschild) {
-        this.showChildCategory = true;
-        return;
+      if (parentid) {
+        this.selectedParentID = parentid;
+        this.selectedParentName = parentname;
+      } else {
+        this.selectedParentID = 0;
+        this.selectedParentName = "";
       }
-      if (ischild) {
-        this.showChildCategory = false;
-      }
+
+      this.showChildCategory = false;
       this.$emit("selectedOption", { id: id, name: name });
+      console.log("this.showChildCategory:", this.showChildCategory);
+    },
+    /**
+      父级选项
+     */
+    selectParent(id, name, selected) {
+      if (selected) {
+        this.selectedParentID = id;
+        this.selectedParentName = name;
+      } else {
+        this.preSelectedParentID = id;
+        this.preSelectedParentName = name;
+      }
+      //TODO 添加显示子选项的内容
+      this.showChildCategory = true;
+    },
+    /**
+      切换显示子选项
+     */
+    hideChildCategory() {
+      this.showChildCategory = false;
     }
   },
   created() {
@@ -244,6 +275,7 @@ export default {
     .category1 {
       overflow: hidden;
       margin-bottom: -1px;
+      cursor: pointer;
       span {
         float: left;
         display: block;
@@ -309,10 +341,9 @@ export default {
             i {
               display: none;
             }
-            span.active {
+            span.active-self {
               color: #f07026;
               background-color: transparent;
-
               & + i {
                 font-style: normal;
                 display: inline-block;
