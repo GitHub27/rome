@@ -15,7 +15,7 @@ export default {
   },
   data() {
     return {
-      dialogRegionVisible: true,
+      dialogRegionVisible: false,
       regionID: 0,
       regionName: "",
       regionPID: 0,
