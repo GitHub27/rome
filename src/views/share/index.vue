@@ -9,11 +9,11 @@
             <!-- TODO:滚动数字背景颜色需要改成颜色渐变！！！！！！！！ -->
             <scroll-number class="scroll-number" :original="original" :current="current"></scroll-number>
           </div>
-          <search class="fr">
-            <p slot="region" class="search-region-option">
-              <!-- <svg-icon icon-class="triangle-down" /> -->
-              4234
-            </p>
+          <search class="fr share-search">
+            <div slot="region" class="search-region-option" @click="toggleRegionVisible">
+              <span>{{regionName}}</span>
+              <svg-icon icon-class="triangle-down" class="triangle-down" />
+            </div>
           </search>
         </div>
         <ul class="search-condition">
@@ -88,21 +88,24 @@
         <br>
       </div>
     </div>
+    <multiple-options v-if="dialogRegionVisible" :defaultID="defaultID" :defaultName="defaultName" :defaultPID="defaultPID" :defaultPName="defaultPName" :dialogVisible='dialogRegionVisible' @closeRegion='closeRegion' @selectedOption='selectedRegion'>
+    </multiple-options>
   </div>
 </template>
 <script>
 import resumeItem3 from "@/components/resumeItem3";
 import SideMenu from "@/components/Sidemenu/index";
-
 import ScrollNumber from "@/components/ScrollNumber/index";
 import search from "../index/search"; //TODO:提取到公共组件文件夹
+import MultipleOptions from "../../components/dialog/MultipleOptions";
 
 export default {
   components: {
     resumeItem3,
     SideMenu,
     ScrollNumber,
-    search
+    search,
+    MultipleOptions
   },
   data() {
     return {
@@ -115,7 +118,18 @@ export default {
       searchType: "job",
       searchWord: "",
       original: "0000",
-      current: 79874
+      current: 79874,
+      //地区选择-begin
+      dialogRegionVisible: false,
+      regionID: 0,
+      regionName: "全国",
+      regionPID: 0,
+      regionPName: "",
+      defaultID: "2002",
+      defaultName: "无锡",
+      defaultPID: "2000",
+      defaultPName: "江苏"
+      //地区选择-end
     };
   },
   created() {
@@ -132,6 +146,25 @@ export default {
     },
     toggle(type, index) {
       this[type] = index;
+    },
+    toggleRegionVisible() {
+      this.dialogRegionVisible = true;
+    },
+    closeRegion() {
+      this.dialogRegionVisible = false;
+    },
+    selectedRegion(data) {
+      if (data) {
+        this.regionID = data.id;
+        this.regionName = data.name;
+        this.regionPID = data.pid;
+        this.regionPName = data.pname;
+        this.defaultID = data.id;
+        this.defaultName = data.name;
+        this.defaultPID = data.pid;
+        this.defaultPName = data.pname;
+      }
+      this.dialogRegionVisible = false;
     }
   }
 };
@@ -140,22 +173,28 @@ export default {
 <style rel="stylesheet/scss" lang="scss">
 //TODO:样式引用比较乱，待整理
 @import "../../styles/home.scss";
-
 @import "../../styles/user.scss";
+@import "../../styles/multip-options.scss";
 </style>
-<style rel="stylesheet/scss" lang="scss" scoped>
+<style rel="stylesheet/scss" lang="scss">
 /*TODO:明天再写*/
-.rome-main .search-warp .search-containter {
+.share-search {
   .search-main-warp {
     width: 600px;
     float: left;
   }
-}
-
-.search-region-option {
-  display: block;
-  float: left;
-  width: 100px;
-  height: 105px;
+  .search-region-option {
+    display: block;
+    float: left;
+    width: 100px;
+    height: 54px;
+    line-height: 56px;
+    text-align: center;
+    margin-top: 30px;
+    border: 1px solid #f07026;
+    border-right: none;
+    background-color: #fff;
+    cursor: pointer;
+  }
 }
 </style>
