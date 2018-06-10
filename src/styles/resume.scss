@@ -1,0 +1,165 @@
+.resume-header{
+    overflow: hidden;
+    width:1201px;
+    margin: 0 auto;
+    h1{
+        font-size: 16px;
+        display: inline-block;
+    }
+    span{
+        float: right;
+        i{
+            font-style: normal;
+            color: #f07026;
+        }
+    }
+}
+.resume-warp{
+    width:1201px;
+    margin: 0 auto;
+    margin-bottom: 10px;
+    .title{
+        background-color: #f07026;
+        color: #fff;
+        height: 50px;
+        line-height: 50px;
+        text-align: center;
+        span{
+            font-size: 14px;
+        }
+    }
+    .resume-detail-main{
+        background-color: #fff;
+        overflow: hidden;
+        padding: 28px 40px;
+        & > div{
+            float: left;
+            &.resume-col3{
+                margin-left: 75px;
+            }
+        }
+        &.recommended-reasons{
+            .el-form-item{
+                width: 1120px;
+                height: 237px;
+            }
+            .el-form-item__content{
+                height: 237px;                
+                margin-left: 0!important;
+            }
+            .el-textarea{
+                width: 1120px;
+                textarea{
+                    resize:none;
+                    padding: 18px 15px;
+                    height: 237px;
+                    border: 1px solid #dedede;
+                }
+            }
+        }
+        .portrait{
+            margin-right: 40px;
+            width: 124px;
+            img{
+                display: block;
+                font-size: 0;
+                background-color: #f07026;
+                border-radius: 100%;
+                border: none;
+                height: 124px;
+                width: 124px;
+            }
+            p{
+                overflow: hidden;
+                margin-top: 10px;
+                span{
+                    float: left;
+                    display: block;
+                    width: 50%;
+                    text-align: center;
+                }
+            }
+        }
+        .input-group{
+            height: 42px;
+            &.single-line{
+                .el-input__inner{
+                    width: 344px;
+                }
+            }
+            .el-form-item:nth-child(2){
+                margin-left: 20px;
+            }
+            .join-job{
+                label{
+                    width: 108px!important;
+                }
+                .el-input__inner{
+                    width: 95px;
+                    padding-left: 2px;
+                }
+                .el-form-item__content{
+                    margin-left: 108px!important;
+                }
+                .el-date-editor.el-input{
+                    width: 95px;
+                }
+            }
+            .current-job{
+                &.el-form-item{
+                    margin-left: 0px;
+                }
+                label.el-form-item__label{
+                    width: 108px!important;
+                }
+                .el-form-item__content{
+                    margin-left: 108px!important;
+                }
+            }
+        }
+        .el-form-item__content,.el-form-item{
+            height: 30px;
+        }
+        .el-input__inner{
+            border-radius: 0px; 
+            border: none;
+            border-bottom: 1px solid #ddd;
+            width: 120px;
+            height: 20px;
+        }
+        .input-group{
+            .el-form-item{
+                display: inline-block;
+            }
+        }
+        .el-form-item__label{
+            padding-right: 0;
+            width: 90px;
+        }
+        .el-input--prefix .el-input__inner,.el-input--suffix .el-input__inner{
+            padding: 0 15px;
+        }
+        .el-date-editor.el-input{
+            width: 120px;
+        }
+        //重置日期icon的位置
+        .el-input__prefix{
+            top: 0;
+            text-align: right;
+            right: 0;
+        }
+        .el-input__icon{
+            cursor: pointer;
+            line-height: 14px;
+        }
+        .birthday-form-item .el-input__prefix{
+            left:unset;
+        }
+        .el-radio+.el-radio{
+            margin-left: 10px;
+        }
+        .el-radio__label{
+            padding-left: 5px;
+        }
+    }
+}

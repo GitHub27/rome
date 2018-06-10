@@ -1,10 +1,182 @@
 <template>
   <div>
+
+    <div class="resume-header">
+      <h1>
+        共享人才信息
+      </h1>
+      <span>
+        您已累计共享
+        <i>333</i>条
+      </span>
+    </div>
+    <el-form :key="21" :model="resumeForm" :rules="resumeRules" ref="loginForm" label-position="left" label-width="80px">
+      <div class="resume-warp">
+        <p class="title">
+          基本信息
+        </p>
+        <div class="resume-detail-main ">
+          <div class="portrait">
+            <img src="../../assets/user/portrait.png" alt="">
+            <p>
+              <span>修改</span>
+              <span>删除</span>
+            </p>
+          </div>
+          <div>
+            <p class="input-group">
+              <el-form-item prop="username" label="姓 名：">
+                <el-input maxlength="20" name="username" type="text" v-model="resumeForm.username" placeholder="" />
+              </el-form-item>
+              <el-form-item label="性 别" prop="sex">
+                <el-radio-group v-model="resumeForm.sex">
+                  <el-radio label="男"></el-radio>
+                  <el-radio label="女"></el-radio>
+                </el-radio-group>
+              </el-form-item>
+            </p>
+            <p class="input-group">
+              <el-form-item prop="birthday" label="出生日期：" class="birthday-form-item">
+                <el-date-picker v-model="resumeForm.birthday" :editable="false" :clearable="false" type="date" placeholder="" align="right">
+                </el-date-picker>
+              </el-form-item>
+              <el-form-item label="婚 姻" prop="sex">
+                <el-radio-group v-model="resumeForm.sex">
+                  <el-radio label="已婚"></el-radio>
+                  <el-radio label="未婚"></el-radio>
+                </el-radio-group>
+              </el-form-item>
+            </p>
+            <p class="input-group">
+              <el-form-item prop="householdregister" label="原 籍：">
+                <el-input maxlength="100" name="householdregister" :readonly="true" @focus="householdregisterFouse" type="text" v-model="resumeForm.householdregister" placeholder="">
+                  <i class="el-icon-edit el-input__icon" slot="suffix" @click="householdregisterFouse"></i>
+                </el-input>
+              </el-form-item>
+              <el-form-item label="目前住所" prop="residence">
+                <el-input maxlength="100" name="residence" :readonly="true" @focus="residenceFouse" type="text" v-model="resumeForm.residence" placeholder="">
+                  <i class="el-icon-edit el-input__icon" slot="suffix" @click="residenceFouse"></i>
+                </el-input>
+              </el-form-item>
+            </p>
+            <p class="input-group single-line">
+              <el-form-item prop="householdregister" label="最高学历：">
+                <el-input maxlength="100" name="householdregister" :readonly="true" @focus="householdregisterFouse" type="text" v-model="resumeForm.householdregister" placeholder="">
+                  <svg-icon icon-class="down-arrow" class="down-arrow cursor-p" slot="suffix" @click="householdregisterFouse" />
+                </el-input>
+              </el-form-item>
+            </p>
+            <p class="input-group single-line">
+              <el-form-item prop="certificate" label="资格证书：">
+                <el-input maxlength="100" name="certificate" type="text" v-model="resumeForm.certificate" placeholder="">
+                </el-input>
+              </el-form-item>
+            </p>
+            <p class="input-group single-line">
+              <el-form-item prop="phone" label="联系电话：">
+                <el-input maxlength="100" name="phone" type="text" v-model="resumeForm.phone" placeholder="">
+                </el-input>
+              </el-form-item>
+            </p>
+            <p class="input-group single-line">
+              <el-form-item prop="email" label="邮箱：">
+                <el-input maxlength="100" name="email" type="text" v-model="resumeForm.email" placeholder="">
+                </el-input>
+              </el-form-item>
+            </p>
+          </div>
+          <div class="resume-col3">
+            <p class="input-group single-line">
+              <el-form-item prop="email" label="公司名称：">
+                <el-input maxlength="100" name="email" type="text" v-model="resumeForm.email" placeholder="">
+                </el-input>
+              </el-form-item>
+            </p>
+            <p class="input-group single-line">
+              <el-form-item prop="email" label="职位：">
+                <el-input maxlength="100" name="email" type="text" v-model="resumeForm.email" placeholder="">
+                </el-input>
+              </el-form-item>
+            </p>
+            <p class="input-group single-line">
+              <el-form-item prop="email" label="所在行业：">
+                <el-input maxlength="100" name="householdregister" :readonly="true" @focus="householdregisterFouse" type="text" v-model="resumeForm.householdregister" placeholder="">
+                  <svg-icon icon-class="down-arrow" class="down-arrow cursor-p" slot="suffix" @click="householdregisterFouse" />
+                </el-input>
+              </el-form-item>
+            </p>
+            <p class="input-group">
+              <el-form-item prop="birthday" label="参加工作年份：" class="birthday-form-item join-job">
+                <el-date-picker v-model="resumeForm.birthday" :editable="false" :clearable="false" type="date" placeholder="" align="right">
+                </el-date-picker>
+              </el-form-item>
+              <el-form-item label="目前就业状态：" class="current-job" prop="sex">
+                <el-radio-group v-model="resumeForm.sex">
+                  <el-radio label="在职"></el-radio>
+                  <el-radio label="离职"></el-radio>
+                </el-radio-group>
+              </el-form-item>
+            </p>
+            <p class="input-group">
+              <el-form-item prop="email" label="目前收入：">
+                <el-input maxlength="100" name="householdregister" @focus="householdregisterFouse" type="text" v-model="resumeForm.householdregister" placeholder="">
+                  <span style="color:#606266" slot="suffix">万/年</span>
+                </el-input>
+              </el-form-item>
+              <el-form-item prop="email" label="期望收入：">
+                <el-input maxlength="100" name="householdregister" @focus="householdregisterFouse" type="text" v-model="resumeForm.householdregister" placeholder="">
+                  <span style="color:#606266" slot="suffix">万/年</span>
+                </el-input>
+              </el-form-item>
+            </p>
+            <p class="input-group single-line">
+              <el-form-item prop="email" label="目标企业：">
+                <el-input maxlength="100" name="householdregister" @focus="householdregisterFouse" type="text" v-model="resumeForm.householdregister" placeholder="">
+                  <span style="color:#606266" slot="suffix">目标岗位</span>
+                </el-input>
+              </el-form-item>
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="resume-warp">
+        <p class="title">
+          推荐分享理由
+          <span>(必填)</span>
+        </p>
+        <div class="resume-detail-main recommended-reasons">
+          <el-form-item prop="recommendedReasons">
+            <el-input maxlength="1000" name="recommendedReasons" type="textarea" v-model="resumeForm.recommendedReasons" placeholder="">
+            </el-input>
+          </el-form-item>
+        </div>
+      </div>
+      <div class="resume-warp">
+        <p class="title">
+          教育经历
+        </p>
+        <div class="resume-detail-main">
+          <p>添加教育经历</p>
+        </div>
+      </div>
+    </el-form>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
     <el-button type="text" @click="toggleRegionVisible">打开嵌套表格的 Dialog</el-button>
     <multiple-options v-if="dialogRegionVisible" :defaultID="defaultID" :defaultName="defaultName" :defaultPID="defaultPID" :defaultPName="defaultPName" :dialogVisible='dialogRegionVisible' @closeRegion='closeRegion' @selectedOption='selectedRegion'>
 
     </multiple-options>
     {{regionID}}--{{regionName}}--{{regionPID}}--{{regionPName}}
+    <br/> {{resumeForm.sex}}
   </div>
 </template>
 <script>
@@ -23,7 +195,39 @@ export default {
       defaultID: "2002",
       defaultName: "无锡",
       defaultPID: "2000",
-      defaultPName: "江苏"
+      defaultPName: "江苏",
+      //form-begin
+      resumeForm: {
+        username: "",
+        sex: "",
+        birthday: "",
+        householdregister: "", //户籍地
+        residence: "", //目前住所
+        certificate: "", //证书
+        phone: "", //联系电话
+        email: "", //邮箱
+        recommendedReasons: "" //推荐理由
+      },
+      resumeRules: {
+        username: [{ required: true, trigger: "blur" }],
+        sex: [{ required: true, message: "请选择性别", trigger: "change" }],
+        birthday: [
+          { required: true, message: "请填出生日期", trigger: "blur" }
+        ],
+        householdregister: [
+          { required: true, message: "请填原籍", trigger: "blur" }
+        ],
+        residence: [
+          { required: true, message: "请填目前住所", trigger: "blur" }
+        ],
+        certificate: [{ required: false }],
+        phone: [{ required: true, message: "请填联系电话", trigger: "blur" }],
+        email: [{ required: true, message: "请填邮箱", trigger: "blur" }],
+        recommendedReasons: [
+          { required: true, message: "请填推荐理由", trigger: "blur" }
+        ]
+      }
+      //form-end
     };
   },
   computed: {},
@@ -47,6 +251,12 @@ export default {
         this.defaultPName = data.pname;
       }
       this.dialogRegionVisible = false;
+    },
+    householdregisterFouse() {
+      console.log("householdregisterFouse");
+    },
+    residenceFouse() {
+      console.log("residenceFouse");
     }
   }
 };
@@ -55,4 +265,5 @@ export default {
 <style rel="stylesheet/scss" lang="scss">
 @import "../../styles/user.scss";
 @import "../../styles/multip-options.scss";
+@import "../../styles/resume.scss";
 </style>
