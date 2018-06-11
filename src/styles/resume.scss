@@ -1,3 +1,18 @@
+/*修正时间输入框的时间icon位置*/
+.data-icon-correct{
+    .el-input__prefix{
+        left: unset;
+        top:5px;
+    }
+}
+.el-input__suffix{
+    top:0px;
+}
+.custom-suffix{
+    padding-top: 4px;
+    display: inline-block;
+    color:#606266;
+}
 .resume-header{
     overflow: hidden;
     width:1201px;
@@ -18,6 +33,9 @@
     width:1201px;
     margin: 0 auto;
     margin-bottom: 10px;
+    .mar-bom{
+        margin-bottom: 20px;
+    }
     .title{
         background-color: #f07026;
         color: #fff;
@@ -56,6 +74,24 @@
                     border: 1px solid #dedede;
                 }
             }
+            &.major-desc{
+                padding: 0;
+                height: 180px;
+                .el-form-item{
+                    width: 100%;
+                }
+                .el-textarea{
+                    width: 100%;
+                    textarea{
+                        height: 95px;
+                    }
+                }
+                p{
+                    color: #606266;
+                    font-size: 14px;
+                    margin-bottom: 5px;
+                }
+            }
         }
         .portrait{
             margin-right: 40px;
@@ -81,7 +117,7 @@
             }
         }
         .input-group{
-            height: 42px;
+            height: 44px;
             &.single-line{
                 .el-input__inner{
                     width: 344px;
@@ -125,7 +161,11 @@
             border: none;
             border-bottom: 1px solid #ddd;
             width: 120px;
-            height: 20px;
+            height: 22px;
+            line-height: 22px;
+        }
+        .el-form-item__error{
+            padding-top: 4px;
         }
         .input-group{
             .el-form-item{
@@ -144,7 +184,7 @@
         }
         //重置日期icon的位置
         .el-input__prefix{
-            top: 0;
+            top: 0px;
             text-align: right;
             right: 0;
         }
@@ -162,4 +202,114 @@
             padding-left: 5px;
         }
     }
+    /*添加教育经历/工作经历*/
+    .add-project-warp{
+        border: 1px solid #dedede;
+        border-top: 3px solid #f07026;
+        width: 1144px;
+        height: 400px;
+        margin: 0 auto;
+        padding: 30px 50px;        
+        .input-group-warp{
+            width: 100%;            
+            .input-group-add{
+                width: 40%;
+                display: inline-block;
+                box-sizing: border-box;
+                margin-right: 15px;
+                .el-form-item{
+                    float: left;
+                    box-sizing: border-box;
+                    display: block;
+                    width: 50%;
+                    margin-right: 0;
+                    padding-left: 10px;
+                }
+                & .el-form-item:first-child{
+                    padding-left: 0px;
+                }
+            }
+        }
+        .input-group-add{
+            width: 100%;
+            .el-form-item{
+                display: inline-block;
+                width: 40%;
+                margin-right: 15px;
+                .el-input__inner{
+                    width: 100%;
+                    height: 22px;
+                    line-height: 22px;
+                }
+            }
+        }
+    }
+    /*添加教育经历/工作经历 按钮*/
+    &.add-project-btn{
+        cursor: pointer;
+        margin-top: -10px;
+        text-align: center;
+    }
+    /*教育经历列表*/
+
+    .education-list{
+        padding: 0 40px;
+        background-color: #fff;
+    }
+    .education-item{
+        overflow: hidden;
+        padding: 23px 0px 17px;
+        border-bottom: 1px solid #DDDDDD;
+        &:nth-last-of-type(1){
+            border-bottom: none;
+            margin-bottom: 20px;
+        }
+        p{
+            float: left;
+            font-size: 14px;
+            color: #333;
+            margin-right: 80px;
+            &.fr{
+                cursor: pointer;
+                float: right;
+                margin-right: 0;
+                color: #F8B693;
+                font-size: 20px;
+                i{
+                    margin-left: 5px;
+                }
+                
+            }
+            &.school-name{
+                font-weight: 600;
+                font-size: 16px;
+                color: #323232;
+                span{
+                    color: #B0B0B0;
+                    font-size: 14px;
+                    font-weight: normal;
+                }
+            }
+        }
+    }
+}
+
+.form-footer{
+    text-align: center;
+    button{
+        font-size: 16px;
+        // &.is-plain{
+        //     background-color: #bbb;
+        //     color: #fff;
+        // }
+    }
+}
+.resume-add-icon{
+    display: inline-block;
+    width: 19px;
+    height: 19px;
+    background-image: url('../../assets/user/add.png');
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    vertical-align: middle;
 }

@@ -1,6 +1,5 @@
 <template>
   <div>
-
     <div class="resume-header">
       <h1>
         共享人才信息
@@ -120,19 +119,19 @@
             <p class="input-group">
               <el-form-item prop="email" label="目前收入：">
                 <el-input maxlength="100" name="householdregister" @focus="householdregisterFouse" type="text" v-model="resumeForm.householdregister" placeholder="">
-                  <span style="color:#606266" slot="suffix">万/年</span>
+                  <span slot="suffix" class="custom-suffix">万/年</span>
                 </el-input>
               </el-form-item>
               <el-form-item prop="email" label="期望收入：">
                 <el-input maxlength="100" name="householdregister" @focus="householdregisterFouse" type="text" v-model="resumeForm.householdregister" placeholder="">
-                  <span style="color:#606266" slot="suffix">万/年</span>
+                  <span class="custom-suffix" slot="suffix">万/年</span>
                 </el-input>
               </el-form-item>
             </p>
             <p class="input-group single-line">
               <el-form-item prop="email" label="目标企业：">
                 <el-input maxlength="100" name="householdregister" @focus="householdregisterFouse" type="text" v-model="resumeForm.householdregister" placeholder="">
-                  <span style="color:#606266" slot="suffix">目标岗位</span>
+                  <span slot="suffix" class="custom-suffix">目标岗位</span>
                 </el-input>
               </el-form-item>
             </p>
@@ -151,15 +150,96 @@
           </el-form-item>
         </div>
       </div>
-      <div class="resume-warp">
-        <p class="title">
-          教育经历
-        </p>
-        <div class="resume-detail-main">
-          <p>添加教育经历</p>
+    </el-form>
+    <div class="resume-warp">
+      <p class="title">
+        教育经历
+      </p>
+      <div class="education-list">
+        <div class="resume-detail-main education-item">
+          <p class="school-name">中山大学
+            <span>(2011.09-2004.7)</span>
+          </p>
+          <p>专业：金融管理</p>
+          <p>学历：MBA</p>
+          <p>是否统招：是</p>
+          <p class="fr">
+            <i class="el-icon-edit"></i>
+            <i class="el-icon-delete"></i>
+          </p>
+        </div>
+        <div class="resume-detail-main education-item">
+          <p class="school-name">中山大学
+            <span>(2011.09-2004.7)</span>
+          </p>
+          <p>专业：金融管理</p>
+          <p>学历：MBA</p>
+          <p>是否统招：是</p>
+          <p class="fr">
+            <i class="el-icon-edit"></i>
+            <i class="el-icon-delete"></i>
+          </p>
         </div>
       </div>
-    </el-form>
+      <div class="resume-detail-main mar-bom">
+        <el-form :key="21" :model="resumeForm" :rules="resumeRules" ref="loginForm" label-position="left" label-width="80px">
+          <div class="add-project-warp">
+            <p class="input-group-add">
+              <el-form-item prop="email" label="学校名称：">
+                <el-input maxlength="100" name="email" type="text" v-model="resumeForm.email" placeholder="">
+                </el-input>
+              </el-form-item>
+              <el-form-item prop="email" label="专业名称：">
+                <el-input maxlength="100" name="email" type="text" v-model="resumeForm.email" placeholder="">
+                </el-input>
+              </el-form-item>
+            </p>
+            <div class="input-group-warp">
+              <p class="input-group-add">
+                <el-form-item prop="birthday" label="学校名称：" class="data-icon-correct">
+                  <el-date-picker v-model="resumeForm.birthday" :editable="false" :clearable="false" type="date" placeholder="" align="right">
+                  </el-date-picker>
+                </el-form-item>
+                <el-form-item prop="email" label="专业名称：">
+                  <el-input maxlength="100" name="email" type="text" v-model="resumeForm.email" placeholder="">
+                  </el-input>
+                </el-form-item>
+              </p>
+              <p class="input-group-add">
+                <el-form-item prop="householdregister" label="学历：">
+                  <el-input maxlength="100" name="householdregister" :readonly="true" @focus="householdregisterFouse" type="text" v-model="resumeForm.householdregister" placeholder="">
+                    <svg-icon icon-class="down-arrow" class="down-arrow cursor-p" slot="suffix" @click="householdregisterFouse" />
+                  </el-input>
+                </el-form-item>
+                <el-form-item prop="generalRecruitment" label="是否统招：">
+                  <el-checkbox v-model="resumeForm.generalRecruitment">是</el-checkbox>
+                </el-form-item>
+              </p>
+            </div>
+            <div class="resume-detail-main recommended-reasons major-desc">
+              <p>专业描述：</p>
+              <el-form-item prop="majorDesc">
+                <el-input maxlength="1000" name="majorDesc" type="textarea" v-model="resumeForm.majorDesc" placeholder="">
+                </el-input>
+              </el-form-item>
+            </div>
+            <div class="form-footer">
+              <el-button class="bor-rad0" type="primary">完成</el-button>
+              <el-button class="bor-rad0" plain>取消</el-button>
+            </div>
+          </div>
+        </el-form>
+      </div>
+    </div>
+    <div class="resume-warp add-project-btn">
+      <div class="resume-detail-main">
+        <p>
+          <span class="resume-add-icon"></span>
+          添加教育经历
+        </p>
+      </div>
+    </div>
+
     <br/>
     <br/>
     <br/>
@@ -206,7 +286,9 @@ export default {
         certificate: "", //证书
         phone: "", //联系电话
         email: "", //邮箱
-        recommendedReasons: "" //推荐理由
+        recommendedReasons: "", //推荐理由
+        generalRecruitment: false, //统招
+        majorDesc: "" //专业描述
       },
       resumeRules: {
         username: [{ required: true, trigger: "blur" }],
@@ -225,7 +307,9 @@ export default {
         email: [{ required: true, message: "请填邮箱", trigger: "blur" }],
         recommendedReasons: [
           { required: true, message: "请填推荐理由", trigger: "blur" }
-        ]
+        ],
+        generalRecruitment: [{ required: false }],
+        majorDesc: [{ required: false }]
       }
       //form-end
     };
