@@ -156,20 +156,24 @@
         教育经历
       </p>
       <div class="education-list">
-        <div class="resume-detail-main " v-for="(item,index) in educationList" :key="index">
-          <div class="ohid education-item" v-if="!item.ismodify">
-            <p class="school-name">{{item.schoolname}}
-              <span>({{ item.starttime|dateFormat}}-{{item.endtime|dateFormat}})</span>
+        <div class="resume-detail-main education-item" style="margin:0px 42px;" v-for="(item,index) in educationList" :key="index">
+          <div class="ohid" v-if="!item.ismodify">
+            <p class="school-name column1">{{item.schoolname}}
+              <span>({{ item.starttime|dateFormat('yyyy.MM')}}-{{item.endtime|dateFormat('yyyy.MM')}})</span>
             </p>
-            <p>专业：{{item.majorname}}</p>
-            <p>学历：{{item.degree}}</p>
-            <p>是否统招：{{item.generalRecruitment}}</p>
-            <p class="fr">
-              <i class="el-icon-edit" @click="educationModify(item.id)"></i>
+            <p class="column2">专业：{{item.majorname}}</p>
+            <p class="column3">学历：{{item.degree}}</p>
+            <p class="column4">是否统招：{{item.generalRecruitment}}</p>
+            <p class="fr column5" v-if="showEducationEdit">
+              <i class="el-icon-edit" @click="ActivateEducationEdit(item.id)"></i>
               <i class="el-icon-delete"></i>
             </p>
+            <p class="major-desc" v-if="item.majorDesc">
+              <span>专业描述：</span>
+              <span class="major-desc-content">{{item.majorDesc}}</span>
+            </p>
           </div>
-          <education-item :data="item" v-else class="pad0" @educationEdit="educationEdit" @educationCancel="showEducationWarp=false" @educationAdd="educationAdd">
+          <education-item :data="item" v-else class="pad0" @educationEdit="educationEdit" @educationCancel="educationCancel" @educationAdd="educationAdd">
           </education-item>
         </div>
         <!-- <div class="resume-detail-main education-item">
@@ -185,7 +189,7 @@
           </p>
         </div> -->
       </div>
-      <education-item @educationCancel="showEducationWarp=false" @educationAdd="educationAdd" v-if="showEducationWarp"></education-item>
+      <education-item @educationCancel="educationCancel" @educationAdd="educationAdd" v-if="showEducationAdd"></education-item>
       <div v-if="false" class="resume-detail-main mar-bom">
         <el-form :key="21" :model="resumeForm" :rules="resumeRules" ref="loginForm" label-position="left" label-width="80px">
           <div class="add-project-warp">
@@ -236,8 +240,8 @@
         </el-form>
       </div>
     </div>
-    <div class="resume-warp add-project-btn">
-      <div class="resume-detail-main">
+    <div class="resume-warp add-project-btn" v-if="!showEducationAdd">
+      <div class="resume-detail-main" @click="ActivateEducationAdd">
         <p>
           <span class="resume-add-icon"></span>
           添加教育经历
@@ -276,6 +280,9 @@ export default {
       defaultPID: "2000",
       defaultPName: "江苏",
       showEducationWarp: true, //是否显示教育编辑框
+      showEducationEdit: true, //禁止修改教育经历
+      showEducationAdd: false, //禁止新加教育经历
+
       //form-begin
       resumeForm: {
         username: "",
@@ -344,13 +351,18 @@ export default {
     residenceFouse() {
       console.log("residenceFouse");
     },
+    /*激活新加教育经历状态*/
+    ActivateEducationAdd() {
+      this.showEducationAdd = true;
+    },
     /*添加教育经历*/
     educationAdd(data) {
       this.educationList.push(data);
+      this.showEducationAdd = false;
       console.log("添加教育经历", this.educationList);
     },
     /*激活修改教育经历状态*/
-    educationModify(id) {
+    ActivateEducationEdit(id) {
       this.educationList.forEach((item, index) => {
         if (item.id == id) {
           let _item = item;
@@ -368,6 +380,20 @@ export default {
         }
       });
       console.log("修改教育经历", this.educationList);
+    },
+    /*取消添加教育经历*/
+    educationCancel(id) {
+      if (id) {
+        this.educationList.forEach((item, index) => {
+          if (item.id == id) {
+            let _item = item;
+            _item.ismodify = false;
+            this.educationList.splice(index, 1, _item);
+          }
+        });
+      } else {
+        this.showEducationAdd = false;
+      }
     }
   }
 };

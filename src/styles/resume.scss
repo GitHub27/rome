@@ -274,7 +274,6 @@
             float: left;
             font-size: 14px;
             color: #333;
-            margin-right: 80px;
             &.fr{
                 cursor: pointer;
                 float: right;
@@ -284,7 +283,6 @@
                 i{
                     margin-left: 5px;
                 }
-                
             }
             &.school-name{
                 font-weight: 600;
@@ -294,6 +292,28 @@
                     color: #B0B0B0;
                     font-size: 14px;
                     font-weight: normal;
+                }
+            }
+            &.column1{
+                width: 32%;
+            }
+            &.column2{
+                width: 20%;
+            }
+            &.major-desc{
+                display: block;
+                width: 100%;
+                margin-top: 8px;
+                overflow: hidden;
+                span{
+                    float: left;
+                    display: block;
+                    line-height: 21px;
+                    font-size: 12px;
+                    color: #333;
+                    &.major-desc-content{
+                        width: 94px;
+                    }
                 }
             }
         }
