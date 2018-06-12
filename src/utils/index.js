@@ -2,13 +2,13 @@
  * Created by jiachenpan on 16/11/18.
  */
 
-export function formatDate (date, fmt) {
+export function formatDate(date, fmt) {
   //指定fmt 格式，按照fmt格式输出
   //未指定fmt 按照语义化输出。
   if (!date) return '';
   function getDateStr(d) {
     if (!d) return '';
-    if(d>0) return parseInt(d);
+    if (d > 0) return parseInt(d);
     return d.toString().replace('T', ' ').replace(/-/g, '/').split('+')[0].split('.')[0];
   }
 
@@ -96,4 +96,12 @@ export function formatTime(time, option) {
   } else {
     return d.getMonth() + 1 + '月' + d.getDate() + '日' + d.getHours() + '时' + d.getMinutes() + '分'
   }
+}
+
+//用于生成uuid
+export function uuid() {
+  function S4() {
+    return (((1 + Math.random()) * 0x10000) | 0).toString(16).substring(1);
+  }
+  return (S4() + S4() + "-" + S4() + "-" + S4() + "-" + S4() + "-" + S4() + S4() + S4());
 }

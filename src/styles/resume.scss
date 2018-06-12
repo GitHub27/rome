@@ -16,12 +16,15 @@
 .resume-header{
     overflow: hidden;
     width:1201px;
-    margin: 0 auto;
+    margin: 29px auto 20px;
+
     h1{
-        font-size: 16px;
+        color: #333;
+        font-size: 18px;
         display: inline-block;
     }
     span{
+        color: #333;
         float: right;
         i{
             font-style: normal;
@@ -35,6 +38,9 @@
     margin-bottom: 10px;
     .mar-bom{
         margin-bottom: 20px;
+    }
+    .pad0{
+        padding: 0!important;
     }
     .title{
         background-color: #f07026;
@@ -51,7 +57,7 @@
         overflow: hidden;
         padding: 28px 40px;
         & > div{
-            float: left;
+            // float: left;
             &.resume-col3{
                 margin-left: 75px;
             }
@@ -206,7 +212,7 @@
     .add-project-warp{
         border: 1px solid #dedede;
         border-top: 3px solid #f07026;
-        width: 1144px;
+        width: 100%;
         height: 400px;
         margin: 0 auto;
         padding: 30px 50px;        
@@ -253,7 +259,7 @@
     /*教育经历列表*/
 
     .education-list{
-        padding: 0 40px;
+        // padding: 0 40px;
         background-color: #fff;
     }
     .education-item{

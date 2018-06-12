@@ -15,14 +15,14 @@
           基本信息
         </p>
         <div class="resume-detail-main ">
-          <div class="portrait">
+          <div class="portrait fl">
             <img src="../../assets/user/portrait.png" alt="">
             <p>
               <span>修改</span>
               <span>删除</span>
             </p>
           </div>
-          <div>
+          <div class="fl">
             <p class="input-group">
               <el-form-item prop="username" label="姓 名：">
                 <el-input maxlength="20" name="username" type="text" v-model="resumeForm.username" placeholder="" />
@@ -84,7 +84,7 @@
               </el-form-item>
             </p>
           </div>
-          <div class="resume-col3">
+          <div class="resume-col3 fl">
             <p class="input-group single-line">
               <el-form-item prop="email" label="公司名称：">
                 <el-input maxlength="100" name="email" type="text" v-model="resumeForm.email" placeholder="">
@@ -156,7 +156,23 @@
         教育经历
       </p>
       <div class="education-list">
-        <div class="resume-detail-main education-item">
+        <div class="resume-detail-main " v-for="(item,index) in educationList" :key="index">
+          <div class="ohid education-item" v-if="!item.ismodify">
+            <p class="school-name">{{item.schoolname}}
+              <span>({{ item.starttime|dateFormat}}-{{item.endtime|dateFormat}})</span>
+            </p>
+            <p>专业：{{item.majorname}}</p>
+            <p>学历：{{item.degree}}</p>
+            <p>是否统招：{{item.generalRecruitment}}</p>
+            <p class="fr">
+              <i class="el-icon-edit" @click="educationModify(item.id)"></i>
+              <i class="el-icon-delete"></i>
+            </p>
+          </div>
+          <education-item :data="item" v-else class="pad0" @educationEdit="educationEdit" @educationCancel="showEducationWarp=false" @educationAdd="educationAdd">
+          </education-item>
+        </div>
+        <!-- <div class="resume-detail-main education-item">
           <p class="school-name">中山大学
             <span>(2011.09-2004.7)</span>
           </p>
@@ -167,21 +183,10 @@
             <i class="el-icon-edit"></i>
             <i class="el-icon-delete"></i>
           </p>
-        </div>
-        <div class="resume-detail-main education-item">
-          <p class="school-name">中山大学
-            <span>(2011.09-2004.7)</span>
-          </p>
-          <p>专业：金融管理</p>
-          <p>学历：MBA</p>
-          <p>是否统招：是</p>
-          <p class="fr">
-            <i class="el-icon-edit"></i>
-            <i class="el-icon-delete"></i>
-          </p>
-        </div>
+        </div> -->
       </div>
-      <div class="resume-detail-main mar-bom">
+      <education-item @educationCancel="showEducationWarp=false" @educationAdd="educationAdd" v-if="showEducationWarp"></education-item>
+      <div v-if="false" class="resume-detail-main mar-bom">
         <el-form :key="21" :model="resumeForm" :rules="resumeRules" ref="loginForm" label-position="left" label-width="80px">
           <div class="add-project-warp">
             <p class="input-group-add">
@@ -242,15 +247,6 @@
 
     <br/>
     <br/>
-    <br/>
-    <br/>
-    <br/>
-    <br/>
-    <br/>
-    <br/>
-    <br/>
-    <br/>
-    <br/>
     <el-button type="text" @click="toggleRegionVisible">打开嵌套表格的 Dialog</el-button>
     <multiple-options v-if="dialogRegionVisible" :defaultID="defaultID" :defaultName="defaultName" :defaultPID="defaultPID" :defaultPName="defaultPName" :dialogVisible='dialogRegionVisible' @closeRegion='closeRegion' @selectedOption='selectedRegion'>
 
@@ -261,9 +257,12 @@
 </template>
 <script>
 import MultipleOptions from "../../components/dialog/MultipleOptions";
+import educationItem from "../../components/resume/educationItem";
+
 export default {
   components: {
-    MultipleOptions
+    MultipleOptions,
+    educationItem
   },
   data() {
     return {
@@ -276,6 +275,7 @@ export default {
       defaultName: "无锡",
       defaultPID: "2000",
       defaultPName: "江苏",
+      showEducationWarp: true, //是否显示教育编辑框
       //form-begin
       resumeForm: {
         username: "",
@@ -310,8 +310,10 @@ export default {
         ],
         generalRecruitment: [{ required: false }],
         majorDesc: [{ required: false }]
-      }
+      },
       //form-end
+      /*教育经历数组*/
+      educationList: []
     };
   },
   computed: {},
@@ -341,6 +343,31 @@ export default {
     },
     residenceFouse() {
       console.log("residenceFouse");
+    },
+    /*添加教育经历*/
+    educationAdd(data) {
+      this.educationList.push(data);
+      console.log("添加教育经历", this.educationList);
+    },
+    /*激活修改教育经历状态*/
+    educationModify(id) {
+      this.educationList.forEach((item, index) => {
+        if (item.id == id) {
+          let _item = item;
+          _item.ismodify = true;
+          this.educationList.splice(index, 1, _item);
+        }
+      });
+    },
+    /*修改教育经历*/
+    educationEdit(data) {
+      this.educationList.forEach((item, index) => {
+        if (item.id == data.id) {
+          data.ismodify = false;
+          this.educationList.splice(index, 1, data);
+        }
+      });
+      console.log("修改教育经历", this.educationList);
     }
   }
 };
