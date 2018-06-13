@@ -166,7 +166,7 @@
             <p class="column4 edu-column">是否统招：{{item.generalRecruitment}}</p>
             <p class="fr column5 edu-column" v-if="showEducationEdit">
               <i class="el-icon-edit" @click="ActivateEducationEdit(item.id)"></i>
-              <i class="el-icon-delete"></i>
+              <i class="el-icon-delete" @click="educationDelete(item.id)"></i>
             </p>
             <p class="major-desc edu-column" v-if="item.majorDesc">
               <span>专业描述：</span>
@@ -270,7 +270,20 @@ export default {
       },
       //form-end
       /*教育经历数组*/
-      educationList: []
+      educationList: [
+        {
+          schoolname: "复旦大学",
+          majorname: "计算机维修",
+          starttime: "2018-10",
+          endtime: "2019-4",
+          degree: "博士",
+          degreeid: "1001",
+          generalRecruitment: false,
+          majorDesc: "这个专业很棒，真的！",
+          id: "112233445666",
+          ismodify: false
+        }
+      ]
     };
   },
   computed: {},
@@ -310,6 +323,22 @@ export default {
       this.educationList.push(data);
       this.showEducationAdd = false;
       console.log("添加教育经历", this.educationList);
+    },
+    /*删除教育经历*/
+    educationDelete(id) {
+      this.$confirm("此操作将永久删除该文件, 是否继续?", "提示", {
+        confirmButtonText: "确定",
+        cancelButtonText: "取消",
+        type: "warning"
+      })
+        .then(() => {
+          this.educationList.forEach((item, index) => {
+            if (item.id == id) {
+              this.educationList.splice(index, 1);
+            }
+          });
+        })
+        .catch(() => {});
     },
     /*激活修改教育经历状态*/
     ActivateEducationEdit(id) {
