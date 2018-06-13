@@ -163,7 +163,7 @@
             </p>
             <p class="column2 edu-column">专业：{{item.majorname}}</p>
             <p class="column3 edu-column">学历：{{item.degree}}</p>
-            <p class="column4 edu-column">是否统招：{{item.generalRecruitment}}</p>
+            <p class="column4 edu-column">是否统招：{{item.generalRecruitment | booleanFormat}}</p>
             <p class="fr column5 edu-column" v-if="showEducationEdit">
               <i class="el-icon-edit" @click="ActivateEducationEdit(item.id)"></i>
               <i class="el-icon-delete" @click="educationDelete(item.id)"></i>
@@ -176,18 +176,6 @@
           <education-item :data="item" v-else class="pad0" @educationEdit="educationEdit" @educationCancel="educationCancel" @educationAdd="educationAdd">
           </education-item>
         </div>
-        <!-- <div class="resume-detail-main education-item">
-          <p class="school-name">中山大学
-            <span>(2011.09-2004.7)</span>
-          </p>
-          <p>专业：金融管理</p>
-          <p>学历：MBA</p>
-          <p>是否统招：是</p>
-          <p class="fr">
-            <i class="el-icon-edit"></i>
-            <i class="el-icon-delete"></i>
-          </p>
-        </div> -->
       </div>
       <education-item @educationCancel="educationCancel" @educationAdd="educationAdd" v-if="showEducationAdd"></education-item>
     </div>
@@ -196,6 +184,43 @@
         <p class="text-c cursor-p">
           <span class="resume-add-icon"></span>
           添加教育经历
+        </p>
+      </div>
+    </div>
+
+    <div class="resume-warp">
+      <p class="title">
+        工作经历
+      </p>
+      <div class="education-list">
+        <div class="resume-detail-main education-item" style="margin:0px 42px;" v-for="(item,index) in educationList" :key="index">
+          <div class="ohid" v-if="!item.ismodify">
+            <p class="school-name column1 edu-column">{{item.schoolname}}
+              <span>({{ item.starttime|dateFormat('yyyy.MM')}}-{{item.endtime|dateFormat('yyyy.MM')}})</span>
+            </p>
+            <p class="column2 edu-column">专业：{{item.majorname}}</p>
+            <p class="column3 edu-column">学历：{{item.degree}}</p>
+            <p class="column4 edu-column">是否统招：{{item.generalRecruitment | booleanFormat}}</p>
+            <p class="fr column5 edu-column" v-if="showEducationEdit">
+              <i class="el-icon-edit" @click="ActivateEducationEdit(item.id)"></i>
+              <i class="el-icon-delete" @click="educationDelete(item.id)"></i>
+            </p>
+            <p class="major-desc edu-column" v-if="item.majorDesc">
+              <span>专业描述：</span>
+              <span class="major-desc-content">{{item.majorDesc}}</span>
+            </p>
+          </div>
+          <job-item :data="item" v-else class="pad0" @educationEdit="educationEdit" @educationCancel="educationCancel" @educationAdd="educationAdd">
+          </job-item>
+        </div>
+      </div>
+      <job-item @educationCancel="educationCancel" @educationAdd="educationAdd" v-if="showJobAdd"></job-item>
+    </div>
+    <div class="resume-warp " :class="{'add-project-btn':educationList.length==0}" v-if="!showJobAdd">
+      <div class="resume-detail-main" @click="showJobAdd=true">
+        <p class="text-c cursor-p">
+          <span class="resume-add-icon"></span>
+          添加工作经历
         </p>
       </div>
     </div>
@@ -212,11 +237,13 @@
 <script>
 import MultipleOptions from "../../components/dialog/MultipleOptions";
 import educationItem from "../../components/resume/educationItem";
+import jobItem from "../../components/resume/jobItem";
 
 export default {
   components: {
     MultipleOptions,
-    educationItem
+    educationItem,
+    jobItem
   },
   data() {
     return {
@@ -230,9 +257,11 @@ export default {
       defaultPID: "2000",
       defaultPName: "江苏",
       //教育经历
-      showEducationWarp: true, //是否显示教育编辑框
-      showEducationEdit: true, //禁止修改教育经历
-      showEducationAdd: false, //禁止新加教育经历
+      showEducationEdit: true, //是否显示修改教育经历
+      showEducationAdd: false, //是否显示新加教育经历
+      //工作经历
+      showJobEdit: true, //是否显示修改教育经历
+      showJobAdd: false, //是否显示新加教育经历
       //form-begin
       resumeForm: {
         username: "",
