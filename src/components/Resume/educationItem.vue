@@ -47,12 +47,17 @@
         </div>
       </div>
     </el-form>
+    <degree v-if="dialogRegionVisible" :defaultID="resumeForm.degreeid" :defaultName="resumeForm.degree" :defaultPID="defaultPID" :defaultPName="defaultPName" :dialogVisible='dialogRegionVisible' @closeRegion='closeRegion' @selectedOption='selectedRegion'>
+    </degree>
   </div>
 </template>
 <script>
 import { uuid } from "../../utils/index";
+import degree from "../../components/dialog/degree";
 export default {
-  components: {},
+  components: {
+    degree
+  },
   props: {
     operationType: {
       type: String,
@@ -62,12 +67,24 @@ export default {
   },
   data() {
     return {
+      //弹框
+      dialogRegionVisible: false,
+      regionID: 0,
+      regionName: "",
+      regionPID: 0,
+      regionPName: "",
+      defaultID: "",
+      defaultName: "",
+      defaultPID: "",
+      defaultPName: "",
+      //弹框
       resumeForm: {
         schoolname: "", //学校名称
         majorname: "", //专业名称
         starttime: "", //开始时间
         endtime: "", //开始时间
         degree: "", //学位
+        degreeid: "",
         generalRecruitment: false, //是否统招
         majorDesc: "", //专业描述
         id: "", //唯一编号
@@ -84,7 +101,7 @@ export default {
           { required: true, message: "请填开始时间", trigger: "blur" }
         ],
         endtime: [{ required: true, message: "请填结束时间", trigger: "blur" }],
-        degree: [{ required: false, message: "请填学历", trigger: "blur" }],
+        degree: [{ required: true, message: "请填学历", trigger: "blur" }],
         generalRecruitment: [{ required: false }],
         majorDesc: [{ required: false }]
       }
@@ -98,8 +115,24 @@ export default {
   watch: {},
   computed: {},
   methods: {
+    toggleRegionVisible() {
+      this.dialogRegionVisible = true;
+    },
+    closeRegion() {
+      this.dialogRegionVisible = false;
+    },
+    //接收选定信息并绑定ui
+    selectedRegion(data) {
+      if (data) {
+        this.resumeForm.degreeid = data.id;
+        this.resumeForm.degree = data.name;
+      }
+      this.dialogRegionVisible = false;
+    },
     /*学历*/
-    EducationFouse() {},
+    EducationFouse() {
+      this.dialogRegionVisible = true;
+    },
     /*提交*/
     submit() {
       this.$refs.resumeForm.validate(valid => {

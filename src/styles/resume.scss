@@ -270,7 +270,7 @@
             border-bottom: none;
             margin-bottom: 20px;
         }
-        p{
+        p.edu-column{
             float: left;
             font-size: 14px;
             color: #333;
@@ -296,8 +296,13 @@
             }
             &.column1{
                 width: 32%;
+                height: 18px;
+                line-height: 18px;
             }
             &.column2{
+                width: 20%;
+            }
+            &.column3{
                 width: 20%;
             }
             &.major-desc{
@@ -312,7 +317,7 @@
                     font-size: 12px;
                     color: #333;
                     &.major-desc-content{
-                        width: 94px;
+                        width: 94%;
                     }
                 }
             }

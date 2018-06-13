@@ -158,17 +158,17 @@
       <div class="education-list">
         <div class="resume-detail-main education-item" style="margin:0px 42px;" v-for="(item,index) in educationList" :key="index">
           <div class="ohid" v-if="!item.ismodify">
-            <p class="school-name column1">{{item.schoolname}}
+            <p class="school-name column1 edu-column">{{item.schoolname}}
               <span>({{ item.starttime|dateFormat('yyyy.MM')}}-{{item.endtime|dateFormat('yyyy.MM')}})</span>
             </p>
-            <p class="column2">专业：{{item.majorname}}</p>
-            <p class="column3">学历：{{item.degree}}</p>
-            <p class="column4">是否统招：{{item.generalRecruitment}}</p>
-            <p class="fr column5" v-if="showEducationEdit">
+            <p class="column2 edu-column">专业：{{item.majorname}}</p>
+            <p class="column3 edu-column">学历：{{item.degree}}</p>
+            <p class="column4 edu-column">是否统招：{{item.generalRecruitment}}</p>
+            <p class="fr column5 edu-column" v-if="showEducationEdit">
               <i class="el-icon-edit" @click="ActivateEducationEdit(item.id)"></i>
               <i class="el-icon-delete"></i>
             </p>
-            <p class="major-desc" v-if="item.majorDesc">
+            <p class="major-desc edu-column" v-if="item.majorDesc">
               <span>专业描述：</span>
               <span class="major-desc-content">{{item.majorDesc}}</span>
             </p>
@@ -190,59 +190,10 @@
         </div> -->
       </div>
       <education-item @educationCancel="educationCancel" @educationAdd="educationAdd" v-if="showEducationAdd"></education-item>
-      <div v-if="false" class="resume-detail-main mar-bom">
-        <el-form :key="21" :model="resumeForm" :rules="resumeRules" ref="loginForm" label-position="left" label-width="80px">
-          <div class="add-project-warp">
-            <p class="input-group-add">
-              <el-form-item prop="email" label="学校名称：">
-                <el-input maxlength="100" name="email" type="text" v-model="resumeForm.email" placeholder="">
-                </el-input>
-              </el-form-item>
-              <el-form-item prop="email" label="专业名称：">
-                <el-input maxlength="100" name="email" type="text" v-model="resumeForm.email" placeholder="">
-                </el-input>
-              </el-form-item>
-            </p>
-            <div class="input-group-warp">
-              <p class="input-group-add">
-                <el-form-item prop="birthday" label="学校名称：" class="data-icon-correct">
-                  <el-date-picker v-model="resumeForm.birthday" :editable="false" :clearable="false" type="date" placeholder="" align="right">
-                  </el-date-picker>
-                </el-form-item>
-                <el-form-item prop="email" label="专业名称：">
-                  <el-input maxlength="100" name="email" type="text" v-model="resumeForm.email" placeholder="">
-                  </el-input>
-                </el-form-item>
-              </p>
-              <p class="input-group-add">
-                <el-form-item prop="householdregister" label="学历：">
-                  <el-input maxlength="100" name="householdregister" :readonly="true" @focus="householdregisterFouse" type="text" v-model="resumeForm.householdregister" placeholder="">
-                    <svg-icon icon-class="down-arrow" class="down-arrow cursor-p" slot="suffix" @click="householdregisterFouse" />
-                  </el-input>
-                </el-form-item>
-                <el-form-item prop="generalRecruitment" label="是否统招：">
-                  <el-checkbox v-model="resumeForm.generalRecruitment">是</el-checkbox>
-                </el-form-item>
-              </p>
-            </div>
-            <div class="resume-detail-main recommended-reasons major-desc">
-              <p>专业描述：</p>
-              <el-form-item prop="majorDesc">
-                <el-input maxlength="1000" name="majorDesc" type="textarea" v-model="resumeForm.majorDesc" placeholder="">
-                </el-input>
-              </el-form-item>
-            </div>
-            <div class="form-footer">
-              <el-button class="bor-rad0" type="primary">完成</el-button>
-              <el-button class="bor-rad0" plain>取消</el-button>
-            </div>
-          </div>
-        </el-form>
-      </div>
     </div>
-    <div class="resume-warp add-project-btn" v-if="!showEducationAdd">
+    <div class="resume-warp " :class="{'add-project-btn':educationList.length==0}" v-if="!showEducationAdd">
       <div class="resume-detail-main" @click="ActivateEducationAdd">
-        <p>
+        <p class="text-c cursor-p">
           <span class="resume-add-icon"></span>
           添加教育经历
         </p>
@@ -253,7 +204,6 @@
     <br/>
     <el-button type="text" @click="toggleRegionVisible">打开嵌套表格的 Dialog</el-button>
     <multiple-options v-if="dialogRegionVisible" :defaultID="defaultID" :defaultName="defaultName" :defaultPID="defaultPID" :defaultPName="defaultPName" :dialogVisible='dialogRegionVisible' @closeRegion='closeRegion' @selectedOption='selectedRegion'>
-
     </multiple-options>
     {{regionID}}--{{regionName}}--{{regionPID}}--{{regionPName}}
     <br/> {{resumeForm.sex}}
@@ -279,10 +229,10 @@ export default {
       defaultName: "无锡",
       defaultPID: "2000",
       defaultPName: "江苏",
+      //教育经历
       showEducationWarp: true, //是否显示教育编辑框
       showEducationEdit: true, //禁止修改教育经历
       showEducationAdd: false, //禁止新加教育经历
-
       //form-begin
       resumeForm: {
         username: "",
