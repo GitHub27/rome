@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        body,
+        html,
+        div {
+            padding: 0;
+            margin: 0;
+        }
+
+        .keyboard {
+            padding: 2%;
+            overflow: hidden;
+        }
+
+        .cell {
+            position: relative;
+            float: left;
+            display: block;
+            width: 21%;
+            margin: 2%;
+            padding-top: 21%;
+            background-color: rgb(56, 52, 52);
+            color: #fff;
+            border-radius: 100px;
+        }
+
+        .zero {
+            width: 46%;
+        }
+
+        .cell-inner {
+            position: absolute;
+            top: 50%;
+            left: 0;
+            transform: translateY(-50%);
+            text-align: center;
+            display: inline-block;
+            width: 100%;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="keyboard">
+        <div class="cell">
+            <div class="cell-inner">1</div>
+        </div>
+        <div class="cell">
+            <div class="cell-inner">2</div>
+        </div>
+        <div class="cell">
+            <div class="cell-inner">3</div>
+        </div>
+        <div class="cell">
+            <div class="cell-inner">+</div>
+        </div>
+        <div class="cell zero">
+            <div class="cell-inner">+</div>
+        </div>
+    </div>
+</body>
+
+</html>

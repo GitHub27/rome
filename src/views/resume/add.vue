@@ -143,8 +143,8 @@
           推荐分享理由
           <span>(必填)</span>
         </p>
-        <div class="resume-detail-main recommended-reasons">
-          <el-form-item prop="recommendedReasons">
+        <div class="resume-detail-main recommended-reasons textarea1">
+          <el-form-item prop="recommendedReasons" class="reasons-input">
             <el-input maxlength="1000" name="recommendedReasons" type="textarea" v-model="resumeForm.recommendedReasons" placeholder="">
             </el-input>
           </el-form-item>
@@ -214,7 +214,7 @@
           </job-item>
         </div>
       </div>
-      <job-item @educationCancel="educationCancel" @educationAdd="educationAdd" v-if="showJobAdd"></job-item>
+      <job-item @educationCancel="educationCancel" @educationAdd="educationAdd" v-if="!showJobAdd"></job-item>
     </div>
     <div class="resume-warp " :class="{'add-project-btn':educationList.length==0}" v-if="!showJobAdd">
       <div class="resume-detail-main" @click="showJobAdd=true">

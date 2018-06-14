@@ -57,18 +57,25 @@
         overflow: hidden;
         padding: 28px 40px;
         & > div{
-            // float: left;
             &.resume-col3{
                 margin-left: 75px;
             }
         }
+        &.textarea1{
+                .el-textarea{
+                    height: 237px;
+                    textarea{
+                        height:230px ;
+                    }
+                }
+            }
         &.recommended-reasons{
-            .el-form-item{
+            .reasons-input.el-form-item{
                 width: 1120px;
                 height: 237px;
             }
             .el-form-item__content{
-                height: 237px;                
+                height: auto;                
                 margin-left: 0!important;
             }
             .el-textarea{
@@ -76,7 +83,7 @@
                 textarea{
                     resize:none;
                     padding: 18px 15px;
-                    height: 237px;
+                    // height: 237px;
                     border: 1px solid #dedede;
                 }
             }
@@ -89,7 +96,7 @@
                 .el-textarea{
                     width: 100%;
                     textarea{
-                        height: 95px;
+                        // height: 95px;
                     }
                 }
                 p{
@@ -206,6 +213,39 @@
         }
         .el-radio__label{
             padding-left: 5px;
+        }
+    }
+
+    .job-detail{
+        .resume-detail-main.recommended-reasons.major-desc{
+            height: 114px;
+        }
+        .el-form-item__content{
+
+        }
+        .add-project-warp{
+            height: auto;
+        }
+        .form-footer{
+            margin-top: 30px;
+        }
+        .project-add{
+            padding: 0;
+            p{
+                display: inline-block;
+                width: 229px;
+                height: 43px;
+                line-height: 43px;
+                border: 1px solid #f07026;
+
+            }
+        }
+        .project-detail{
+            .project-title{
+                font-size: 14px;
+                color: #333;
+                margin-top: 20px;
+            }
         }
     }
     /*添加教育经历/工作经历*/
@@ -340,6 +380,15 @@
     width: 19px;
     height: 19px;
     background-image: url('../../assets/user/add.png');
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    vertical-align: middle;
+}
+.region-icon{
+    display: inline-block;
+    width: 19px;
+    height: 19px;
+    background-image: url('../../assets/user/region.png');
     background-size: 100% 100%;
     background-repeat: no-repeat;
     vertical-align: middle;
