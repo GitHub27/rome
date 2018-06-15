@@ -4,7 +4,7 @@
             <h3 class="project-title">项目经验：</h3>
             <p class="input-group-add">
                 <el-form-item prop="projectname" label="项目名称：">
-                    <el-input maxlength="100" name="projectname" type="text">
+                    <el-input maxlength="100" name="projectname" type="text" v-model="projectForm.projectname">
                     </el-input>
                 </el-form-item>
                 <el-form-item prop="starttime" style="width:24%;" label="开始时间：" class="data-icon-correct">
@@ -33,14 +33,16 @@
                 </el-form-item>
             </div>
             <div class="form-footer">
-                <el-button class="bor-rad0" type="primary">保存项目</el-button>
-                <el-button class="bor-rad0" plain>取消</el-button>
+                <el-button @click="submit" class="bor-rad0" type="primary">保存项目</el-button>
+                <el-button @click="cancel" class="bor-rad0" plain>取消</el-button>
             </div>
         </el-form>
     </div>
 </template>
 
 <script>
+import { uuid } from "../../utils/index";
+
 export default {
   components: {},
   data() {
@@ -71,7 +73,27 @@ export default {
   },
   watch: {},
   computed: {},
-  methods: {},
+  methods: {
+    //取消
+    cancel() {
+      this.$emit("cancel");
+    },
+    //保存
+    submit() {
+      this.$refs.projectForm.validate(valid => {
+        if (valid) {
+          if (this.data && this.data.id) {
+            this.$emit("projectEdit", this.projectForm);
+          } else {
+            this.projectForm.id = uuid();
+            this.$store.dispatch("addProject", this.projectForm);
+            //this.$emit("projectAdd", this.projectForm);
+            return;
+          }
+        }
+      });
+    }
+  },
   created() {},
   mounted() {},
   destroyed() {}

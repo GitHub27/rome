@@ -375,6 +375,60 @@
         // }
     }
 }
+
+.projectlist-warp{
+    .projectlist-title{
+        color: #333;
+        font-size: 16px;
+        margin-bottom: 14px;
+    }
+    .project-title{
+        font-size: 14px;
+        color: #333;
+        padding-left: 8px;
+        position: relative;
+        &::before{
+            position: absolute;
+            top: 0;
+            left: 0;
+            bottom: 0;
+            height: 100%;
+            width: 2px;
+            background-color: #f07026;
+            content: '';
+            display: block;
+        }
+        span{
+            color: #999;
+        }
+        .editbtn{
+            float: right;
+            color: #F8B693;
+            font-size: 20px;
+        }
+    }
+}
+
+.rome-line{
+    overflow: hidden;
+    font-size: 14px;
+    color: #333;
+    margin-top: 8px;
+    .lint-title{
+        float: left;
+        display:block;
+        width: 95px;
+        text-align: left;
+        padding-left: 8px;
+        line-height: 1.6;
+    }
+    .lint-content{
+        display: block; 
+        margin-left: 95px;
+        line-height: 1.6;
+    }
+}
+
 .resume-add-icon{
     display: inline-block;
     width: 19px;

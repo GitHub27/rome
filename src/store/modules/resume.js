@@ -1,10 +1,10 @@
-const app = {
+const project = {
     state: {
         projectList: []
     },
     mutations: {
         ADD_PROJECT: (state, project) => {
-            this.projectList.push(project);
+            state.projectList.push(project);
         }
     },
     actions: {
@@ -14,4 +14,4 @@ const app = {
     }
 }
 
-export default app
+export default project

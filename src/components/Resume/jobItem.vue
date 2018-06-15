@@ -68,7 +68,37 @@
             </el-input>
           </el-form-item>
         </div>
-        <project v-show="!showProjectAddBtn"></project>
+        <br/>
+        <div class="projectlist-warp" v-for="(item,index) in projectList" :key="index">
+          <p class="projectlist-title">项目经验：</p>
+          <div>
+            <p class="project-title">
+              {{item.projectname}}
+              <span>（{{item.starttime|dateFormat('yyyy.MM')}}-{{item.starttime|dateFormat('yyyy.MM')}}）</span>
+              <span class="editbtn">
+                <i class="el-icon-edit" @click="ActivateEducationEdit(item.id)"></i>
+                <i class="el-icon-delete" @click="educationDelete(item.id)"></i>
+              </span>
+            </p>
+            <p class="rome-line">
+              <span class="lint-title">
+                项目描述：
+              </span>
+              <span class="lint-content">
+                {{item.projectDesc}}
+              </span>
+            </p>
+            <p class="rome-line">
+              <span class="lint-title">
+                职责和业绩：
+              </span>
+              <span class="lint-content">
+                {{item.projectOfjobFunction}}
+              </span>
+            </p>
+          </div>
+        </div>
+        <project @cancel="showProjectAddBtn=true" v-show="!showProjectAddBtn"></project>
         <div class="form-footer" v-show="showProjectAddBtn" @click="ActivateProjectAdd">
           <div class="resume-detail-main project-add">
             <p class="text-c cursor-p ">
@@ -108,10 +138,7 @@ import { mapGetters } from "vuex";
 export default {
   components: {
     degree,
-    project,
-    ...mapGetters({
-      logged: "token"
-    })
+    project
   },
   props: {
     operationType: {
@@ -119,6 +146,11 @@ export default {
       default: "add"
     },
     data: {}
+  },
+  computed: {
+    ...mapGetters({
+      projectList: "projectList"
+    })
   },
   data() {
     return {
@@ -178,7 +210,7 @@ export default {
     }
   },
   watch: {},
-  computed: {},
+
   methods: {
     /*激活新加项目经历状态*/
     ActivateProjectAdd() {
